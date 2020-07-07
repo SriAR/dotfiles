@@ -1,0 +1,199 @@
+set nocompatible
+
+let g:bundle_path = '~/.vim/bundle'
+
+call plug#begin(bundle_path)
+Plug 'lervag/vimtex'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'sirver/ultisnips'
+Plug 'altercation/vim-colors-solarized'
+call plug#end()
+
+" Enable plugins based on filetype
+filetype indent on
+filetype plugin on
+
+" Enable syntax highlighting
+syntax enable
+
+" Better command-line completion
+set wildmenu
+
+" Show partial commands in the last line of the screen
+set showcmd
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" Autoread when file is changed from outside
+set autoread
+
+" Setting encoding and spellcheck language
+set encoding=utf-8
+set spelllang=en_us
+
+" Better commandline completion
+set wildmenu
+set wildignore=*.o,*~,*.pyc,*.aux,*.bbl,*.blg,*.fdb_latexmk,*.fls,*.log,*.pdf,*.gz
+
+" Show line and column number of cursor
+set ruler
+
+" Show the current line number while showing other line numbers relatively
+set number
+set relativenumber
+
+" Show the statusline below -> Fix for lightline
+set laststatus=2
+set noshowmode
+
+"Open new window splits logically
+set splitbelow
+set splitright
+
+" Search settings
+set nohlsearch
+set incsearch
+
+" Something something
+set wrap
+set linebreak
+
+" Confirm if quitting without saving
+set confirm
+
+" Don't redraw when executing macros
+set lazyredraw
+
+" Show matching brackets and blink for two tenths of a second
+set showmatch
+set mat=2
+
+" Solarized colorscheme
+set background=dark
+colorscheme solarized
+
+" Set an undo file for persisting through reboots
+try
+    set undodir=~/.cache/vim/undo
+    set undofile
+catch
+endtry
+
+" Do not hide mouse when typing
+set nomousehide
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+" Keep same indent on next line, and indent after {
+set autoindent
+set smartindent
+
+" Visual wrapped text preserves indent
+set breakindent
+
+" Use spaces instead of tabs
+set expandtab
+
+" Set shifts to 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Makes all tabs 'look' like 4 spaces, but why this+expandtab?
+set softtabstop=4
+
+" Editing the vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Better movement between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Move to next visual line rather than next actual line
+vnoremap j gj
+vnoremap k gk
+nnoremap j gj
+nnoremap k gk
+
+" Copy pasting from system clipboard. Needs +clipboard (gvim/nvim)
+vnoremap <C-c> "+y
+nnoremap <C-v> "+p
+
+" :W sudo saves the file
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+" Enter visual block mode. The usual command is overriden by paste
+command! Vb normal! <C-v>
+
+" Add empty lines above and below
+nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" Writing/Quitting macros
+inoremap <leader>wq <Esc>:wq<CR>
+nnoremap <leader>wq :wq<CR>
+inoremap <leader><leader> <Esc>m`:w<CR>``a
+nnoremap <leader><leader> :w<CR>
+nnoremap <leader>q :q<CR>
+
+" Delete trailing whitespace before saving
+autocmd BufWritePre * %s/\s\+$//e
+
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+"========"
+" vimtex "
+"========"
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+let g:tex_conceal='abdmg'
+set conceallevel=1
+
+"==========="
+" UltiSnips "
+"==========="
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+"=================="
+" Limelight + Goyo "
+"=================="
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" NEW STUFF - HERE BE DRAGONS
+
+" Pressing ,ss will toggle and untoggle spell checking
+noremap <leader>ss :setlocal spell!<cr> :echo &spell<cr>
+
+" Shortcuts using <leader>
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>s? z=
+
+" Prepending/Appending in Insert mode
+inoremap <C-l> <C-o>A
+inoremap <C-h> <C-o>I
+
+"Linewise scrolling in Insert mode
+inoremap <C-e> <C-o><C-e>
+inoremap <C-y> <C-o><C-y>

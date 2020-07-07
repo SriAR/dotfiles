@@ -1,0 +1,11 @@
+#!/bin/bash
+
+BATTERY="/sys/class/power_supply/BAT0"
+while sleep 120
+do
+CHARGE_FULL="`cat $BATTERY/charge_full_design`"
+CHARGE_NOW="`cat $BATTERY/charge_now`"
+STATUS="`cat $BATTERY/status`"
+CHARGE_PERCENT="$(( $CHARGE_NOW * 100 / $CHARGE_FULL ))"
+[ $CHARGE_PERCENT -le 10 ] && [ $STATUS == "Discharging" ] && rofi -e "Battery Low" -theme themes/low && sleep 1
+done

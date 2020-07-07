@@ -1,0 +1,178 @@
+font pango:monospace 8
+
+# EXEC ON STARTUP {{{
+#exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
+exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
+exec --no-startup-id python -m http.server 4242 -d /home/cs/dotfiles/startpage --bind 127.0.0.1
+exec --no-startup-id picom
+exec --no-startup-id i3-msg 'workspace $ws3; exec pavucontrol'
+exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
+exec --no-startup-id sleep 2 && i3-msg 'workspace $ws4; exec discord'
+exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
+#}}}
+
+# APP BINDSYMS {{{
+bindsym Mod4+f exec firefox
+bindsym Mod4+d exec discord
+bindsym Mod4+e exec calibre
+bindsym Mod4+c exec google-chrome-stable
+bindsym Mod4+p exec pavucontrol
+bindsym Mod4+t exec urxvt -name floating
+bindsym Mod4+z exec urxvt -name floating -e zsh -c "fzf | xargs /home/cs/dotfiles/bin/fuckmime"
+#}}}
+
+# MISC {{{
+bindsym Mod1+r mode "resize"
+bindsym Mod1+Shift+c reload
+bindsym Mod1+Shift+r restart
+bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'Exit?' -B 'Yes' 'i3-msg exit'"
+bindsym Mod1+b bar hidden_state toggle
+
+#bindsym XF86MonBrightnessDown
+#bindsym XF86MonBrightnessDown
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%-
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+
+bindsym XF86AudioPlay exec mpc toggle
+
+bindsym Mod4+Shift+s exec systemctl poweroff
+bindsym Mod4+l exec i3lock -n -i ~/Pictures/lockscreen.png & sleep 2 && xset dpms force off
+bindsym Mod1+d exec rofi -show run
+bindsym --release Print exec --no-startup-id import /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png
+bindsym Mod1+Tab workspace back_and_forth
+bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+q kill
+
+workspace_auto_back_and_forth yes
+floating_modifier Mod1
+bar {
+        mode hide
+        hidden_state hide
+        status_command i3status
+}
+#}}}
+
+# GAPS {{{
+for_window [class="^.*"] border pixel 3
+smart_gaps    on
+smart_borders no_gaps
+#gaps inner 15
+#gaps outer 05
+gaps inner 0
+gaps outer 0
+# }}}
+
+# MOVEMENT {{{
+set $up k
+set $down j
+set $left h
+set $right l
+
+bindsym Mod1+$left focus left
+bindsym Mod1+$down focus down
+bindsym Mod1+$up focus up
+bindsym Mod1+$right focus right
+
+bindsym Mod1+Left focus left
+bindsym Mod1+Down focus down
+bindsym Mod1+Up focus up
+bindsym Mod1+Right focus right
+
+bindsym Mod1+Shift+$left move left
+bindsym Mod1+Shift+$down move down
+bindsym Mod1+Shift+$up move up
+bindsym Mod1+Shift+$right move right
+
+bindsym Mod1+Shift+Left move left
+bindsym Mod1+Shift+Down move down
+bindsym Mod1+Shift+Up move up
+bindsym Mod1+Shift+Right move right
+# }}}
+
+# WORKSPACES {{{
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym Mod1+1 workspace $ws1
+bindsym Mod1+2 workspace $ws2
+bindsym Mod1+3 workspace $ws3
+bindsym Mod1+4 workspace $ws4
+bindsym Mod1+5 workspace $ws5
+bindsym Mod1+6 workspace $ws6
+bindsym Mod1+7 workspace $ws7
+bindsym Mod1+8 workspace $ws8
+bindsym Mod1+9 workspace $ws9
+bindsym Mod1+0 workspace $ws10
+
+bindsym Mod1+Shift+1 move container to workspace $ws1
+bindsym Mod1+Shift+2 move container to workspace $ws2
+bindsym Mod1+Shift+3 move container to workspace $ws3
+bindsym Mod1+Shift+4 move container to workspace $ws4
+bindsym Mod1+Shift+5 move container to workspace $ws5
+bindsym Mod1+Shift+6 move container to workspace $ws6
+bindsym Mod1+Shift+7 move container to workspace $ws7
+bindsym Mod1+Shift+8 move container to workspace $ws8
+bindsym Mod1+Shift+9 move container to workspace $ws9
+bindsym Mod1+Shift+0 move container to workspace $ws10
+# }}}
+
+# RESIZE {{{
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or Mod1+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym Mod1+r mode "default"
+}
+# }}}
+
+# LAYOUT {{{
+bindsym Mod1+z split h
+bindsym Mod1+v split v
+bindsym Mod1+e layout toggle split
+bindsym Mod1+f fullscreen toggle
+
+bindsym Mod1+s layout stacking
+bindsym Mod1+w layout tabbed
+
+bindsym Mod1+Shift+space floating toggle
+bindsym Mod1+space focus mode_toggle
+
+bindsym Mod1+a focus parent
+#bindsym Mod1+d focus child
+
+bindsym Mod1+Shift+grave move scratchpad
+bindsym Mod1+grave scratchpad show
+#}}}
+
+# FLOATING ENABLE {{{
+for_window [class="URxvt" instance="floating"] floating enable, move scratchpad, scratchpad show
+for_window [class="st-256color"] floating enable, move scratchpad, scratchpad show
+#}}}
+
+# vim:foldmethod=marker:foldlevel=0:nospell

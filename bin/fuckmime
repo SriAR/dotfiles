@@ -1,0 +1,37 @@
+#!/bin/bash
+
+file="$1"
+mimetype="$(xdg-mime query filetype $file)"
+terminal="urxvt"
+
+closeTerminal() {
+    sleep 0.02 &&
+    exit
+}
+
+case $mimetype in
+
+    application/pdf)
+        zathura --fork $file
+    ;;
+
+    image/vnd.djvu)
+        zathura --fork $file
+    ;;
+
+    text/x-tex)
+        $terminal -e vim --servername latex $file & closeTerminal
+    ;;
+
+    text/*)
+        $terminal -e vim $file & closeTerminal
+    ;;
+
+    image/*)
+        nohup sxiv -b $file > /dev/null & closeTerminal
+    ;;
+
+    *)
+        mimeo $file
+    ;;
+esac
