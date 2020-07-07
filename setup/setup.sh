@@ -50,6 +50,7 @@ declare -A mappings=(   ["vim/vimrc"]=".vimrc"
                         ["zsh/zshrc"]=".zshrc"
                         ["picom/picom.conf"]=".config/picom/picom.conf"
                         ["i3/config"]=".config/i3/config"
+                        ["rofi/config.rasi"]=".config/rofi/config.rasi"
                     )
 
 for file in "${!mappings[@]}"; do
