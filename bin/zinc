@@ -1,60 +1,96 @@
 #!/bin/bash
 
+TEST=1
+
 rsyncmessage() {
-    DEL='s/^\*deleting.*\ /DELETED /g'
-    REC='s/^>.*\ /RECEIVE /g'
-    SEN='s/^<.*\ /SENDING /g'
-    CHN='s/^c.*\ /CHANGED /g'
+    NEW='s/^>f+++++++++ /NEW /g'
+    UPD="s/^>f..t.*\ /UPD /g"
+    DEL='s/^\*deleting.*\ /DEL /g'
+    if [ $1 == 1 ]; then
+        LOC="s/^/SYSTEM /g"
+    else
+        LOC="s/^/SERVER /g"
+    fi
+    DIR='s/^c.*\ /DIR /g'
     GARBAGE='/^\.\|^sen\|^tot\|^$/d'
-    sed "$DEL; $REC; $SEN; $CHN; $GARBAGE"
+    sed "$DEL; $NEW; $UPD; $DIR; $GARBAGE; $LOC"
 }
 
 colorize(){
-    DEL='s/^DELETED/\\e[38;5;1mDELETED\\e[0m/g'
-    REC='s/^RECEIVE/\\e[38;5;47mRECEIVE\\e[0m/g'
-    SEN='s/^SENDING/\\e[38;5;226mSENDING\\e[0m/g'
-    CHN='s/^CHANGED/\\e[38;5;129mCHANGED\\e[0m/g'
+    SYS='s/^SYSTEM/\\e[38;5;47mSYSTEM\\e[0m/g'
+    SER='s/^SERVER/\\e[38;5;226mSERVER\\e[0m/g'
+    DEL='s/DEL/\\e[38;5;1mDEL\\e[0m/g'
+    NEW='s/NEW/\\e[38;5;202mNEW\\e[0m/g'
+    UPD='s/UPD/\\e[38;5;239mUPD\\e[0m/g'
+    DIR='s/DIR/\\e[38;5;129mDIR\\e[0m/g'
     while read in; do
-        echo -e "$(echo $in | sed "$DEL; $REC; $SEN; $CHN")";
+        echo -e "$(echo $in | sed "$DEL; $SYS; $SER; $NEW; $UPD; $DIR")";
     done
 }
-
 LOCAL="$HOME/Study"
 SERVER="arsricharan@access2.cmi.ac.in:~/Study"
-TESTSERVER="$HOME/Teddy"
+if [ $TEST == 1 ]; then
+    SERVER="$HOME/Teddy"
+fi
+SYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --times --partial --progress --itemize-changes --verbose"
 NOTDONE=true
-VSYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --times --partial --progress --itemize-changes --verbose"
 ARRAY=($LOCAL $SERVER)
 DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
-DELETE=1 # Delete 1 means deletions are on.
-DARRAY=("$VSYNC" "$VSYNC --delete")
+DELETEV=true # Delete 1 means deletions are on.
+BOTH=true # Update from both sides
 
 while $NOTDONE; do
-    START=${ARRAY[$DIRECTION]}
-    END=${ARRAY[1 - $DIRECTION]}
-    SYNC=${DARRAY[$DELETE]}
-    echo -e "Changes happening on \e[38;5;47m$END\e[0m which are sourced from \e[38;5;1m$START\e[0m:"
-    $SYNC $START/ $END --dry-run | rsyncmessage | colorize
-    printf "\n"
-    read -p "Would you like to go forward with this change [Yy], or should I show the other direction [Nn], or should I reshow the same without deletions [Dd], or would you like to quit [Qq]?" option
-    case $option in
-        [Yy]*)
-            echo "Going forward with the changes."
-            $SYNC $START/ $END | rsyncmessage | colorize
-            NOTDONE=false
-            ;;
-        [Nn]*)
-            echo "Changing the direction."
-            DIRECTION=1-$DIRECTION
-            ;;
-        [Dd]*)
-            echo "Toggling deletion."
-            DELETE=1-$DELETE
-            ;;
-        *)
-            echo "Quitting..."
-            NOTDONE=false
-            ;;
-    esac
+    if $BOTH; then
+        $SYNC $LOCAL/ $SERVER --update --dry-run | rsyncmessage 0 | colorize
+        $SYNC $SERVER/ $LOCAL --update --dry-run | rsyncmessage 1 | colorize
+        read -p "Would you like to apply these changes? [y/N]" option
+        case $option in
+            [Yy]*)
+                echo "Applying above-mentioned changes."
+                $SYNC $LOCAL/ $SERVER --update | rsyncmessage 0 | colorize
+                $SYNC $SERVER/ $LOCAL --update | rsyncmessage 1 | colorize
+                NOTDONE=false
+                ;;
+            *)
+                BOTH=false
+                ;;
+        esac
+    else
+        START=${ARRAY[$DIRECTION]}
+        END=${ARRAY[1 - $DIRECTION]}
+        $SYNC $START/ $END --dry-run --delete | rsyncmessage $DIRECTION | colorize
+    fi
+    NOTDONE=false
 done
+
+if false; then
+    while $NOTDONE; do
+        START=${ARRAY[$DIRECTION]}
+        END=${ARRAY[1 - $DIRECTION]}
+        SYNC=${DARRAY[$DELETE]}
+        echo -e "Changes happening on \e[38;5;47m$END\e[0m which are sourced from \e[38;5;1m$START\e[0m:"
+        $SYNC $START/ $END --dry-run | rsyncmessage | colorize
+        printf "\n"
+        read -p "Would you like to go forward with this change [Yy], or should I show the other direction [Nn], or should I reshow the same without deletions [Dd], or would you like to quit [Qq]?" option
+        case $option in
+            [Yy]*)
+                echo "Going forward with the changes."
+                $SYNC $START/ $END | rsyncmessage | colorize
+                NOTDONE=false
+                ;;
+            [Nn]*)
+                echo "Changing the direction."
+                DIRECTION=1-$DIRECTION
+                ;;
+            [Dd]*)
+                echo "Toggling deletion."
+                DELETE=1-$DELETE
+                ;;
+            *)
+                echo "Quitting..."
+                NOTDONE=false
+                ;;
+        esac
+    done
+fi
 
