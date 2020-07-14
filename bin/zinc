@@ -1,0 +1,60 @@
+#!/bin/bash
+
+rsyncmessage() {
+    DEL='s/^\*deleting.*\ /DELETED /g'
+    REC='s/^>.*\ /RECEIVE /g'
+    SEN='s/^<.*\ /SENDING /g'
+    CHN='s/^c.*\ /CHANGED /g'
+    GARBAGE='/^\.\|^sen\|^tot\|^$/d'
+    sed "$DEL; $REC; $SEN; $CHN; $GARBAGE"
+}
+
+colorize(){
+    DEL='s/^DELETED/\\e[38;5;1mDELETED\\e[0m/g'
+    REC='s/^RECEIVE/\\e[38;5;47mRECEIVE\\e[0m/g'
+    SEN='s/^SENDING/\\e[38;5;226mSENDING\\e[0m/g'
+    CHN='s/^CHANGED/\\e[38;5;129mCHANGED\\e[0m/g'
+    while read in; do
+        echo -e "$(echo $in | sed "$DEL; $REC; $SEN; $CHN")";
+    done
+}
+
+LOCAL="$HOME/Study"
+SERVER="arsricharan@access2.cmi.ac.in:~/Study"
+TESTSERVER="$HOME/Teddy"
+NOTDONE=true
+VSYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --times --partial --progress --itemize-changes --verbose"
+ARRAY=($LOCAL $SERVER)
+DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
+DELETE=1 # Delete 1 means deletions are on.
+DARRAY=("$VSYNC" "$VSYNC --delete")
+
+while $NOTDONE; do
+    START=${ARRAY[$DIRECTION]}
+    END=${ARRAY[1 - $DIRECTION]}
+    SYNC=${DARRAY[$DELETE]}
+    echo -e "Changes happening on \e[38;5;47m$END\e[0m which are sourced from \e[38;5;1m$START\e[0m:"
+    $SYNC $START/ $END --dry-run | rsyncmessage | colorize
+    printf "\n"
+    read -p "Would you like to go forward with this change [Yy], or should I show the other direction [Nn], or should I reshow the same without deletions [Dd], or would you like to quit [Qq]?" option
+    case $option in
+        [Yy]*)
+            echo "Going forward with the changes."
+            $SYNC $START/ $END | rsyncmessage | colorize
+            NOTDONE=false
+            ;;
+        [Nn]*)
+            echo "Changing the direction."
+            DIRECTION=1-$DIRECTION
+            ;;
+        [Dd]*)
+            echo "Toggling deletion."
+            DELETE=1-$DELETE
+            ;;
+        *)
+            echo "Quitting..."
+            NOTDONE=false
+            ;;
+    esac
+done
+
