@@ -32,65 +32,82 @@ SERVER="arsricharan@access2.cmi.ac.in:~/Study"
 if [ $TEST == 1 ]; then
     SERVER="$HOME/Teddy"
 fi
-SYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --times --partial --progress --itemize-changes --verbose"
+VSYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --times --partial --progress --itemize-changes --verbose"
 NOTDONE=true
 ARRAY=($LOCAL $SERVER)
 DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
 DELETEV=true # Delete 1 means deletions are on.
 BOTH=true # Update from both sides
+SYNC="$VSYNC"
+QUESTION=(remove add)
 
 while $NOTDONE; do
     if $BOTH; then
-        $SYNC $LOCAL/ $SERVER --update --dry-run | rsyncmessage 0 | colorize
-        $SYNC $SERVER/ $LOCAL --update --dry-run | rsyncmessage 1 | colorize
-        read -p "Would you like to apply these changes? [y/N]" option
+        $VSYNC $LOCAL/ $SERVER --update --dry-run | rsyncmessage 0 | colorize
+        $VSYNC $SERVER/ $LOCAL --update --dry-run | rsyncmessage 1 | colorize
+        read -p "Would you like to apply these changes [y/N]? Q to quit: " option
         case $option in
             [Yy]*)
                 echo "Applying above-mentioned changes."
-                $SYNC $LOCAL/ $SERVER --update | rsyncmessage 0 | colorize
-                $SYNC $SERVER/ $LOCAL --update | rsyncmessage 1 | colorize
+                $VSYNC $LOCAL/ $SERVER --update | rsyncmessage 0 | colorize
+                $VSYNC $SERVER/ $LOCAL --update | rsyncmessage 1 | colorize
                 NOTDONE=false
+                ;;
+            [Qq]*)
+                exit
                 ;;
             *)
                 BOTH=false
                 ;;
         esac
     else
-        START=${ARRAY[$DIRECTION]}
-        END=${ARRAY[1 - $DIRECTION]}
-        $SYNC $START/ $END --dry-run --delete | rsyncmessage $DIRECTION | colorize
-    fi
-    NOTDONE=false
-done
-
-if false; then
-    while $NOTDONE; do
-        START=${ARRAY[$DIRECTION]}
-        END=${ARRAY[1 - $DIRECTION]}
-        SYNC=${DARRAY[$DELETE]}
-        echo -e "Changes happening on \e[38;5;47m$END\e[0m which are sourced from \e[38;5;1m$START\e[0m:"
-        $SYNC $START/ $END --dry-run | rsyncmessage | colorize
-        printf "\n"
-        read -p "Would you like to go forward with this change [Yy], or should I show the other direction [Nn], or should I reshow the same without deletions [Dd], or would you like to quit [Qq]?" option
+        for arg in delete update; do
+            echo "$SYNC" | grep "$arg"
+            exists=$?
+            read -p "Would you like to ${QUESTION[$exists]} the --$arg option[y/N]" option
+            case $option in
+                [Yy]*)
+                    if [ $exists == 0 ]; then
+                        SYNC=$(echo "$SYNC" | sed "s/ --$arg//g")
+                    else
+                        SYNC="$SYNC --$arg"
+                    fi
+                    ;;
+                *)
+                    ;;
+            esac
+        done
+        read -p "To go back to dual-way transfers type [Bb], to swap the focus of deletion [Ff], to quit [Qq]." option
         case $option in
-            [Yy]*)
-                echo "Going forward with the changes."
-                $SYNC $START/ $END | rsyncmessage | colorize
+            [Bb]*)
+                echo "Going back to dual-way transfers."
+                BOTH=true
+                ;;
+            [Ff]*)
+                echo "Swapping the focus of deletion."
+                DIRECTION=$(expr 1 - $DIRECTION)
+                ;;
+            [Qq]*)
                 NOTDONE=false
-                ;;
-            [Nn]*)
-                echo "Changing the direction."
-                DIRECTION=1-$DIRECTION
-                ;;
-            [Dd]*)
-                echo "Toggling deletion."
-                DELETE=1-$DELETE
+                return
                 ;;
             *)
-                echo "Quitting..."
-                NOTDONE=false
                 ;;
         esac
-    done
-fi
+        START=${ARRAY[$DIRECTION]}
+        END=${ARRAY[1 - $DIRECTION]}
+        $SYNC $START/ $END --dry-run | rsyncmessage $DIRECTION | colorize
+        read -p "Would you like to apply these changes? [y/N]" option
+        case $option in
+            [Yy]*)
+                echo "Applying above-mentioned changes."
+                $SYNC $START/ $END  | rsyncmessage $DIRECTION | colorize
+                NOTDONE=false
+                ;;
+            *)
+                ;;
+        esac
+
+    fi
+done
 
