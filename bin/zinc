@@ -37,7 +37,6 @@ VSYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --ti
 NOTDONE=true
 ARRAY=($LOCAL $SERVER)
 DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
-DELETEV=true # Delete 1 means deletions are on.
 BOTH=true # Update from both sides
 SYNC="$VSYNC"
 QUESTION=(remove add)
