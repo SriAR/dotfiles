@@ -1,19 +1,20 @@
 #!/bin/bash
 
-TEST=1
+TEST=0
 
 rsyncmessage() {
-    NEW='s/^>f+++++++++ /NEW /g'
-    UPD="s/^>f..t.*\ /UPD /g"
+    PLACE=$1
+    NEW='s/f\+\+\+\+\+\+\+\+\+ /NEW /g'
+    UPD="s/f..t.* /UPD /g"
     DEL='s/^\*deleting.*\ /DEL /g'
-    if [ $1 == 1 ]; then
-        LOC="s/^/SYSTEM /g"
+    if [ $PLACE == 1 ]; then
+        LOC="s/^(>|<)?/SYSTEM /g"
     else
-        LOC="s/^/SERVER /g"
+        LOC="s/^(>|<)?/SERVER /g"
     fi
     DIR='s/^c.*\ /DIR /g'
-    GARBAGE='/^\.\|^sen\|^tot\|^$/d'
-    sed "$DEL; $NEW; $UPD; $DIR; $GARBAGE; $LOC"
+    GARBAGE='/^\.|^sen|^rec|^tot|^$/d'
+    sed -E "$DEL; $NEW; $UPD; $DIR; $GARBAGE; $LOC"
 }
 
 colorize(){
@@ -62,7 +63,7 @@ while $NOTDONE; do
         esac
     else
         for arg in delete update; do
-            echo "$SYNC" | grep "$arg"
+            check="$(echo "$SYNC" | grep "$arg")"
             exists=$?
             read -p "Would you like to ${QUESTION[$exists]} the --$arg option[y/N]" option
             case $option in
@@ -88,21 +89,24 @@ while $NOTDONE; do
                 DIRECTION=$(expr 1 - $DIRECTION)
                 ;;
             [Qq]*)
-                NOTDONE=false
-                return
+                exit
                 ;;
             *)
                 ;;
         esac
         START=${ARRAY[$DIRECTION]}
         END=${ARRAY[1 - $DIRECTION]}
+        echo "Changes are happening on $END and they are sourced from $START."
         $SYNC $START/ $END --dry-run | rsyncmessage $DIRECTION | colorize
-        read -p "Would you like to apply these changes? [y/N]" option
+        read -p "Would you like to apply these changes [y/N]? Q to quit: " option
         case $option in
             [Yy]*)
                 echo "Applying above-mentioned changes."
                 $SYNC $START/ $END  | rsyncmessage $DIRECTION | colorize
                 NOTDONE=false
+                ;;
+            [Qq]*)
+                exit
                 ;;
             *)
                 ;;
