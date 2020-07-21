@@ -1,11 +1,11 @@
 #!/bin/bash
 
 BATTERY="/sys/class/power_supply/BAT0"
-while sleep 180
-do
+MESSAGE="Sweet of you to offer. I could really use\n some battery. I'm not myself without it."
+while sleep 180; do
 CHARGE_FULL="`cat $BATTERY/charge_full_design`"
 CHARGE_NOW="`cat $BATTERY/charge_now`"
 STATUS="`cat $BATTERY/status`"
 CHARGE_PERCENT="$(( $CHARGE_NOW * 100 / $CHARGE_FULL ))"
-[ $CHARGE_PERCENT -le 10 ] && [ $STATUS == "Discharging" ] && notify-send -h "string:bgcolor:#ff0000" "Battery Low" && sleep 1
+[ $CHARGE_PERCENT -le 10 ] && [ $STATUS == "Discharging" ] && dunstify -a Pandemonica -t 10000 -i ~/dotfiles/.assets/low_battery_pandemonica.png -h "int:value:$CHARGE_PERCENT" -u critical "" "$MESSAGE" && sleep 1
 done
