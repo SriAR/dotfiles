@@ -36,7 +36,7 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+
 bindsym XF86AudioPlay exec mpc toggle
 
-bindsym Mod4+s exec systemctl poweroff
+bindsym Mod4+s exec shutdown now
 bindsym Mod4+l exec i3lock -n -i ~/Pictures/lockscreen.png & sleep 2 && xset dpms force off
 bindsym Mod1+d exec rofi -show run
 bindsym --release Print exec --no-startup-id import /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png

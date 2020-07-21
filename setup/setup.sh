@@ -31,7 +31,7 @@ dotlink() {
             echo -e "$2 already exists, \e[38;5;1mremoving it\e[0m."
             dotbackup $2
         fi
-        echo "Symlinking $2 to $1"
+        echo -e "\e[38;5;202mSymlinking\e[0m $2 to $1"
         ln -s $1 $2
     fi
 }
@@ -51,6 +51,9 @@ declare -A mappings=(   ["vim/vimrc"]=".vimrc"
                         ["picom/picom.conf"]=".config/picom/picom.conf"
                         ["i3/config"]=".config/i3/config"
                         ["rofi/config.rasi"]=".config/rofi/config.rasi"
+                        ["x11/Xinitrc"]=".xinitrc"
+                        ["x11/Xdefaults"]=".Xdefaults"
+                        ["x11/Xmodmap"]=".Xmodmap"
                     )
 
 for file in "${!mappings[@]}"; do
