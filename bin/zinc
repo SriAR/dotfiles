@@ -1,6 +1,16 @@
 #!/bin/bash
-
 TEST=0
+
+printhelp() {
+    printf "zinc - A custom filesyncer using rsync\n\n"
+    printf "zinc [--server/--local] [--delete] [--update]\n\n"
+    printf "Usage: \n\n"
+    printf "    zinc (no args)\n        Copy new files between both, and update older files to newer ones.\n\n"
+    printf "    zinc --server | -s\n        Make changes on server, and source them from local disk.\n\n"
+    printf "    zinc --local | -l\n        Make changes on local disk, and source them from server.\n\n"
+    printf "    zinc --delete | -d\n        Delete files at \$END if they differ from \$START.\n\n"
+    printf "    zinc --update | -u\n        Do not --delete files at \$END if modification times postdate \$START.\n\n"
+}
 
 rsyncmessage() {
     PLACE=$1
@@ -28,8 +38,10 @@ colorize(){
         echo -e "$(echo $in | sed "$DEL; $SYS; $SER; $NEW; $UPD; $DIR")";
     done
 }
+
 LOCAL="$HOME/Study"
-SERVER="arsricharan@access2.cmi.ac.in:~/Study"
+HEART=$(cat $HOME/.private/server)
+SERVER="$HEART:~/Study"
 if [ $TEST == 1 ]; then
     SERVER="$HOME/Teddy"
 fi
@@ -40,6 +52,30 @@ DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
 BOTH=true # Update from both sides
 SYNC="$VSYNC"
 QUESTION=(remove add)
+CMDLINE=$#
+
+while [ "$1" != "" ]; do
+    BOTH=false
+    case $1 in
+        -s | --server )
+            DIRECTION=0
+            ;;
+        -l | --local )
+            DIRECTION=1
+            ;;
+        -d | --delete )
+            SYNC="$SYNC --delete"
+            ;;
+        -u | --update )
+            SYNC="$SYNC --update"
+            ;;
+        -h | --help )
+            printhelp
+            exit
+            ;;
+    esac
+    shift
+done
 
 while $NOTDONE; do
     if $BOTH; then
@@ -61,6 +97,7 @@ while $NOTDONE; do
                 ;;
         esac
     else
+        if [ $CMDLINE = 0 ]; then
         for arg in delete update; do
             check="$(echo "$SYNC" | grep "$arg")"
             exists=$?
@@ -93,6 +130,7 @@ while $NOTDONE; do
             *)
                 ;;
         esac
+        fi
         START=${ARRAY[$DIRECTION]}
         END=${ARRAY[1 - $DIRECTION]}
         echo "Changes are happening on $END and they are sourced from $START."
@@ -110,7 +148,7 @@ while $NOTDONE; do
             *)
                 ;;
         esac
-
+        CMDLINE=0
     fi
 done
 
