@@ -98,6 +98,10 @@ for file in $HOME/dotfiles/zsh/envs/*.zsh; do
     source $file
 done
 
+for file in /usr/share/fzf/*.zsh; do
+    source $file
+done
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

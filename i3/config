@@ -1,14 +1,14 @@
 font pango:monospace 8
 
-# EXEC ON STARTUP {{{
+# EZAXEC ON STARTUP {{{
 #exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
 exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
 exec --no-startup-id python -m http.server 4242 -d /home/cs/dotfiles/startpage --bind 127.0.0.1
 exec --no-startup-id picom
-exec --no-startup-id i3-msg 'workspace $ws3; exec pavucontrol'
-exec --no-startup-id i3-msg 'workspace $ws1; exec firefox'
-exec --no-startup-id sleep 2 && i3-msg 'workspace $ws4; exec discord'
+exec --no-startup-id pavucontrol
+exec --no-startup-id firefox
+exec --no-startup-id discord
 exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
 #}}}
 
@@ -174,5 +174,11 @@ bindsym Mod1+grave scratchpad show
 for_window [class="URxvt" instance="floating"] floating enable, move scratchpad, scratchpad show
 for_window [class="st-256color"] floating enable, move scratchpad, scratchpad show
 #}}}
+
+# SPECIFIC WS {{{
+assign [class="Pavucontrol"] $ws5
+assign [class="firefox"] $ws1
+assign [class="discord"] $ws4
+# }}}
 
 # vim:foldmethod=marker:foldlevel=0:nospell
