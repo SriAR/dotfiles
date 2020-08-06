@@ -1,6 +1,6 @@
 font pango:monospace 8
 
-# EZAXEC ON STARTUP {{{
+# EXEC ON STARTUP {{{
 #exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
 exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
@@ -20,6 +20,7 @@ bindsym Mod4+c exec google-chrome-stable
 bindsym Mod4+p exec pavucontrol
 bindsym Mod4+t exec urxvt -name floating
 bindsym Mod4+z exec urxvt -name floating -e zsh -c "fzf | xargs /home/cs/dotfiles/bin/fuckmime"
+bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
 #}}}
 
 # MISC {{{

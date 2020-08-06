@@ -1,0 +1,122 @@
+#!/bin/bash
+
+BACKGROUND="#002b36"
+FOREGROUND="#2aa198"
+
+datetime() {
+	datetime=$(date +'%a %d %I:%M')
+    echo -n "$datetime"
+}
+
+volume() {
+    vol=$(pacmd list-sinks | grep "front-left: .*front-right" -o | grep "[[:digit:]]*%" -o)
+    echo -n "\uf028 $vol"
+}
+
+wifi() {
+    ssid=$(netctl list | grep "*" | grep "[[:alpha:]]*" -o)
+    echo -n "\uf1eb $ssid"
+}
+
+battery() {
+    batdir="/sys/class/power_supply/BAT0"
+    charge_full="`cat $batdir/charge_full_design`"
+    charge_now="`cat $batdir/charge_now`"
+    batperc="$(( $charge_now * 100 / $charge_full ))"
+    nearest=$(expr "$batperc" / 25)
+    remaind=$(expr "$batperc" % 25)
+    thresh=13
+    if [ "$remaind" -ge "$thresh" ]; then
+    	nearest=$(expr "$nearest" + 1)
+    fi
+    battsymbol=$(expr -1 \* "$nearest" + 4)
+    echo -n "\uf24$battsymbol $batperc"
+}
+
+contents=( datetime wifi volume battery )
+messages=()
+lengths=()
+
+for content in ${contents[@]}; do
+    message="`$content`"
+    length="$(echo "$message" | wc -c)"
+    messages+=("$message")
+    lengths+=("$length")
+done
+
+font="NotoSans:size=10"
+icon="FontAwesome5Free:style=Solid"
+height=35
+width=115
+init_x=$(( 1920 - $width ))
+init_y=$(( 1080 - $height ))
+
+init_bar() {
+    content="$1"
+    width="$2"
+    while true; do
+        echo -e "%{c}%{F$FOREGROUND}%{B$BACKGROUND} `$content`"
+        sleep 1
+        echo "`date +"%s"`" > /home/cs/log
+    done | lemonbar -g "${width}x${height}+${init_x}+${init_y}" -f "$font" -f "$icon" -B "$BACKGROUND" -d
+}
+
+for content in ${contents[@]}; do
+    width=$(( $width - 15 ))
+    init_bar "$content" "$width" &
+    sleep 0.02
+done
+
+animSpeed=3
+
+function animator() {
+	winId=$1
+	direction=$2
+	winInfo=$(xwininfo -id $winId)
+	width=$(echo $winInfo | grep "Width:\ [[:digit:]]*" -o | grep '[[:digit:]]*' -o)
+	height=$(echo $winInfo | grep "Height:\ [[:digit:]]*" -o | grep '[[:digit:]]*' -o)
+	x=$(echo $winInfo | grep "Absolute upper-left X:\ [[:digit:]]*" -o | grep '[[:digit:]]*' -o)
+	y=$(echo $winInfo | grep "Absolute upper-left Y:\ [[:digit:]]*" -o | grep '[[:digit:]]*' -o)
+	case $direction in
+		come)
+            limit=$((1920 - width + 2))
+			while [ $x -ge $limit ]
+			do
+				x=$((x - animSpeed))
+				xdotool windowmove --relative "$winId" -$animSpeed 0
+				sleep 0.01
+			done;;
+
+		go)
+			limit=1920
+			while [ $x -le $limit ]
+			do
+				x=$((x + animSpeed))
+				xdotool windowmove --relative "$winId" $animSpeed 0
+				sleep 0.01
+			done;;
+	esac
+}
+
+function control() {
+	winId=$1
+	verticalPosition=$2
+	xdotool windowmove "$winId" 1920 $verticalPosition
+    picom-trans -w $winId 100
+	animator $winId come
+	sleep 2.0
+	animator $winId go
+    picom-trans -w $winId 0
+}
+
+verticalOffset=100
+sleep 0.02
+windowIds="$(xdotool search --classname 'lemonbar')"
+
+for winId in $windowIds; do
+	control $winId $verticalOffset &
+	verticalOffset=$((verticalOffset + 50))
+done
+sleep 3.75
+pkill lemonbar
+exit
