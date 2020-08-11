@@ -1,0 +1,68 @@
+#!/bin/bash
+
+_check_socket() {
+    SOCKET="$HOME/.sockets/$1-socket"
+    CHECK="$(socat -u OPEN:/dev/null UNIX-CONNECT:$SOCKET > /dev/null 2>&1)"
+    if [ $? -ge 1 ]; then
+        echo "There is a problem with the socket at $SOCKET. Exiting..."
+        exit
+    fi
+}
+
+_mpv_control() {
+    _check_socket mpv
+    COMMAND="$1"
+    case $COMMAND in
+        ptoggle )
+            JSON="$(_mpv_json 'cycle' 'pause')"
+            ;;
+        pause )
+            JSON="$(_mpv_json 'set' 'pause' 'yes')"
+            ;;
+        play )
+            JSON="$(_mpv_json 'set' 'pause' 'no')"
+            ;;
+        volplus )
+            JSON="$(_mpv_json 'add' 'volume' '2')"
+            #JSON="$(_mpv_json 'script-message', 'uosc/flash-volume')"
+            ;;
+        volminus )
+            JSON="$(_mpv_json 'add' 'volume' '-2')"
+            ;;
+        * )
+            printhelp
+            exit
+            ;;
+    esac
+    _socat_message "$JSON" mpv
+}
+
+_socat_message() {
+    echo "$1"
+}
+
+_mpv_json() {
+    local tosend='{ "command": ['
+    for arg in "$@"; do
+        tosend="$tosend \"$arg\","
+    done
+    tosend=${tosend%?}' ] }'
+    echo "$tosend"
+}
+
+APPLICATION="$1"
+COMMAND="$2"
+
+case $APPLICATION in
+    mpv )
+        _mpv_control $COMMAND
+        ;;
+    i3 )
+        _i3_control $COMMAND
+        ;;
+    * )
+        printhelp
+        ;;
+esac
+
+
