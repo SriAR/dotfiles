@@ -30,8 +30,8 @@ bindsym Mod1+Shift+r restart
 bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'Exit?' -B 'Yes' 'i3-msg exit'"
 bindsym Mod1+b bar hidden_state toggle
 
-#bindsym XF86MonBrightnessDown
-#bindsym XF86MonBrightnessDown
+bindsym XF86MonBrightnessDown exec /home/cs/dotfiles/bin/light -
+bindsym XF86MonBrightnessUp exec /home/cs/dotfiles/bin/light +
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+

@@ -1,0 +1,22 @@
+#!/bin/bash
+DIR="/sys/class/backlight/intel_backlight"
+MAX="$(cat $DIR/max_brightness)"
+CUR="$(cat $DIR/brightness)"
+
+case "$1" in
+    +)
+        CUR=$(( $CUR + 150 ))
+        ;;
+    -)
+        CUR=$(( $CUR - 150 ))
+        ;;
+    *)
+        CUR="$1"
+        ;;
+esac
+
+[[ $CUR =~ ^[0-9]+$ ]] || CUR="$(cat $DIR/brightness)"
+[ $CUR -le $MAX ] || CUR="$MAX"
+[ $CUR -ge 1 ] || CUR="1"
+
+echo "$CUR" | sudo tee "$DIR/brightness"

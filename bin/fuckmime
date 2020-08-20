@@ -1,7 +1,7 @@
 #!/bin/bash
 
 file="$1"
-mimetype="$(xdg-mime query filetype $file)"
+mimetype="$(xdg-mime query filetype "$file")"
 terminal="urxvt"
 
 closeTerminal() {
