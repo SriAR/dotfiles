@@ -2,7 +2,7 @@
 
 test=false
 folder="/var/mobile/Study"
-plist="/var/Mobile/Media/Books/Purchases.plist"
+plist="/var/mobile/Media/Books/Purchases/Purchases.plist"
 
 if $test; then
     folder="/home/cs/Study"
