@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Books</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>[Thas 92][LeMatematiche] MDS Codes and Arcs in Projective Spaces: A Survey</string>
+			<key>Path</key>
+			<string>/home/cs/Study/cdth/[Thas 92][LeMatematiche] MDS Codes and Arcs in Projective Spaces: A Survey.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Bierbrauer 17] Introduction to coding theory</string>
+			<key>Path</key>
+			<string>/home/cs/Study/cdth/[Bierbrauer 17] Introduction to coding theory.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Lint 99] Introduction to Coding Theory</string>
+			<key>Path</key>
+			<string>/home/cs/Study/cdth/[Lint 99] Introduction to Coding Theory.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>arsricharan_assignment1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/cdth/assignments/arsricharan_assignment1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Homework2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/cdth/assignments/Homework2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>arsricharan_assignment2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/cdth/assignments/arsricharan_assignment2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>arsricharan_assignment3</string>
+			<key>Path</key>
+			<string>/home/cs/Study/cdth/assignments/arsricharan_assignment3.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Watrous 11][LecNotes] Theory of Quantum Information</string>
+			<key>Path</key>
+			<string>/home/cs/Study/qiqc/[Watrous 11][LecNotes] Theory of Quantum Information.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Wilde 19] From Classical to Quantum Shannon Theory</string>
+			<key>Path</key>
+			<string>/home/cs/Study/qiqc/[Wilde 19] From Classical to Quantum Shannon Theory.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>arsricharan_assignment1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/qiqc/tex/arsricharan_assignment1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Watrous 06][LecNotes] Quantum Computation</string>
+			<key>Path</key>
+			<string>/home/cs/Study/qiqc/[Watrous 06][LecNotes] Quantum Computation.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>main</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/sub_pap/main.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Gowda, Tao 06][MathProgram B] Z-transformations on proper and symmetric cones</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/[Gowda, Tao 06][MathProgram B] Z-transformations on proper and symmetric cones.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Gowda, Song 00][MathProgram A] On semidefinite linear complementarity problems</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/[Gowda, Song 00][MathProgram A] On semidefinite linear complementarity problems.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>submatrix4x4</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/notes/submatrix4x4.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Gowda, Song 01][MathProgram A] Errata: On semidefinite linear complementarity problems</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/[Gowda, Song 01][MathProgram A] Errata: On semidefinite linear complementarity problems.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Gowda, Parthasarathy 00][LAA] Complementarity forms of theorems of Lyapunov and Stein, and related resuts</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/[Gowda, Parthasarathy 00][LAA] Complementarity forms of theorems of Lyapunov and Stein, and related resuts.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>pa20</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/pa20.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Gowda_Presentation_1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/gowda_seminar/Gowda_Presentation_1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>thesis</string>
+			<key>Path</key>
+			<string>/home/cs/Study/pach/thesis/thesis.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ModernC</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Rando/ModernC.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Mathoru-Pagan</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Rando/Mathoru-Pagan.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Rao 19][LecNotes] Stochastic Processes 1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/[Rao 19][LecNotes] Stochastic Processes 1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>assign3</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/assign3.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>assign2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/assign2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>dnf_counting</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/dnf_counting.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lovasz_local</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/lovasz_local.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>assign1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/assign1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>network_reliability</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/network_reliability.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>isolation</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/isolation.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>karger</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/karger.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>matching_parallel</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Advanced Algorithms/matching_parallel.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ka20</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Srivathsan/notes/ka20.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Koller, Megiddo 90] The Complexity of Two-Person Zero-Sum Games in Extensive Form</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Srivathsan/[Koller, Megiddo 90] The Complexity of Two-Person Zero-Sum Games in Extensive Form.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Gimbert+ 20][arXiV] A Bridge between Polynomial Optimization and Games with Imperfect Recall</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Srivathsan/[Gimbert+ 20][arXiV] A Bridge between Polynomial Optimization and Games with Imperfect Recall.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Rao 18][LecNotes] Measure Theoretic Probability</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/[Rao 18][LecNotes] Measure Theoretic Probability.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Ramadas 18][LecNotes] Complex Analysis</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/[Ramadas 18][LecNotes] Complex Analysis.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Rao 17][LecNotes] Probability</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/[Rao 17][LecNotes] Probability.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>report</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Topics in Algorithms/report/report.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Sricharan 20][Report] Popularity, Mixed Matchings and Self-Duality</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Topics in Algorithms/[Sricharan 20][Report] Popularity, Mixed Matchings and Self-Duality.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>assignment2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Topics in Algorithms/assignment2/assignment2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Huang, Kavitha 16][arXiV] Popularity, Mixed Matchings, and Self-duality</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Topics in Algorithms/[Huang, Kavitha 16][arXiV] Popularity, Mixed Matchings, and Self-duality.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Kakutani, Kodaira 50][Annals] A Non-Separable Translation Invariant Extension of the Lebesgue Measure Space</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Length/[Kakutani, Kodaira 50][Annals] A Non-Separable Translation Invariant Extension of the Lebesgue Measure Space.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Nadkarni 06][Newsletter] Did Cantor Sow the Seed of Measure and Integral</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Length/[Nadkarni 06][Newsletter] Did Cantor Sow the Seed of Measure and Integral.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Kakutani, Oxtoby 50][Annals] Construction of a Non-Separable Invariant Extension of the Lebesgue Measure Space</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Length/[Kakutani, Oxtoby 50][Annals] Construction of a Non-Separable Invariant Extension of the Lebesgue Measure Space.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Rao 12][Resonance] Length at Length</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Length/[Rao 12][Resonance] Length at Length.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ass1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Graph Theory/ass1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ass2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Graph Theory/ass2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>arsricharan_grth</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Graph Theory/arsricharan_grth.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Graph_Theory</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Graph Theory/Graph_Theory.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Assignment 6</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Graph Theory/Assignment 6.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>GraphTheory-End-Sem</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Graph Theory/GraphTheory-End-Sem.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>saks-zhou</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Complexity 2/report/saks-zhou.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Vadhan xx] Pseudorandomness</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Complexity 2/[Vadhan xx] Pseudorandomness.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Saks, Zhow 95][IEEE] RSPACE(S) subset DSPACE(S32)</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Complexity 2/[Saks, Zhow 95][IEEE] RSPACE(S) subset DSPACE(S32).pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>rand2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Complexity 2/rand2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Reingold+ 05][ECCC] Pseudorandom Walks in Biregular Graphs and the RL vs L Problem</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Complexity 2/[Reingold+ 05][ECCC] Pseudorandom Walks in Biregular Graphs and the RL vs L Problem.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Stengel 02] Computing Equilibria for Two-Person Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Stengel 02] Computing Equilibria for Two-Person Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Parthasarathy, Raghavan 71] Some Topics in Two-Person Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Parthasarathy, Raghavan 71] Some Topics in Two-Person Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Goldberg+ 11][arXiV] The Complexity of the Homotopy Method, Equilibrium Selection, and Lemke-Howson Solutions</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Goldberg+ 11][arXiV] The Complexity of the Homotopy Method, Equilibrium Selection, and Lemke-Howson Solutions.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Raghavan 70][JLMS] Completely Mixed Strategies in Bimatrix Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Raghavan 70][JLMS] Completely Mixed Strategies in Bimatrix Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Savani, Stengel 06][Econ] Hard to solve bimatrix games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Savani, Stengel 06][Econ] Hard to solve bimatrix games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Kaplansky 95][LAA] A Contribution to von Neumann's Theory of Games II</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Kaplansky 95][LAA] A Contribution to von Neumann's Theory of Games II.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Vasudha 19][Thesis] On Completely Mixed Skew-Symmetric Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Vasudha 19][Thesis] On Completely Mixed Skew-Symmetric Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Strauch 65][Thesis] Negative Dynami Programming</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Strauch 65][Thesis] Negative Dynami Programming.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Papadimitrou, Roughgarden 08][SoDA] Computing Correlated Equilibria in Multi-Person Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Papadimitrou, Roughgarden 08][SoDA] Computing Correlated Equilibria in Multi-Person Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Das+ 17][arXiV] On Completely Mixed Stochastic Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Das+ 17][arXiV] On Completely Mixed Stochastic Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Fe, Raghavan 96][IJGT] A Note on Correlated Equilibrium</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Game Theory/[Fe, Raghavan 96][IJGT] A Note on Correlated Equilibrium.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture10a</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture10a.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture6</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture6.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture11r</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture11r.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture18vfig1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture18vfig1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture15</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture15.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture21</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture21.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture14l</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture14l.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture13afig</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture13afig.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture8</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture8.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture11</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture11.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture19</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture19.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture12a</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture12a.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture13a</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture13a.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture22</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture22.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture17</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture17.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture18v</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture18v.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture10afig1b</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture10afig1b.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture5</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture5.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture3</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture3.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture20</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture20.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture9</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture9.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture4</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture4.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture7</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture7.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lecture16</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/iitb_lpco/lecture16.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>tutorial-1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/LPCO/tutorial-1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string></string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/report/._lipics-v2019-authors-guidelines.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>lipics-v2019-sample-article</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/report/lipics-v2019-sample-article.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Dewaskar 16][Thesis] Infinite Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/[Dewaskar 16][Thesis] Infinite Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>GoG2 Report</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/GoG2 Report.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Srivathsan 18][LecNotes] Markov Decision Processes</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/[Srivathsan 18][LecNotes] Markov Decision Processes.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Fijalkow, Horn 12][arXiV] The surprising complexity of general reachability games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/[Fijalkow, Horn 12][arXiV] The surprising complexity of general reachability games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Condon 92][IaC] The Complexity of Stochastic Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/[Condon 92][IaC] The Complexity of Stochastic Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Cogill 16][arXiV] An Analysis of Primal-Dual Algorithms for Discounted Markov Decision Processes</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/Games on Graphs 2/[Cogill 16][arXiV] An Analysis of Primal-Dual Algorithms for Discounted Markov Decision Processes.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>20-Ashwin</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/20-Ashwin.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>2-Swarnadeep</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/2-Swarnadeep.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>1-Mugdha</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/1-Mugdha.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>12-RohitSingh</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/12-RohitSingh.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>17-AnkitaSarkar</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/17-AnkitaSarkar.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>3-Srinidhi</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/3-Srinidhi.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>6-Ananth</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/6-Ananth.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>8-Mrudula</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/8-Mrudula.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>18-SubhayanSaha</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/18-SubhayanSaha.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>11-Vishwa</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/11-Vishwa.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>19-Ranjani</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/19-Ranjani.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>5-Namrata</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/5-Namrata.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>21-Biswadeep</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/21-Biswadeep.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>4-Samarth</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/4-Samarth.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>10-Bhishmaraj</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/10-Bhishmaraj.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>15-AbhiroopSanyal</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/15-AbhiroopSanyal.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>16-SiddharthMitra</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/16-SiddharthMitra.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>7-Asif</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/7-Asif.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>9-Pratiksha</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/9-Pratiksha.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>14-Sagarika</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Archive/MSc 2020 Theses/14-Sagarika.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Roth, Vate 90][Econ] Random Paths to Stability in Two-Sided Matching</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Papers/[Roth, Vate 90][Econ] Random Paths to Stability in Two-Sided Matching.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Shannon 48][BSTJ] A Mathematical Theory of Communication</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Papers/[Shannon 48][BSTJ] A Mathematical Theory of Communication.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Raghavendra 08][ACM] Optimal Algorithms and Inapproximability Results for Every CSP?</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Papers/[Raghavendra 08][ACM] Optimal Algorithms and Inapproximability Results for Every CSP?.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Fraenkel, Goldschmidt 86][JoCT A] PSPACE-Hardness of Some Combinatorial Games</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Papers/[Fraenkel, Goldschmidt 86][JoCT A] PSPACE-Hardness of Some Combinatorial Games.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Freeman+ 20][arXiV] Equitable Allocations of Indivisible Chores</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Freeman+ 20][arXiV] Equitable Allocations of Indivisible Chores.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Barman+ 18][arXiV] Finding Fair and Efficient Allocations</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Barman+ 18][arXiV] Finding Fair and Efficient Allocations.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Freeman+ 19][IJCAI] Equitable Allocations of Indivisible Goods</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Freeman+ 19][IJCAI] Equitable Allocations of Indivisible Goods.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Su 99][AMM] Rental Harmony: Sperner's Lemma in Fair Division</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Su 99][AMM] Rental Harmony: Sperner's Lemma in Fair Division.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Aumann,Dombb 15][ATEC] The Efficiency of Fair Division with Connected Pieces</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Aumann,Dombb 15][ATEC] The Efficiency of Fair Division with Connected Pieces.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Meunier, Zerbib 19][IJM] Envy-free cake division without assuming the players prefer nonempty pieces</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Meunier, Zerbib 19][IJM] Envy-free cake division without assuming the players prefer nonempty pieces.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Su,Nyman 13][AMM] A Borsuk Ulam Equivalent that Directly Implies Sperners Lemma</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Su,Nyman 13][AMM] A Borsuk Ulam Equivalent that Directly Implies Sperners Lemma.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Aziz+ 18][arXiV] Fair allocation of combinations of indivisible goods and chores</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Aziz+ 18][arXiV] Fair allocation of combinations of indivisible goods and chores.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Su 97][AMM] Borsuk-Ulam Implies Brouwer A Direct Construction</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Su 97][AMM] Borsuk-Ulam Implies Brouwer A Direct Construction.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Segal-Halevi 18][arXiV] Fairly Dividing a Cake after Some Parts Were Burnt in the Oven</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Segal-Halevi 18][arXiV] Fairly Dividing a Cake after Some Parts Were Burnt in the Oven.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Chen, Liu 20][arXiV] The Fairness of Leximin in Allocation of Indivisible Chores</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Chen, Liu 20][arXiV] The Fairness of Leximin in Allocation of Indivisible Chores.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Plaut,Roughgarden 18][SoDA] Almost Envy-Freeness with General Valuations</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Plaut,Roughgarden 18][SoDA] Almost Envy-Freeness with General Valuations.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Suksompong 20][arXiV] On the Number of Almost Envy-Free Allocations</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Suksompong 20][arXiV] On the Number of Almost Envy-Free Allocations.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Gourves+ 14][ECAI] Near Fairness in Matroids</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Gourves+ 14][ECAI] Near Fairness in Matroids.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Plaut, Roughgarden 17][arXiV] Almost Envy-Freeness with General Valuations</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Plaut, Roughgarden 17][arXiV] Almost Envy-Freeness with General Valuations.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Cechlarova+ 12][INS] On the Existence of Equitable Cake Divisions</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Cechlarova+ 12][INS] On the Existence of Equitable Cake Divisions.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Cheze 17][MSS] Existence of a Simple and Equitable Fair Division - A Short Proof</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Cheze 17][MSS] Existence of a Simple and Equitable Fair Division - A Short Proof.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Amanatidis+ 19][arXiV] Multiple Birds with One Stone: Beating 12 for EFX and GMMS via Envy Cycle Elimination</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Amanatidis+ 19][arXiV] Multiple Birds with One Stone: Beating 12 for EFX and GMMS via Envy Cycle Elimination.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ca16</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/ca16.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ba18</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/ba18.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>dm_ef1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/dm_ef1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ef1_chores</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/ef1_chores.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>good_cake</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/good_cake.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>se18</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/se18.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>az18</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/az18.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>bads_ef1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/bads_ef1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>graph_chores</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/graph_chores.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>gamma_infinity</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/notes/gamma_infinity.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Chaudhury+ 20][arXiV] EFX exists for three agents</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Chaudhury+ 20][arXiV] EFX exists for three agents.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Caragiannis+ 16][ATEC] The Unreasonable Fairnedd of Maximum Nash Welfare</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Caragiannis+ 16][ATEC] The Unreasonable Fairnedd of Maximum Nash Welfare.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Benabbou+ 20][arXiV] Finding Fair and Efficient Allocations When Valuations Don't Add Up</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Benabbou+ 20][arXiV] Finding Fair and Efficient Allocations When Valuations Don't Add Up.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Aleksandrov 20][arXiV] Jealousy-freeness and other common properties in Fair Division of Mixed Manna</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Aleksandrov 20][arXiV] Jealousy-freeness and other common properties in Fair Division of Mixed Manna.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Aleksandrov 20][arXiV] Envy-freeness up to one item: Shall we add or remove resources?</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Aleksandrov 20][arXiV] Envy-freeness up to one item: Shall we add or remove resources?.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Berczi+ 20][arXiV] Envy-free Relaxations for Goods, Chores and Mixed Items</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Berczi+ 20][arXiV] Envy-free Relaxations for Goods, Chores and Mixed Items.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Aziz+ 19][IJCAI] Fair Allocation of Indivisible Goods and Chores</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Aziz+ 19][IJCAI] Fair Allocation of Indivisible Goods and Chores.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Mahara 20][arXiV] Existence of EFX for Two Additive Valuations</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Mahara 20][arXiV] Existence of EFX for Two Additive Valuations.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Avvakumov, Kudrya 20][arXiV] Vanishing of all equivariant obstructions and the mapping degree</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Avvakumov, Kudrya 20][arXiV] Vanishing of all equivariant obstructions and the mapping degree.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Lipton+ 04][ACM] On Approximately Fair Allocations of Indivisible Goods</string>
+			<key>Path</key>
+			<string>/home/cs/Study/algm/[Lipton+ 04][ACM] On Approximately Fair Allocations of Indivisible Goods.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>possible_midsem_questions</string>
+			<key>Path</key>
+			<string>/home/cs/Study/TA_work/sp12020/possible_midsem_questions.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>ps3</string>
+			<key>Path</key>
+			<string>/home/cs/Study/TA_work/algo2020/ps3.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Matousek 13] Lecture notes on metric embeddings</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/[Matousek 13] Lecture notes on metric embeddings.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture9</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture9.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture12</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture12.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture4</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture4.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture8</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture8.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture5</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture5.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture7</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture7.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture11</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture11.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture10</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture10.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Exercise3</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Exercises/Exercise3.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Exercise1</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Exercises/Exercise1.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Exercise2</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Exercises/Exercise2.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Exercise4</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Exercises/Exercise4.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture3</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture3.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Lecture6</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/huji/Lecture6.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Bourgain</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/notes/Bourgain.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>jl</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/notes/jl.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Before Bourgain</string>
+			<key>Path</key>
+			<string>/home/cs/Study/memb/notes/Before Bourgain.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Vazirani 03] Approximation Algorithms</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Vazirani 03] Approximation Algorithms.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Diestel 05] Graph Theory</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Diestel 05] Graph Theory.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Matousek, Gartner 07] Understanding and Using Linear Programming</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Matousek, Gartner 07] Understanding and Using Linear Programming.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Williamson, Shmoys 10] The Design of Approximation Algorithms</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Williamson, Shmoys 10] The Design of Approximation Algorithms.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Bollobas 86] Set Systems, Hypergraphs, Families of Vectors and Combinatorial Probability</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Bollobas 86] Set Systems, Hypergraphs, Families of Vectors and Combinatorial Probability.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Arora, Barak 09] Computational Complexity: A Modern Approach</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Arora, Barak 09] Computational Complexity: A Modern Approach.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Milne 18] Field and Galois Theory</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Milne 18] Field and Galois Theory.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Matousek+ 03] Using the Borsuk-Ulam theorem_ lectures on topological methods in combinatorics and geometry</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Matousek+ 03] Using the Borsuk-Ulam theorem_ lectures on topological methods in combinatorics and geometry.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Sutton, Barto 98] Reinforcement Learning: An Introduction</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Sutton, Barto 98] Reinforcement Learning: An Introduction.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Alon, Spencer 15] The Probabilistic Method</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Alon, Spencer 15] The Probabilistic Method.pdf</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>[Papadimitrou, Steiglitz 98] Combinatorial Optimization: Algorithms and Complexity</string>
+			<key>Path</key>
+			<string>/home/cs/Study/Books/[Papadimitrou, Steiglitz 98] Combinatorial Optimization: Algorithms and Complexity.pdf</string>
+		</dict>
+	</array>
+</dict>
+</plist>

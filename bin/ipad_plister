@@ -1,0 +1,35 @@
+#!/bin/bash
+
+test=false
+folder="/var/mobile/Study"
+plist="/var/Mobile/Media/Books/Purchases.plist"
+
+if $test; then
+    folder="/home/cs/Study"
+    plist="Purchases.plist"
+fi
+
+exec > $plist
+
+printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>'
+printf '%s\n' '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">'
+printf '%s\n%s\n\t%s\n\t%s\n' '<plist version="1.0">' '<dict>' '<key>Books</key>' '<array>'
+
+find $folder -type f -iname '*.pdf' > TEMP_pdfs
+count=0
+
+while IFS= read -r line
+do
+    name="${line##*/}"
+    name="${name%%.*}"
+    printf '\t\t%s\n' '<dict>'
+    printf '\t\t\t%s%s%s\n' '<key>' "Name" '</key>'
+    printf '\t\t\t%s%s%s\n' '<string>' "$name" '</string>'
+    printf '\t\t\t%s%s%s\n' '<key>' "Path" '</key>'
+    printf '\t\t\t%s%s%s\n' '<string>' "$line" '</string>'
+    printf '\t\t%s\n' '</dict>'
+done < "TEMP_pdfs"
+
+printf '\t%s\n%s\n%s\n' '</array>' '</dict>' '</plist>'
+
+rm TEMP_pdfs
