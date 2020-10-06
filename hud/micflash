@@ -1,0 +1,19 @@
+#!/bin/bash
+
+muteicon="/home/cs/Pictures/HUD/mic/muted.png"
+voiceicon="/home/cs/Pictures/HUD/mic/voice.png"
+
+case $1 in
+    off)
+        timeout 1 pqiv -T overlay -P 1835,700 -c -i $muteicon
+        exit
+        ;;
+    on)
+        timeout 1 pqiv -T overlay -P 1810,700 -c -i $voiceicon
+        ;;
+    *)
+        exit
+        ;;
+esac
+
+exit

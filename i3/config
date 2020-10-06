@@ -4,11 +4,11 @@ font pango:monospace 8
 #exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
 exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
-exec --no-startup-id python -m http.server 4242 -d /home/cs/dotfiles/startpage --bind 127.0.0.1
+exec --no-startup-id python -m http.server 4242 -d /home/cs/Online/Startpage --bind 127.0.0.1
 exec --no-startup-id picom
 exec --no-startup-id pavucontrol
 exec --no-startup-id firefox
-exec --no-startup-id discord
+#exec --no-startup-id discord
 exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
 #}}}
 
@@ -19,8 +19,9 @@ bindsym Mod4+e exec calibre
 bindsym Mod4+c exec google-chrome-stable
 bindsym Mod4+p exec pavucontrol
 bindsym Mod4+t exec urxvt -name floating
-bindsym Mod4+z exec urxvt -name floating -e zsh -c "fzf | xargs /home/cs/dotfiles/bin/fuckmime"
+bindsym Mod4+z exec urxvt -name floating -e zsh -c "find ~/Study | fzf | xargs /home/cs/dotfiles/bin/fuckmime"
 bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
+#bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
 #}}}
 
 # MISC {{{
@@ -30,8 +31,8 @@ bindsym Mod1+Shift+r restart
 bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'Exit?' -B 'Yes' 'i3-msg exit'"
 bindsym Mod1+b bar hidden_state toggle
 
-bindsym XF86MonBrightnessDown exec /home/cs/dotfiles/bin/light -
-bindsym XF86MonBrightnessUp exec /home/cs/dotfiles/bin/light +
+bindsym XF86MonBrightnessDown exec /home/cs/dotfiles/hud/hp-brightness -
+bindsym XF86MonBrightnessUp exec /home/cs/dotfiles/hud/hp-brightness +
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+
@@ -40,7 +41,7 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym Mod4+s exec shutdown now
 bindsym Mod4+l exec i3lock -n -i ~/Pictures/lockscreen.png & sleep 2 && xset dpms force off
 bindsym Mod1+d exec rofi -show run
-bindsym --release Print exec --no-startup-id import /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png
+bindsym --release Print exec --no-startup-id maim -s /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png
 bindsym Mod1+Tab workspace back_and_forth
 bindsym Mod1+Return exec i3-sensible-terminal
 bindsym Mod1+q kill
@@ -172,6 +173,7 @@ bindsym Mod1+grave scratchpad show
 #}}}
 
 # FLOATING ENABLE {{{
+for_window [class="Pqiv" title="overlay"] floating enable, border pixel 0, focus mode_toggle, sticky toggle
 for_window [class="URxvt" instance="floating"] floating enable, move scratchpad, scratchpad show
 for_window [class="st-256color"] floating enable, move scratchpad, scratchpad show
 #}}}
@@ -180,6 +182,7 @@ for_window [class="st-256color"] floating enable, move scratchpad, scratchpad sh
 assign [class="Pavucontrol"] $ws5
 assign [class="firefox"] $ws1
 assign [class="discord"] $ws4
+assign [class="Pqiv"] $ws10
 # }}}
 
 # vim:foldmethod=marker:foldlevel=0:nospell

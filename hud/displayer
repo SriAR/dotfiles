@@ -1,0 +1,26 @@
+#!/bin/bash
+
+name="$1"
+coordinates="$2"
+image="/home/cs/.hud/$name.png"
+sleepfile="/home/cs/.hud/$name-sleepfile"
+pqivoptions="-T overlay -P $coordinates -c -i $image"
+
+if [[ ! -f $sleepfile ]]; then
+    touch $sleepfile
+fi
+
+pqiv $pqivoptions &
+
+echo "2.4" > $sleepfile
+
+while true; do
+    sleep 0.01
+    time_remaining="$(cat $sleepfile)"
+    time_remaining="$(echo "$time_remaining - 0.01" | bc)"
+    echo "$time_remaining" > $sleepfile
+    if [[ $time_remaining == '0' ]]; then
+        pkill -P $$
+        exit
+    fi
+done

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#volsource="$(pacmd stat | sed -e '/^Default source name:/!d' -e 's/^Default source name: //g')"
+
+pactl set-source-mute '@DEFAULT_SOURCE@' toggle
+
+muted_status="$(pacmd list-sources|grep -A 15 '* index'|awk '/muted:/{ print $2 }')"
+
+#if muted ; then flash muted icon; else flash voice icon
+[ $muted_status == 'no' ] || /home/cs/dotfiles/hud/micflash off && /home/cs/dotfiles/hud/micflash on
