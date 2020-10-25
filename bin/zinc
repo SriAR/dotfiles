@@ -23,7 +23,7 @@ rsyncmessage() {
         LOC="s/^(>|<)?/SERVER /g"
     fi
     DIR='s/^c.*\ /DIR /g'
-    GARBAGE='/^\.|^sen|^rec|^tot|^$/d'
+    GARBAGE='/^\.d|^sen|^rec|^tot|^$/d'
     sed -E "$DEL; $NEW; $UPD; $DIR; $GARBAGE; $LOC"
 }
 
@@ -45,7 +45,7 @@ SERVER="$HEART:~/Study"
 if [ $TEST == 1 ]; then
     SERVER="$HOME/Teddy"
 fi
-VSYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --times --partial --progress --itemize-changes --verbose"
+VSYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --partial --progress --itemize-changes --verbose"
 NOTDONE=true
 ARRAY=($LOCAL $SERVER)
 DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
