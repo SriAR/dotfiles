@@ -1,13 +1,11 @@
 #!/bin/bash
 
 file="$@"
+
+[ "$file" == "" ] && exit
+
 mimetype="$(xdg-mime query filetype "$file")"
 terminal="urxvt"
-
-closeTerminal() {
-    sleep 0.02 &&
-    exit
-}
 
 case $mimetype in
 
@@ -20,15 +18,19 @@ case $mimetype in
     ;;
 
     text/x-tex)
-        $terminal -e vim --servername latex "$file" & closeTerminal
+        $terminal -e vim --servername latex "$file"
     ;;
 
     text/*)
-        $terminal -e vim "$file" & closeTerminal
+        $terminal -e vim "$file"
     ;;
 
     image/*)
-        nohup sxiv -b "$file" > /dev/null & closeTerminal
+        sxiv -b "$file"
+    ;;
+
+    inode/directory)
+        urxvt -cd "$file"
     ;;
 
     *)

@@ -19,7 +19,7 @@ bindsym Mod4+e exec calibre
 bindsym Mod4+c exec google-chrome-stable
 bindsym Mod4+p exec pavucontrol
 bindsym Mod4+t exec urxvt -name floating
-bindsym Mod4+z exec urxvt -name floating -e zsh -c "find ~/Study | fzf | xargs /home/cs/dotfiles/bin/fuckmime"
+bindsym Mod4+z exec find ~/Study | rofi -theme pdfs -dmenu -i -p "OPEN" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/fuckmime
 bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
 #bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
 #}}}
