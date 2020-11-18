@@ -1,0 +1,3 @@
+see() {
+    prime-run mpv "$@"
+}
