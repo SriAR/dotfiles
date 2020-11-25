@@ -182,7 +182,7 @@ for_window [class="st-256color"] floating enable, move scratchpad, scratchpad sh
 assign [class="Pavucontrol"] $ws5
 assign [class="firefox"] $ws1
 assign [class="discord"] $ws4
-assign [class="Pqiv"] $ws10
+#assign [class="Pqiv"] $ws10
 # }}}
 
 # vim:foldmethod=marker:foldlevel=0:nospell
