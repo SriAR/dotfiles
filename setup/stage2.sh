@@ -1,7 +1,7 @@
 ln -sf /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 hwclock --systohc
 
-HOST="homepc"
+HOST="cs"
 sed "s/^#en_US.UTF-8/en_US.UTF-8/g" /etc/locale.gen > /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
@@ -20,4 +20,3 @@ useradd -m -G users -s /bin/bash cs
 passwd cs
 pacman -S intel-ucode
 su - cs
-
