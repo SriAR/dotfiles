@@ -18,5 +18,5 @@ EOF
 passwd
 useradd -m -G users -s /bin/bash cs
 passwd cs
-pacman -S intel-ucode
+pacman -S amd-ucode
 su - cs
