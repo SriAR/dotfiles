@@ -24,6 +24,6 @@ echo "cs Password?" && sleep 0.5
 useradd -m -G users -s /bin/bash cs
 passwd cs
 echo "Installing microcode."
-pacman -S intel-ucode git
-visudo
+pacman -S intel-ucode git vi
+EDITOR=vi visudo
 su - cs
