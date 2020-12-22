@@ -23,7 +23,7 @@ bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
 #bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
 
 bindsym Mod4+w exec netctl list | sed 's/^\ //g' | rofi -dmenu -i -p "Wifi:" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
-bindsym Mod4+z exec find ~/Study | rofi -theme pdfs -dmenu -i -p "OPEN" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/fuckmime
+bindsym Mod4+z exec find ~/Study | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
 #}}}
 
 # MISC {{{

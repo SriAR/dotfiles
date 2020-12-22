@@ -15,12 +15,12 @@ printhelp() {
 rsyncmessage() {
     PLACE=$1
     NEW='s/f\+\+\+\+\+\+\+\+\+ /NEW /g'
-    UPD="s/f..t.* /UPD /g"
+    UPD="s/f.(s.|.t)(\.)*/UPD /g"
     DEL='s/^\*deleting.*\ /DEL /g'
     if [ $PLACE == 1 ]; then
-        LOC="s/^(>|<)?/SYSTEM /g"
+        LOC="s/^>/SYSTEM /g"
     else
-        LOC="s/^(>|<)?/SERVER /g"
+        LOC="s/^</SERVER /g"
     fi
     DIR='s/^c.*\ /DIR /g'
     GARBAGE='/^\.d|^sen|^rec|^tot|^$/d'
@@ -45,7 +45,7 @@ SERVER="$HEART:~/Study"
 if [ $TEST == 1 ]; then
     SERVER="$HOME/Teddy"
 fi
-VSYNC="rsync --modify-window=1 --human-readable --recursive --links --perms --partial --progress --itemize-changes --verbose"
+VSYNC="rsync --modify-window=1 --human-readable --recursive --times --links --perms --partial --progress --itemize-changes --verbose"
 NOTDONE=true
 ARRAY=($LOCAL $SERVER)
 DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
@@ -139,7 +139,7 @@ while $NOTDONE; do
         case $option in
             [Yy]*)
                 echo "Applying above-mentioned changes."
-                $SYNC $START/ $END  | rsyncmessage $DIRECTION | colorize
+                $SYNC $START/ $END | rsyncmessage $DIRECTION | colorize
                 NOTDONE=false
                 ;;
             [Qq]*)
