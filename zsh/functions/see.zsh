@@ -1,3 +1,3 @@
 see() {
-    prime-run mpv "$@"
+    mpv --hwdec=auto "$@"
 }

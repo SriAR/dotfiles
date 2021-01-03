@@ -23,7 +23,8 @@ bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
 #bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
 
 bindsym Mod4+w exec netctl list | sed 's/^\ //g' | rofi -dmenu -i -p "Wifi:" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
-bindsym Mod4+z exec find ~/Study | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
+bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
+bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
 #}}}
 
 # MISC {{{
@@ -178,6 +179,7 @@ bindsym Mod1+grave scratchpad show
 for_window [class="Pqiv" title="overlay"] floating enable, border pixel 0, focus mode_toggle, sticky toggle
 for_window [class="URxvt" instance="floating"] floating enable, move scratchpad, scratchpad show
 for_window [class="st-256color"] floating enable, move scratchpad, scratchpad show
+for_window [class="mpv" title="youtube"] floating enable, move scratchpad, scratchpad show
 #}}}
 
 # SPECIFIC WS {{{
