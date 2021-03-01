@@ -3,13 +3,19 @@ set nocompatible
 let g:bundle_path = '~/.vim/bundle'
 
 call plug#begin(bundle_path)
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'latex' }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'sirver/ultisnips'
 Plug 'altercation/vim-colors-solarized'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-surround'
+Plug 'spinks/vim-leader-guide'
+Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular'
+Plug 'Konfekt/FastFold'
 call plug#end()
 
 " Enable plugins based on filetype
@@ -62,6 +68,9 @@ set noshowmode
 set splitbelow
 set splitright
 
+" Change directory to wherever the file is open
+set autochdir
+
 " Search settings
 set nohlsearch
 set incsearch
@@ -94,6 +103,11 @@ endtry
 " Do not hide mouse when typing
 set nomousehide
 
+set updatetime=300
+set hidden               " Hide buffers when they are abandoned
+set cmdheight=2          " Setting command height 2 for more space
+set shortmess+=c         " Messages should be short
+
 let mapleader = ","
 let maplocalleader = "\\"
 
@@ -114,9 +128,14 @@ set tabstop=4
 " Makes all tabs 'look' like 4 spaces, but why this+expandtab?
 set softtabstop=4
 
+" vim-leader-guide
+let g:lmap = {}
+call leaderGuide#register_prefix_descriptions(",", "g:lmap")
+
 " Editing the vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+let g:lmap.e = {'name': 'Edit Vimrc'}
 
 " Better movement between windows
 map <C-j> <C-W>j
@@ -165,13 +184,16 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
 set conceallevel=1
+if has("nvim")
+    let g:vimtex_compiler_progname = '/home/cs/.local/bin/nvr'
+endif
 
 "==========="
 " UltiSnips "
 "==========="
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsExpandTrigger = '<c-b>'
+let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
 "=================="
 " Limelight + Goyo "
@@ -201,3 +223,99 @@ inoremap <C-h> <C-o>I
 "Linewise scrolling in Insert mode
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
+
+" ## COC Configuration                                                    {{{
+    if has("patch-8.1.1564")
+      " Recently vim can merge signcolumn and number column into one
+      set signcolumn=number
+    else
+      set signcolumn=yes
+    endif
+	" extensions
+	let g:coc_global_extensions = [
+		\'coc-emoji',
+		\'coc-dictionary',
+		\'coc-tag',
+		\'coc-snippets',
+		\'coc-json',
+		\'coc-html',
+		\'coc-css',
+		\'coc-python',
+		\'coc-vimtex',
+		\'coc-pairs',
+		\'coc-diagnostic'
+		\]
+
+	" snippet mappings
+	map <c-l> <c-o>:CocList snippets<CR>
+	vmap <c-j> <Plug>(coc-snippets-select)
+	let g:coc_snippet_next = '<tab>'
+	let g:coc_snippet_prev = '<s-tab>'
+	xmap <leader>ex <Plug>(coc-convert-snippet)
+
+	" binding <tab> to select
+	" helper function to check if previous entry is a whitespace.
+	function! s:check_back_space() abort
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1] =~ '\s'
+	endfunction
+
+	" Use tab to navigate manu and snippets
+	imap <silent><expr> <tab>
+		\ coc#expandableOrJumpable() ? "\<c-r>=coc#_insert_key('request', 'snippets-expand-jump', 1)<cr>" :
+		\ pumvisible() ? "\<c-n>":
+		\ <SID>check_back_space() ? "\<tab>" :
+		\ coc#refresh()
+
+	inoremap <silent><expr> <s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
+	inoremap <silent><expr> <c-space> coc#refresh()
+	inoremap <expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>"
+
+	nmap <silent> [g <Plug>(coc-diagnostic-prev)
+	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+	" Use K to show documentation in preview window.
+	function! s:show_documentation()
+		if (index(['vim','help'], &filetype) >= 0)
+			execute 'h '.expand('<cword>')
+		else
+			call CocAction('doHover')
+		endif
+	endfunction
+
+	nnoremap <silent> K :call <SID>show_documentation()<cr>
+	nnoremap <Plug>(coc-show-documentation) :call <SID>show_documentation()<cr>
+	nmap <silent> <leader>dk <Plug>(coc-show-documentation)
+
+	" GoTo code navigation.
+	nmap <silent> <leader>dd <Plug>(coc-definition)
+	nmap <silent> <leader>dy <Plug>(coc-type-definition)
+	nmap <silent> <leader>di <Plug>(coc-implementation)
+	nmap <silent> <leader>dr <Plug>(coc-references)
+"														}}}
+
+" NERDCommenter {{{
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Add your own custom formats or override the defaults
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+" }}}

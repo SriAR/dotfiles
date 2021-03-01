@@ -17,7 +17,8 @@ case $mimetype in
     ;;
 
     text/x-tex)
-        $terminal -e vim --servername latex "$file"
+        # $terminal -e vim --servername latex "$file"
+        urxvt -e nvim "$file"
     ;;
 
     text/*)

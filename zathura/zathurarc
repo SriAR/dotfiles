@@ -1,6 +1,6 @@
 set selection-clipboard clipboard
 set synctex true
-set synctex-editor-command "gvim +%{line} %{input}"
+set window-title-basename true
 map x toggle_statusbar
 
 # Colors {{{

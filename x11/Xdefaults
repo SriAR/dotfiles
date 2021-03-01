@@ -1,5 +1,8 @@
- URxvt*font: xft:Source Code Pro:size=10, xft:Noto Sans:size=10
- URxvt*scrollBar: false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt*font: xft:Source Code Pro:size=10, xft:Noto Sans:size=10
+URxvt*scrollBar: false
 
 *background: #002b36
 *foreground: #657b83
@@ -40,3 +43,10 @@
 !! white dark/light
 *color7: #eee8d5
 *color15: #fdf6e3
+
+URxvt.perl-ext-common: resize-font
+
+URxvt.keysym.C-Up:     resize-font:bigger
+URxvt.keysym.C-Down:   resize-font:smaller
+URxvt.keysym.C-equal:  resize-font:reset
+URxvt.keysym.C-slash:  resize-font:show

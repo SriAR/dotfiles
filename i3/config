@@ -5,8 +5,9 @@ font pango:monospace 8
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
 exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
 exec --no-startup-id python -m http.server 4242 -d /home/cs/Online/Startpage --bind 127.0.0.1
+exec --no-startup-id /home/cs/.npm_packages/bin/tiddlywiki /home/cs/tiddlywiki --listen port=1177
 exec --no-startup-id picom
-exec --no-startup-id pavucontrol
+# exec --no-startup-id pavucontrol
 exec --no-startup-id firefox
 #exec --no-startup-id discord
 exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
@@ -16,15 +17,20 @@ exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
 bindsym Mod4+f exec firefox
 bindsym Mod4+d exec discord
 bindsym Mod4+e exec calibre
-bindsym Mod4+c exec google-chrome-stable
+bindsym Mod4+c exec google-chrome-stable --new-tab https://web.skype.com
 bindsym Mod4+p exec pavucontrol
 bindsym Mod4+t exec urxvt -name floating
 bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
 #bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
 
-bindsym Mod4+w exec netctl list | sed 's/^\ //g' | rofi -dmenu -i -p "Wifi:" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
+bindsym Mod4+w exec netctl list | sed 's/^\ //g' | rofi -dmenu -i -p "Wifi" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
 bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
-bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
+# bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
+bindsym Mod4+y exec urxvt -e nvim /home/cs/Study/pach/thesis/Sricharan_AR_Masters_Thesis.tex
+bindsym Mod4+m exec /home/cs/dotfiles/bin/linkNotify
+
+bindsym Control+space exec dunstctl action 0 && dunstctl close
+bindsym Control+Shift+space exec dunstctl close
 #}}}
 
 # MISC {{{
