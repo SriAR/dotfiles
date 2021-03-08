@@ -11,6 +11,7 @@ exec --no-startup-id picom
 exec --no-startup-id firefox
 #exec --no-startup-id discord
 exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
+exec --no-startup-id redshift
 #}}}
 
 # APP BINDSYMS {{{
@@ -22,6 +23,7 @@ bindsym Mod4+p exec pavucontrol
 bindsym Mod4+t exec urxvt -name floating
 bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
 #bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
+bindsym Mod4+j exec bash /home/cs/dotfiles/bin/easy_tts
 
 bindsym Mod4+w exec netctl list | sed 's/^\ //g' | rofi -dmenu -i -p "Wifi" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
 bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
@@ -46,6 +48,7 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%-
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+
 bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPause exec mpc toggle
 
 bindsym Mod4+s exec shutdown now
 bindsym Mod4+l exec i3lock -n -i ~/Pictures/lockscreen.png & sleep 2 && xset dpms force off

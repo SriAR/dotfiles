@@ -1,7 +1,10 @@
 #!/bin/bash
 
-BACKGROUND="#002b36"
-FOREGROUND="#2aa198"
+# BACKGROUND="#002b36"
+# FOREGROUND="#2aa198"
+
+BACKGROUND="#ffffff"
+FOREGROUND="#111111"
 
 datetime() {
 	datetime=$(date +'%a %d %I:%M')
@@ -45,7 +48,7 @@ for content in ${contents[@]}; do
 done
 
 font="NotoSans:size=10"
-icon="FontAwesome5Free:style=Solid"
+icon="FontAwesome5Free:style=Solid:size=12"
 height=35
 width=115
 init_x=$(( 1920 - $width ))
@@ -57,7 +60,6 @@ init_bar() {
     while true; do
         echo -e "%{c}%{F$FOREGROUND}%{B$BACKGROUND} `$content`"
         sleep 1
-        echo "`date +"%s"`" > /home/cs/log
     done | lemonbar -g "${width}x${height}+${init_x}+${init_y}" -f "$font" -f "$icon" -B "$BACKGROUND" -d
 }
 
