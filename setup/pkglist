@@ -103,3 +103,6 @@ blueman
 pulseaudio-bluetooth
 bluez-utils
 evtest
+tesseract
+tesseract-data-eng
+tesseract-data-tam

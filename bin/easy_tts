@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/home/cs/.local/bin/gtts-cli --lang="en" "$(rofi -dmenu -p tts)" --output /tmp/tts.mp3 && mpg123 /tmp/tts.mp3
+/home/cs/.local/bin/gtts-cli --lang="ta" "$(rofi -dmenu -p tts)" --output /tmp/tts.mp3 && mpg123 /tmp/tts.mp3

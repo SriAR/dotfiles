@@ -22,7 +22,7 @@ pactl load-module module-null-sink sink_name=virtual2 sink_properties=device.des
 # Now create the loopback devices, all arguments are optional and can be configured with pavucontrol
 pactl load-module module-loopback source=virtual1.monitor sink=$SPEAKERS latency_msec=1
 pactl load-module module-loopback source=virtual1.monitor sink=virtual2 latency_msec=1
-# pactl load-module module-loopback source=$MICROPHONE sink=virtual2 latency_msec=1
+pactl load-module module-loopback source=$MICROPHONE sink=virtual2 latency_msec=1
 
 # If you struggle to find the correct values of your physical devices, you can
 # also simply leave these undefined, and configure everything manually via pavucontrol

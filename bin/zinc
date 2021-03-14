@@ -85,8 +85,8 @@ while $NOTDONE; do
         case $option in
             [Yy]*)
                 echo "Applying above-mentioned changes."
-                $VSYNC $LOCAL/ $SERVER --update | rsyncmessage 0 | colorize
-                $VSYNC $SERVER/ $LOCAL --update | rsyncmessage 1 | colorize
+                $VSYNC $LOCAL/ $SERVER --update
+                $VSYNC $SERVER/ $LOCAL --update
                 NOTDONE=false
                 ;;
             [Qq]*)
@@ -139,7 +139,7 @@ while $NOTDONE; do
         case $option in
             [Yy]*)
                 echo "Applying above-mentioned changes."
-                $SYNC $START/ $END | rsyncmessage $DIRECTION | colorize
+                $SYNC $START/ $END
                 NOTDONE=false
                 ;;
             [Qq]*)
