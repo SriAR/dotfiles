@@ -30,6 +30,8 @@ bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book | rofi -theme p
 # bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
 bindsym Mod4+y exec urxvt -e nvim /home/cs/Study/pach/thesis/Sricharan_AR_Masters_Thesis.tex
 bindsym Mod4+m exec /home/cs/dotfiles/bin/linkNotify
+bindsym Mod4+b exec /home/cs/dotfiles/bin/bluetooth on
+bindsym Mod4+Shift+b exec /home/cs/dotfiles/bin/bluetooth off
 
 bindsym Control+space exec dunstctl action 0 && dunstctl close
 bindsym Control+Shift+space exec dunstctl close

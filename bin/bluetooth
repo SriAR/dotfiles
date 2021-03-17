@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[ "$1" == "on" ] && sudo systemctl start bluetooth.service && bluetoothctl power on && bluetoothctl connect E4:41:22:28:25:7C
+
+[ "$1" == "off" ] && sudo systemctl stop bluetooth.service
