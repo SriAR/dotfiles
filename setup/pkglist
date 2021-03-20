@@ -107,3 +107,5 @@ tesseract
 tesseract-data-eng
 tesseract-data-tam
 gstreamer-vaapi
+usbutils
+lrs

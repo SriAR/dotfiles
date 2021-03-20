@@ -6,12 +6,13 @@ exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
 exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
 exec --no-startup-id python -m http.server 4242 -d /home/cs/Online/Startpage --bind 127.0.0.1
 exec --no-startup-id /home/cs/.npm_packages/bin/tiddlywiki /home/cs/tiddlywiki --listen port=1177
-exec --no-startup-id picom
-# exec --no-startup-id pavucontrol
+exec --no-startup-id picom --experimental-backends
+exec --no-startup-id pavucontrol
 exec --no-startup-id firefox
 #exec --no-startup-id discord
-exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
+# exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
 exec --no-startup-id redshift
+exec --no-startup-id wal -R
 #}}}
 
 # APP BINDSYMS {{{
@@ -73,10 +74,10 @@ bar {
 for_window [class="^.*"] border pixel 3
 smart_gaps    on
 smart_borders no_gaps
-#gaps inner 15
-#gaps outer 05
-gaps inner 0
-gaps outer 0
+gaps inner 10
+gaps outer 05
+# gaps inner 0
+# gaps outer 0
 # }}}
 
 # MOVEMENT {{{

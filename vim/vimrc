@@ -16,6 +16,7 @@ Plug 'spinks/vim-leader-guide'
 Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
 Plug 'Konfekt/FastFold'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 " Enable plugins based on filetype
@@ -90,8 +91,9 @@ set showmatch
 set mat=2
 
 " Solarized colorscheme
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
+colorscheme wal
 
 " Set an undo file for persisting through reboots
 try

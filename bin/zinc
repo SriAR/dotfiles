@@ -45,7 +45,7 @@ SERVER="$HEART:~/Study"
 if [ $TEST == 1 ]; then
     SERVER="$HOME/Teddy"
 fi
-VSYNC="rsync --modify-window=1 --human-readable --recursive --times --links --perms --partial --progress --itemize-changes --verbose"
+VSYNC="rsync --exclude-from=$HOME/.config/zinc/zinc.exclude --modify-window=1 --human-readable --recursive --times --links --perms --itemize-changes"
 NOTDONE=true
 ARRAY=($LOCAL $SERVER)
 DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
@@ -79,14 +79,16 @@ done
 
 while $NOTDONE; do
     if $BOTH; then
-        $VSYNC $LOCAL/ $SERVER --update --dry-run | rsyncmessage 0 | colorize
-        $VSYNC $SERVER/ $LOCAL --update --dry-run | rsyncmessage 1 | colorize
+        $VSYNC $LOCAL/ $SERVER --update --dry-run | $HOME/dotfiles/bin/messageParser 0
+        $VSYNC $SERVER/ $LOCAL --update --dry-run | $HOME/dotfiles/bin/messageParser 1
+        # $VSYNC $LOCAL/ $SERVER --update --dry-run | rsyncmessage 0 | colorize
+        # $VSYNC $SERVER/ $LOCAL --update --dry-run | rsyncmessage 1 | colorize
         read -p "Would you like to apply these changes [y/N]? Q to quit: " option
         case $option in
             [Yy]*)
                 echo "Applying above-mentioned changes."
-                $VSYNC $LOCAL/ $SERVER --update
-                $VSYNC $SERVER/ $LOCAL --update
+                $VSYNC $LOCAL/ $SERVER --update --verbose
+                $VSYNC $SERVER/ $LOCAL --update --verbose
                 NOTDONE=false
                 ;;
             [Qq]*)

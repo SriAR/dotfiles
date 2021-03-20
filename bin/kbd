@@ -1,0 +1,9 @@
+#!/bin/bash
+sleep 1
+DISPLAY=":0"
+HOME=/home/cs
+XAUTHORITY=$HOME/.Xauthority
+export DISPLAY XAUTHORITY HOME
+
+/usr/bin/setxkbmap -option caps:swapescape
+
