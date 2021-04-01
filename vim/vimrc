@@ -17,6 +17,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
 Plug 'Konfekt/FastFold'
 Plug 'dylanaraps/wal.vim'
+Plug 'tmhedberg/SimpylFold'
 call plug#end()
 
 " Enable plugins based on filetype
