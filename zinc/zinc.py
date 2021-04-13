@@ -3,6 +3,10 @@ from subprocess import Popen, PIPE
 import subprocess
 
 class colors:
+    """
+    All the colours needed for pretty printing
+    the zinc output
+    """
     bold       = '\033[1m'
     underline  = '\033[4m'
     red        = '\033[38;5;196m'
@@ -78,6 +82,10 @@ class ConfigParser:
 
 class PrettyPrinter:
     def print_location(line, direction):
+        """
+        Prints whether the change is happening on
+        SERVER or on SYSTEM
+        """
         target_options = [colors.server, colors.system, colors.target]
         target = target_options[direction]
         location = {
@@ -93,6 +101,10 @@ class PrettyPrinter:
             return line[0]
 
     def print_change(line, direction):
+        """
+        Prints the change that is happening to the file:
+        One of DNEW, FNEW, SIZE, TIME, FDEL
+        """
         new_options = {
                 'd+++++++++': colors.dnew,
                 'd..t......': '',
