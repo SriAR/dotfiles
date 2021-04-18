@@ -110,3 +110,7 @@ gstreamer-vaapi
 usbutils
 lrs
 anki
+lyrebird
+nnn
+phantomjs
+geckodriver

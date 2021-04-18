@@ -1,12 +1,117 @@
 import os
 from subprocess import Popen, PIPE
-import subprocess
+
+class RSync:
+    def __init__(self, start=None, end=None, exclude=None):
+        self.itemizeChanges = True
+        self.recursive      = True
+        self.dryRun         = True
+        self.update         = True
+        self.times          = True
+        self.humanReadable  = True
+        self.perms          = True
+        self.delete         = False
+        self.links          = True
+        self.exclude        = exclude
+        self.start          = start
+        self.end            = end
+
+    def build(self):
+        command = ['rsync']
+
+        # Boolean Parser
+        for key in vars(self).keys():
+            value = getattr(self, key)
+            if type(value) is bool and value:
+                command.append('--' + RSync.capital_to_hyphen(key))
+
+        # Extension Remover
+        for extension in self.exclude:
+            command.append('--exclude=*'+extension)
+
+        # Add start and end locations
+        command.append(self.start)
+        command.append(self.end)
+
+        return command
+
+    def location_switch(self):
+        self.start, self.end = self.end, self.start
+        return
+
+    def capital_to_hyphen(string):
+        new_string = []
+        for letter in string:
+            if letter.isupper():
+                new_string.append('-')
+            new_string.append(letter.lower())
+        return(''.join(new_string))
+
+    def print(self):
+        for item in self.__dict__.items():
+            print(f"{item[0]}", end = '')
+            # 20 is magic number below, adds enough empty space for lining up arrows
+            print(f"{''.join([' ' for x in range(20 - len(item[0]))])} -> ", end='')
+            print(f"{item[1]}")
+
+class Helper:
+    def __init__(self):
+        self.file_permissions_available = True
+        self.local_changes_only         = None # True if server_to_local, False if local_to_server, None if both
+        self.local_folder               = None
+        self.remote_folder              = None
+
+    def folder_to_name(self, folder):
+        if folder == self.local_folder:
+            return 'system'
+        elif folder == self.remote_folder:
+            return 'server'
+        else:
+            print('folder_to_name error')
+            raise EOFError('wat')
+
+    def print(self):
+        for item in self.__dict__.items():
+            print(f"{item[0]}", end = '')
+            # 27 is magic number below, adds enough empty space for lining up arrows
+            print(f"{''.join([' ' for x in range(27 - len(item[0]))])} -> ", end='')
+            print(f"{item[1]}")
+
+class ConfigParser:
+    def __init__(self, cf_file='.config/zinc/zinc.conf'):
+        self.helper = Helper()
+        self.rsync  = RSync()
+        config_dict = self.to_dict(cf_file)
+        self.apply_config(config_dict)
+
+    def apply_config(self, cf_dict):
+        # Global Options
+        self.helper.local_folder  = os.path.join(os.getenv('HOME'), cf_dict['local_folder']) + '/'
+        self.helper.remote_folder = cf_dict['server'] + ':~/' + cf_dict['remote_folder'] + '/'
+
+        if cf_dict['file_permissions_available'] == 'false':
+            self.helper.file_permissions_available = False
+
+        direction_dict = {
+                        'local-to-server': False,
+                        'server-to-local': True,
+                        'bidirectional': None
+                         }
+        self.helper.local_changes_only = direction_dict[cf_dict['default_direction']]
+
+        # RSync options
+        self.rsync.exclude = cf_dict['ignore_extensions'].split(',')
+
+    def to_dict(self, cf_file):
+        with open(os.path.join(os.getenv('HOME'), cf_file)) as config_file:
+            config = config_file.read().splitlines()
+        config[:] = map(lambda x: x.split('='), config)
+        config_dict = {}
+        for x in config:
+            config_dict[x[0]] = x[1].strip('"')
+        return config_dict
 
 class colors:
-    """
-    All the colours needed for pretty printing
-    the zinc output
-    """
     bold       = '\033[1m'
     underline  = '\033[4m'
     red        = '\033[38;5;196m'
@@ -29,57 +134,6 @@ class colors:
     time       = purple + 'TIM' + end
     fdel       = red + 'DEL' + end
 
-class ConfigParser:
-    def check_config(config_folder=None):
-        if not config_folder:
-            config_folder = os.path.join(os.getenv('HOME'), '.config/zinc')
-        if not os.path.exists(config_folder) and os.path.isdir(config_folder):
-            print("Config folder doesn't exist")
-            exit
-        return config_folder
-
-    def global_variables(config_dict):
-        global server, local_folder, remote_folder, ignore_extensions, file_permissions_available, default_direction, folder_to_name
-        server        = config_dict['server']
-        local_folder  = os.path.join(os.getenv('HOME'), config_dict['local_folder']) + '/'
-        remote_folder = server + ':~/' + config_dict['remote_folder'] + '/'
-        file_permissions_available = True
-        if config_dict['file_permissions_available'] == 'false':
-            file_permissions_available = False
-        config_dict['ignore_extensions'] = config_dict['ignore_extensions'].split(',')
-        ignore_extensions = config_dict['ignore_extensions']
-        direction_dict = {
-                        'local-to-server': 0,
-                        'server-to-local': 1,
-                        'bidirectional': 2
-                         }
-        default_direction = direction_dict[config_dict['default_direction']]
-        folder_to_name = {
-                        local_folder: 'system',
-                        remote_folder: 'server'
-                         }
-
-    def parse_config(config_folder=None, config_syntax_check=False):
-        config_folder = ConfigParser.check_config(config_folder)
-        config_file   = os.path.join(config_folder,'zinc.conf')
-
-        with open(config_file, 'r') as file:
-            config = file.readlines()
-
-        config[:] = map(lambda x: x.strip(), config)
-        if config_syntax_check:
-            config[:] = filter(lambda x: x[0] != '[', config)
-            config[:] = filter(lambda x: '=' in x, config)
-
-        config[:] = map(lambda x: x.split('='), config)
-        config_dict = {}
-        for x in config:
-            config_dict[x[0]] = x[1].strip('"')
-
-        ConfigParser.global_variables(config_dict)
-
-        return config_dict
-
 class PrettyPrinter:
     def print_location(line, direction):
         """
@@ -100,7 +154,7 @@ class PrettyPrinter:
         else:
             return line[0]
 
-    def print_change(line, direction):
+    def print_change(line):
         """
         Prints the change that is happening to the file:
         One of DNEW, FNEW, SIZE, TIME, FDEL
@@ -123,71 +177,51 @@ class PrettyPrinter:
             return line[1:11]
 
     def pretty_print(line, direction=2):
-        if (len(line)) == 0 or (not file_permissions_available and line[0:11] == '.f...p.....'):
+        if (len(line)) == 0 or (not cf.helper.file_permissions_available and line[0:11] == '.f...p.....') or (line[1:11] == 'd..t......'):
             return
-        print(f"{PrettyPrinter.print_location(line, direction)} {PrettyPrinter.print_change(line, direction)} {line[12:]} ")
+        print(f"{PrettyPrinter.print_location(line, direction)} {PrettyPrinter.print_change(line)} {line[12:]} ")
 
 class Zinc:
-    def argument_parser(start, end, additional_arguments):
-        global arguments
-        arguments = ['--itemize-changes', '--recursive']
-        for (argument, bool_value) in additional_arguments:
-            if bool_value:
-                arguments.append(argument)
-        rsync_command = ['rsync']
-        rsync_command = rsync_command + arguments
-        for extension in ignore_extensions:
-            rsync_command.append('--exclude=*'+extension)
-        rsync_command.append(start)
-        rsync_command.append(end)
-        return rsync_command
+    def zinc():
+        #  print(f"Changes from {getattr(colors, Options.folder_to_name(start))} made at {getattr(colors, Options.folder_to_name(end))}")
 
-    def zinc(start, end, direction, additional_arguments):
-        #  print(f"Changes from {getattr(colors, folder_to_name[start])} made at {getattr(colors, folder_to_name[end])}")
+        rsync_command = cf.rsync.build()
 
-        rsync_command = Zinc.argument_parser(start, end, additional_arguments)
+        direction = 1
+        if cf.rsync.start == cf.helper.local_folder:
+            direction = 0
 
-        process = Popen(
-                rsync_command,
-                stdout=PIPE,
-                universal_newlines=True)
-        dry_run = next(filter(lambda x: x[0] == '--dry-run', additional_arguments))
-        if dry_run:
-            while True:
-                output = process.stdout.readline()
-                PrettyPrinter.pretty_print(output.strip(), direction)
-                return_code = process.poll()
-                if return_code is not None:
-                    for output in process.stdout.readlines():
-                        PrettyPrinter.pretty_print(output.strip(), direction)
-                    break
-        else:
+        process = Popen(rsync_command, stdout=PIPE, universal_newlines=True)
+
+        if not cf.rsync.dryRun:
             print("NOT A DRY RUN")
-            while True:
-                output = process.stdout.readline()
-                PrettyPrinter.pretty_print(output.strip(), direction)
-                return_code = process.poll()
-                if return_code is not None:
-                    for output in process.stdout.readlines():
-                        PrettyPrinter.pretty_print(output.strip(), direction)
-                    break
 
-    def manager(direction):
-        if direction == 0:
-            start, end = local_folder, remote_folder
-            Zinc.zinc(start, end, direction, [('--dry-run',True), ('--delete', False)])
-        elif direction == 1:
-            start, end = remote_folder, local_folder
-            Zinc.zinc(start, end, direction, [('--dry-run',True), ('--delete', False)])
+        while True:
+            output = process.stdout.readline()
+            PrettyPrinter.pretty_print(output.strip(), direction)
+            return_code = process.poll()
+            if return_code is not None:
+                for output in process.stdout.readlines():
+                    PrettyPrinter.pretty_print(output.strip(), direction)
+                break
+
+    def __init__(self):
+        self.dryrun()
+
+    def dryrun(self):
+        if cf.helper.local_changes_only is None:
+            cf.rsync.start, cf.rsync.end = cf.helper.local_folder, cf.helper.remote_folder
+            Zinc.zinc()
+            cf.rsync.location_switch()
+            Zinc.zinc()
+        elif cf.helper.local_changes_only:
+            cf.rsync.start, cf.rsync.end = cf.helper.remote_folder, cf.helper.local_folder
+            Zinc.zinc()
         else:
-            start, end = local_folder, remote_folder
-            Zinc.zinc(start, end, 0, [('--dry-run',True), ('--delete', False), ('--update', True)])
-            start, end = remote_folder, local_folder
-            Zinc.zinc(start, end, 1, [('--dry-run',True), ('--delete', False), ('--update',True)])
-        confirm = input("Do you want to go forward with these changes [Y/n]? Q to quit: ")
-        print(confirm)
+            cf.rsync.start, cf.rsync.end = cf.helper.local_folder, cf.helper.remote_folder
+            Zinc.zinc()
 
-ConfigParser.parse_config()
-Zinc.manager(default_direction)
+cf = ConfigParser()
+Zinc()
 
 #  TODO: Command line argument parser

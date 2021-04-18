@@ -79,10 +79,10 @@ done
 
 while $NOTDONE; do
     if $BOTH; then
-        $VSYNC $LOCAL/ $SERVER --update --dry-run | $HOME/dotfiles/bin/messageParser 0
-        $VSYNC $SERVER/ $LOCAL --update --dry-run | $HOME/dotfiles/bin/messageParser 1
-        # $VSYNC $LOCAL/ $SERVER --update --dry-run | rsyncmessage 0 | colorize
-        # $VSYNC $SERVER/ $LOCAL --update --dry-run | rsyncmessage 1 | colorize
+        # $VSYNC $LOCAL/ $SERVER --update --dry-run | $HOME/dotfiles/bin/messageParser 0
+        # $VSYNC $SERVER/ $LOCAL --update --dry-run | $HOME/dotfiles/bin/messageParser 1
+        $VSYNC $LOCAL/ $SERVER --update --dry-run | rsyncmessage 0 | colorize
+        $VSYNC $SERVER/ $LOCAL --update --dry-run | rsyncmessage 1 | colorize
         read -p "Would you like to apply these changes [y/N]? Q to quit: " option
         case $option in
             [Yy]*)
