@@ -135,12 +135,17 @@ class colors:
     fdel       = red + 'DEL' + end
 
 class PrettyPrinter:
-    def print_location(line, direction):
+    def print_location(line):
         """
         Prints whether the change is happening on
         SERVER or on SYSTEM
         """
         target_options = [colors.server, colors.system, colors.target]
+
+        direction = 1
+        if cf.rsync.start == cf.helper.local_folder:
+            direction = 0
+
         target = target_options[direction]
         location = {
                 '<': colors.server,
@@ -176,39 +181,40 @@ class PrettyPrinter:
         else:
             return line[1:11]
 
-    def pretty_print(line, direction=2):
+    def pretty_print(line):
         if (len(line)) == 0 or (not cf.helper.file_permissions_available and line[0:11] == '.f...p.....') or (line[1:11] == 'd..t......'):
             return
-        print(f"{PrettyPrinter.print_location(line, direction)} {PrettyPrinter.print_change(line)} {line[12:]} ")
+        print(f"{PrettyPrinter.print_location(line)} {PrettyPrinter.print_change(line)} {line[12:]} ")
 
 class Zinc:
+    def __init__(self):
+        self.run()
+        confirm = input("Would you like to apply these changes [y/N]? Q to quit:")
+        if confirm == 'y' or confirm == 'Y':
+            cf.rsync.dryRun = False
+            print("NOT A DRY RUN")
+            self.run()
+        else:
+            print("e-X11-ting")
+            return
+
     def zinc():
-        #  print(f"Changes from {getattr(colors, Options.folder_to_name(start))} made at {getattr(colors, Options.folder_to_name(end))}")
+        print(f"Changes from {getattr(colors, cf.helper.folder_to_name(cf.rsync.start))} made at {getattr(colors, cf.helper.folder_to_name(cf.rsync.end))}")
 
         rsync_command = cf.rsync.build()
 
-        direction = 1
-        if cf.rsync.start == cf.helper.local_folder:
-            direction = 0
-
         process = Popen(rsync_command, stdout=PIPE, universal_newlines=True)
-
-        if not cf.rsync.dryRun:
-            print("NOT A DRY RUN")
 
         while True:
             output = process.stdout.readline()
-            PrettyPrinter.pretty_print(output.strip(), direction)
+            PrettyPrinter.pretty_print(output.strip())
             return_code = process.poll()
             if return_code is not None:
                 for output in process.stdout.readlines():
-                    PrettyPrinter.pretty_print(output.strip(), direction)
+                    PrettyPrinter.pretty_print(output.strip())
                 break
 
-    def __init__(self):
-        self.dryrun()
-
-    def dryrun(self):
+    def run(self):
         if cf.helper.local_changes_only is None:
             cf.rsync.start, cf.rsync.end = cf.helper.local_folder, cf.helper.remote_folder
             Zinc.zinc()
