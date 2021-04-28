@@ -18,6 +18,7 @@ Plug 'godlygeek/tabular'
 Plug 'Konfekt/FastFold'
 Plug 'dylanaraps/wal.vim'
 Plug 'tmhedberg/SimpylFold'
+Plug 'junegunn/rainbow_parentheses.vim'
 call plug#end()
 
 " Enable plugins based on filetype
@@ -227,7 +228,7 @@ inoremap <C-h> <C-o>I
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
 
-" ## COC Configuration                                                    {{{
+" COC {{{
     if has("patch-8.1.1564")
       " Recently vim can merge signcolumn and number column into one
       set signcolumn=number
@@ -245,7 +246,6 @@ inoremap <C-y> <C-o><C-y>
 		\'coc-css',
 		\'coc-python',
 		\'coc-vimtex',
-		\'coc-pairs',
 		\'coc-diagnostic'
 		\]
 
@@ -321,4 +321,32 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
+" }}}
+
+" Rainbow parenthesis {{{
+
+" " Activate
+" :RainbowParentheses
+"
+" " Deactivate
+" :RainbowParentheses!
+"
+" " Toggle
+" :RainbowParentheses!!
+"
+" " See the enabled colors
+" :RainbowParenthesesColors
+
+" Activation based on file type
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
+
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+
+" List of colors that you do not want. ANSI code or #RRGGBB
+let g:rainbow#blacklist = [233, 234]
+
 " }}}
