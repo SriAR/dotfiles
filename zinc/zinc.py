@@ -7,6 +7,7 @@ class RSync:
         self.recursive      = True
         self.dryRun         = True
         self.update         = True
+        self.omitDirTimes   = True
         self.times          = True
         self.humanReadable  = True
         self.perms          = True
@@ -166,7 +167,6 @@ class PrettyPrinter:
         """
         new_options = {
                 'd+++++++++': colors.dnew,
-                'd..t......': '',
                 'f+++++++++': colors.fnew,
                   }
 
