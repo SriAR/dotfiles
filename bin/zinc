@@ -45,7 +45,7 @@ SERVER="$HEART:~/Study"
 if [ $TEST == 1 ]; then
     SERVER="$HOME/Teddy"
 fi
-VSYNC="rsync --exclude-from=$HOME/.config/zinc/zinc.exclude --modify-window=1 --human-readable --recursive --times --links --perms --itemize-changes"
+VSYNC="rsync --exclude-from=$HOME/.config/zinc/zinc.exclude --modify-window=1 --omit-dir-times --human-readable --recursive --times --links --perms --itemize-changes"
 NOTDONE=true
 ARRAY=($LOCAL $SERVER)
 DIRECTION=0 # Direction 0 is LOCAL to SERVER, and 1 is SERVER to LOCAL
