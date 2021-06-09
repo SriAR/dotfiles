@@ -3,13 +3,13 @@ font pango:monospace 8
 # EXEC ON STARTUP {{{
 #exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
+exec --no-startup-id /home/cs/dotfiles/bin/thulium
 exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
 exec --no-startup-id python -m http.server 4242 -d /home/cs/Online/Startpage --bind 127.0.0.1
 exec --no-startup-id /home/cs/.npm_packages/bin/tiddlywiki /home/cs/tiddlywiki --listen port=1177
 exec --no-startup-id picom --experimental-backends
 exec --no-startup-id pavucontrol
 exec --no-startup-id firefox
-#exec --no-startup-id discord
 # exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
 exec --no-startup-id redshift
 exec --no-startup-id wal -R
@@ -27,8 +27,10 @@ bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
 bindsym Mod4+j exec bash /home/cs/dotfiles/bin/easy_tts
 
 bindsym Mod4+w exec netctl list | sed 's/^\ //g' | rofi -dmenu -i -p "Wifi" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
-bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book /hdd/Cheenta | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
+# bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book /hdd/Cheenta | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
+bindsym Mod4+z exec find ~/Study | tail -n+2 | sed 's@/home/cs/Study/@@g' | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | sed 's@^@/home/cs/Study/@g' | xargs /home/cs/dotfiles/bin/fuckmime
 bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
+# bindsym Mod4+y exec urxvt -e nvim /home/cs/Study/Working\ Papers/classic.GT/CM\ Bistochastic/CM_Bistochastic.tex
 bindsym Mod4+m exec /home/cs/dotfiles/bin/linkNotify
 bindsym Mod4+b exec /home/cs/dotfiles/bin/bluetooth on
 bindsym Mod4+Shift+b exec /home/cs/dotfiles/bin/bluetooth off
@@ -193,10 +195,13 @@ for_window [class="st-256color"] floating enable, move scratchpad, scratchpad sh
 for_window [class="mpv" title="youtube"] floating enable, move scratchpad, scratchpad show
 #}}}
 
+# FOCUS URGENT {{{
+for_window [urgent="latest"] focus
+# }}}
+
 # SPECIFIC WS {{{
 assign [class="Pavucontrol"] $ws5
 assign [class="firefox"] $ws1
-assign [class="discord"] $ws4
 #assign [class="Pqiv"] $ws10
 # }}}
 

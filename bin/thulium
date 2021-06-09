@@ -1,0 +1,47 @@
+#!/bin/bash
+
+url_opener() {
+link="$1"
+/usr/bin/firefox "$link" &
+}
+
+skype_opener() {
+/usr/bin/google-chrome-stable --new-tab https://web.skype.com &
+}
+
+notifier() {
+time="$1"
+title="$2"
+calendar="$3"
+/usr/bin/dunstify -a "${calendar%?} at $time" -i "/home/cs/Pictures/Emotes/Generic/FeelsCoffeeMan.png" "" "$title"
+}
+
+while sleep 180; do
+
+agenda="$(/usr/bin/gcalcli agenda now now+5min --tsv --details=calendar --details=description | head -n 1)"
+# agenda="$(/usr/bin/gcalcli agenda now now+3days --tsv --details=calendar --details=description | grep arsr | head -n 1)"
+
+if [ "$agenda" != "" ]; then
+time="$(printf '%s' "$agenda" | cut -f 2)"
+title="$( printf '%s' "$agenda"| cut -f 5)"
+link="$(printf '%s' "$agenda" | cut -f 6)"
+calendar="$(printf '%s' "$agenda" | cut -f 7)"
+case "$calendar" in
+    "Talks" )
+        url_opener "$link"
+        ;;
+    "Meetings" )
+        if [ "$link" == "Skype" ]; then
+            skype_opener
+        else
+            url_opener "$link"
+        fi
+        ;;
+    *"gmail.com" )
+        url_opener "$link"
+esac
+notifier "$time" "$title" "$calendar"
+sleep 180
+fi
+
+done

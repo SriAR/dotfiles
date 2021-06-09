@@ -1,0 +1,1 @@
+LFS="/home/cs/mnt"
