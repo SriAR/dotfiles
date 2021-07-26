@@ -18,8 +18,8 @@ calendar="$3"
 
 while sleep 180; do
 
-agenda="$(/usr/bin/gcalcli agenda now now+5min --tsv --details=calendar --details=description | head -n 1)"
-# agenda="$(/usr/bin/gcalcli agenda now now+3days --tsv --details=calendar --details=description | grep arsr | head -n 1)"
+agenda="$(/usr/bin/gcalcli agenda now now+5min --tsv --details=calendar --details=description --nostarted | head -n 1)"
+# agenda="$(/usr/bin/gcalcli agenda now now+3days --tsv --details=calendar --details=description --nostarted | grep arsr | head -n 1)"
 
 if [ "$agenda" != "" ]; then
 time="$(printf '%s' "$agenda" | cut -f 2)"

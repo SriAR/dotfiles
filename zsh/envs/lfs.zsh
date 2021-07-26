@@ -1,1 +1,1 @@
-LFS="/home/cs/mnt"
+LFS="/mnt/lfs"

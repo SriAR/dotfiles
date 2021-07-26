@@ -124,3 +124,6 @@ unison
 gcalcli
 cyrus-sasl
 cyrus-sasl-gssapi
+gmic
+gimp-plugin-gmic
+python-matplotlib

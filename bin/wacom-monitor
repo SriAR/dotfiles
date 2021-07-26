@@ -1,0 +1,5 @@
+#!/bin/bash
+
+deviceNo="$(xinput list | grep 'Wacom One.*stylus.*' | sed -E 's/.*id=//g' | sed -E 's/\t.*//g')"
+echo $deviceNo
+xinput map-to-output "$deviceNo" HDMI-1
