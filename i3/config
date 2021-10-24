@@ -21,12 +21,12 @@ bindsym Mod4+d exec discord
 bindsym Mod4+e exec calibre
 bindsym Mod4+c exec google-chrome-stable --new-tab https://web.skype.com
 bindsym Mod4+p exec pavucontrol
-bindsym Mod4+t exec urxvt -name floating
+# bindsym Mod4+t exec urxvt -name floating
 bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
-#bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
+bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
 bindsym Mod4+j exec bash /home/cs/dotfiles/bin/easy_tts
 
-bindsym Mod4+w exec netctl list | sed 's/^\ //g' | rofi -dmenu -i -p "Wifi" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
+bindsym Mod4+w exec netctl list | sed 's/^[^[:alpha:]] //g' | rofi -dmenu -i -p "Wifi" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
 # bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book /hdd/Cheenta | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
 bindsym Mod4+z exec find ~/Study | tail -n+2 | sed 's@/home/cs/Study/@@g' | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | sed 's@^@/home/cs/Study/@g' | xargs /home/cs/dotfiles/bin/fuckmime
 bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
@@ -202,7 +202,11 @@ for_window [urgent="latest"] focus
 # SPECIFIC WS {{{
 assign [class="Pavucontrol"] $ws5
 assign [class="firefox"] $ws1
-#assign [class="Pqiv"] $ws10
+assign [class="Pqiv"] $ws10
+# }}}
+
+# TI {{{
+bindsym Mod4+t exec /home/cs/dotfiles/bin/tiopener
 # }}}
 
 # vim:foldmethod=marker:foldlevel=0:nospell

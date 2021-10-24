@@ -1,7 +1,7 @@
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-URxvt*font: xft:Source Code Pro:size=10, xft:Noto Sans:size=10
+URxvt*font: xft:Source Code Pro:size=10, xft:Noto Sans:size=10, xft:Kochi Gothic:size=10
 URxvt*scrollBar: false
 
 *background: #002b36

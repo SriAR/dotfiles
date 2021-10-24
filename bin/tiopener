@@ -1,0 +1,17 @@
+#!/bin/bash
+
+input="$(rofi -dmenu -p TI)"
+
+case "$input" in
+
+    "" )
+        exit ;;
+    "1" )
+        streamlink --player mpv --player-args '--hwdec=auto --title="youtube"' https://www.twitch.tv/dota2ti 720p & ;;
+    * )
+        streamlink --player mpv --player-args '--hwdec=auto --title="youtube"' https://www.twitch.tv/dota2ti_$input 720p ;;
+esac
+
+# streamlink --player mpv --player-args '--hwdec=auto --title="youtube"' https://www.twitch.tv/dota2ti 720p &
+
+
