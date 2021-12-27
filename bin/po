@@ -1,0 +1,6 @@
+#!/bin/bash
+
+selection="`cat /home/cs/pubs/pubs.list | rofi -dmenu -theme pdfs -i -p "OPEN"`"
+[ "$selection" = "" ] && exit
+citekey="`echo "$selection" | cut -d '[' -f2 | cut -d ']' -f1`"
+pubs doc open --with zathura "$citekey"

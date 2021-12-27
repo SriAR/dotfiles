@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pubs add -M -d /tmp/a.pdf /tmp/a.bib -t "$@"

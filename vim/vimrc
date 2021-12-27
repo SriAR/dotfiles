@@ -3,7 +3,7 @@ set nocompatible
 let g:bundle_path = '~/.vim/bundle'
 
 call plug#begin(bundle_path)
-Plug 'lervag/vimtex', { 'for': 'latex' }
+Plug 'lervag/vimtex'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-fugitive'

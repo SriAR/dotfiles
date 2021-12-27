@@ -3,16 +3,18 @@ font pango:monospace 8
 # EXEC ON STARTUP {{{
 #exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
-exec --no-startup-id /home/cs/dotfiles/bin/thulium
-exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
+# exec --no-startup-id /home/cs/dotfiles/bin/thulium
+#exec --no-startup-id /home/cs/dotfiles/bin/external_monitor_on_boot.sh
+# exec --no-startup-id sleep 2 && xrandr --output eDP-1 --mode 1920x1080 && xrandr --output eDP-1 --right-of DP-1-1
 exec --no-startup-id python -m http.server 4242 -d /home/cs/Online/Startpage --bind 127.0.0.1
 exec --no-startup-id /home/cs/.npm_packages/bin/tiddlywiki /home/cs/tiddlywiki --listen port=1177
 exec --no-startup-id picom --experimental-backends
-# exec --no-startup-id pavucontrol
+exec --no-startup-id pavucontrol
 exec --no-startup-id firefox
 # exec --no-startup-id feh --bg-scale /home/cs/Pictures/japanese_street.jpg
 exec --no-startup-id redshift
 exec --no-startup-id wal -R
+exec --no-startup-id nm-applet
 #}}}
 
 # APP BINDSYMS {{{
@@ -28,7 +30,8 @@ bindsym Mod4+j exec bash /home/cs/dotfiles/bin/easy_tts
 
 bindsym Mod4+w exec netctl list | sed 's/^[^[:alpha:]] //g' | rofi -dmenu -i -p "Wifi" -matching fuzzy -sort | xargs /home/cs/dotfiles/bin/connect
 # bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book /hdd/Cheenta | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
-bindsym Mod4+z exec find ~/Study | tail -n+2 | sed 's@/home/cs/Study/@@g' | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | sed 's@^@/home/cs/Study/@g' | xargs /home/cs/dotfiles/bin/fuckmime
+bindsym Mod1+o exec /home/cs/dotfiles/bin/po
+bindsym Mod4+z exec find ~/Study | tail -n+2 | sed 's@/home/cs/Study/@@g' | rofi -dmenu -theme pdfs -i -p "OPEN" -sort | sed 's@^@/home/cs/Study/@g' | xargs /home/cs/dotfiles/bin/fuckmime
 bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
 # bindsym Mod4+y exec urxvt -e nvim /home/cs/Study/Working\ Papers/classic.GT/CM\ Bistochastic/CM_Bistochastic.tex
 bindsym Mod4+m exec /home/cs/dotfiles/bin/linkNotify
@@ -54,10 +57,10 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioPause exec mpc toggle
 
-bindsym Mod4+s exec shutdown now
+bindsym Mod4+s exec urxvt -e /home/cs/dotfiles/bin/zinc && sleep 2 && shutdown now
 bindsym Mod4+l exec i3lock -n -i ~/Pictures/lockscreen.png & sleep 2 && xset dpms force off
 bindsym Mod1+d exec rofi -show run
-bindsym --release Print exec --no-startup-id maim -s /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png
+bindsym --release Print exec --no-startup-id maim -u -s /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png
 bindsym Mod1+Tab workspace back_and_forth
 bindsym Mod1+Return exec i3-sensible-terminal
 bindsym Mod1+q kill
@@ -75,10 +78,10 @@ bar {
 for_window [class="^.*"] border pixel 3
 smart_gaps    on
 smart_borders no_gaps
-# gaps inner 10
-# gaps outer 05
-gaps inner 0
-gaps outer 0
+gaps inner 10
+gaps outer 05
+# gaps inner 0
+# gaps outer 0
 # }}}
 
 # MOVEMENT {{{
@@ -207,6 +210,14 @@ assign [class="Pqiv"] $ws10
 
 # TI {{{
 bindsym Mod4+t exec /home/cs/dotfiles/bin/tiopener
+# }}}
+
+# SPECIFIC WORKSPACES {{{
+workspace 1 output DP1-1
+workspace 2 output DP1-1
+workspace 3 output DP1-1
+workspace 4 output eDP1
+workspace 5 output eDP1
 # }}}
 
 # vim:foldmethod=marker:foldlevel=0:nospell

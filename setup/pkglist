@@ -5,7 +5,6 @@ arch-install-scripts
 bat
 bc
 calibre
-discord
 dhcpcd
 dunst
 feh
@@ -14,13 +13,11 @@ firefox
 fzf
 gcc
 gimp
-gvim
 i3-gaps
 i3blocks
 i3lock
 i3status
 jq
-khal
 libnotify
 maim
 man
@@ -28,7 +25,8 @@ mpv
 mpd
 mpc
 ncmpcpp
-netctl
+networkmanager
+network-manager-applet
 nicotine+
 nvidia
 nvidia-utils
@@ -43,7 +41,7 @@ pulseaudio-alsa
 python
 python-pip
 ranger
-refind-efi
+refind
 rofi
 rsync
 rxvt-unicode
@@ -56,8 +54,6 @@ tk
 transmission-gtk
 ttf-font-awesome
 unzip
-vdirsyncer
-vifm
 vlc
 w3m
 wpa_supplicant
@@ -80,7 +76,6 @@ libva-utils
 mtpfs
 rclone
 unrar
-lutris
 wine
 lib32-nvidia-utils
 lib32-libpulse
@@ -96,7 +91,6 @@ at
 inkscape
 python-httplib2
 calcurse
-remind
 clerk-git
 redshift-minimal
 blueman
@@ -120,7 +114,6 @@ ntfs-3g
 calibre-web
 gifsicle
 xob
-unison
 gcalcli
 cyrus-sasl
 cyrus-sasl-gssapi
@@ -128,6 +121,5 @@ gmic
 gimp-plugin-gmic
 python-matplotlib
 dragon-drag-and-drop
-zola
 zola
 streamlink

@@ -10,3 +10,4 @@
 *.log
 *.run.xml
 *.synctex.gz
+.git*

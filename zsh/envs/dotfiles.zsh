@@ -4,4 +4,5 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 path+=('/home/cs/dotfiles/bin')
 path+=('/home/cs/.local/bin')
 path+=('/home/cs/.npm_packages/bin')
+path+=('/home/cs/.emacs.d/bin')
 export PATH
