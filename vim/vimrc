@@ -19,6 +19,9 @@ Plug 'Konfekt/FastFold'
 Plug 'dylanaraps/wal.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-orgmode/orgmode'
 call plug#end()
 
 " Enable plugins based on filetype
@@ -198,6 +201,8 @@ endif
 let g:UltiSnipsExpandTrigger = '<c-b>'
 let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
+let g:UltiSnipsSnippetsDir="/home/cs/.vim/ultisnips"
+let g:UltiSnipsSnippetDirectories=["/home/cs/.vim/ultisnips", "UltiSnips"]
 
 "=================="
 " Limelight + Goyo "

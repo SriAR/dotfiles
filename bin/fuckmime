@@ -22,7 +22,7 @@ case $mimetype in
     ;;
 
     text/*)
-        $terminal -e nvim "$file"
+        emacs "$file"
     ;;
 
     image/*)

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pubs list > ~/pubs/pubs.list
+pubs export > ~/texmf/bibtex/bib/GlobalRef.bib
