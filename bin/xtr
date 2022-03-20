@@ -1,0 +1,5 @@
+#!/bin/bash
+
+moviefile="/home/cs/Movies/Tarkovsky/[1979] Stalker/Stalker.webm"
+
+ffmpeg -ss "$1" -to "$2" -i "$moviefile" -c copy -an "$3.webm"
