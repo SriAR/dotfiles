@@ -258,7 +258,7 @@
    ;; I want to see the whole file
    org-noter-hide-other nil
    ;; Everything is relative to the main notes file
-   org-noter-notes-search-path (list org_notes)
+   org-noter-notes-search-path (list "~/pubs/notes/")
    )
   )
 
