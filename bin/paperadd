@@ -1,0 +1,27 @@
+#!/bin/bash
+
+doc="`find /tmp/ -maxdepth 1 -type f -iname '*.pdf'`"
+[ "$doc" = "" ] && exit
+bib="`find /tmp/ -maxdepth 1 -type f -iname '*.bib'`"
+[ ! -f "$bib" ] && exit
+
+declare -a tags
+newtag="`pubs tag | sed 's/,\ \?/\n/g' | rofi -dmenu -theme pdfs -i -p "TAGS"`"
+
+while [[ "$newtag" != "" ]] ; do
+    tags+=("$newtag")
+    newtag="`pubs tag | sed 's/,\ \?/\n/g' | rofi -dmenu -theme pdfs -i -p "TAGS"`"
+done
+
+printf -v tagList '%s,' "${tags[@]}"
+tagList="${tagList%,}"
+[ "$tagList" == "" ] && exit
+
+pubs add -M -d "$doc" "$bib" -t "$tagList" >> /home/cs/pubs/pubs.list
+pubs export > ~/texmf/bibtex/bib/GlobalRef.bib
+rm "$bib"
+
+# selection="`cat /home/cs/pubs/pubs.list | rofi -dmenu -theme pdfs -i -p "OPEN"`"
+# [ "$selection" = "" ] && exit
+# citekey="`echo "$selection" | cut -d '[' -f2 | cut -d ']' -f1`"
+# pubs doc open --with zathura "$citekey"
