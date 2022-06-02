@@ -26,7 +26,7 @@ bindsym Mod4+c exec google-chrome-stable --new-tab https://web.skype.com
 bindsym Mod4+p exec pavucontrol
 # bindsym Mod4+t exec urxvt -name floating
 bindsym Mod4+a exec bash /home/cs/dotfiles/bin/barium
-bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
+# bindsym Insert exec bash /home/cs/dotfiles/hud/microphone
 bindsym Mod4+j exec bash /home/cs/dotfiles/bin/easy_tts
 bindsym Mod1+a exec bash /home/cs/dotfiles/bin/paperadd
 
