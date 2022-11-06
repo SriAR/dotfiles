@@ -1,0 +1,51 @@
+snippet texplate "Basic TeX template" b
+\documentclass[11pt,letterpaper]{article}
+\usepackage{arsricharan}
+
+\let\displaystyle\textstyle
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\title{$1}
+
+\date{}
+\author[]{\today{}}
+
+\maketitle
+
+$0
+
+\end{document}
+endsnippet
+
+snippet algtemp "Basic Algorithm Template" b
+\begin{algorithm}[t]
+\SetAlgoLined
+\caption{$1}
+\KwInput{$2}
+\KwOutput{$3}
+$0
+\end{algorithm}
+endsnippet
+
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{table}
+endsnippet
+
+snippet fig "Figure environment" b
+\begin{figure}[${1:htpb}]
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}
+endsnippet
+
