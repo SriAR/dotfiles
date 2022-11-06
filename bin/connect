@@ -1,6 +1,0 @@
-#!/bin/bash
-
-network="$@"
-[ "$network" == "" ] && exit
-
-sudo netctl stop-all && sudo netctl start "$network"
