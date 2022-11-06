@@ -1,21 +1,26 @@
 global !p
-texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
-
-texIgnoreMathZones = ['texMathText']
-
-texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
-texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
-
-ignore = texIgnoreMathZoneIds[0]
-
 def math():
-	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
-	try:
-		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
-		return first != ignore
-	except StopIteration:
-		return False
+  return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 endglobal
+
+# global !p
+# texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
+#
+# texIgnoreMathZones = ['texMathText']
+#
+# texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+# texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+#
+# ignore = texIgnoreMathZoneIds[0]
+#
+# def math():
+#     synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+#     try:
+#         first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
+#         return first != ignore
+#     except StopIteration:
+#         return False
+# endglobal
 
 priority 100
 snippet ... "ldots" iA
@@ -52,13 +57,13 @@ snippet =< "implied by" Ai
 \impliedby
 endsnippet
 
-context "math()"
-snippet iff "iff" Ai
-\iff
-endsnippet
+# context "math()"
+# snippet iff "iff" iA
+# \iff
+# endsnippet
 
 snippet mk "Math" wA
-$${1}$$0
+$${1:${VISUAL}}$$0
 endsnippet
 
 # snippet mk "Math" wA
@@ -115,36 +120,36 @@ snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
 endsnippet
 
 
-snippet sympy "sympyblock " w
-sympy $1 sympy$0
-endsnippet
-
-priority 10000
-snippet 'sympy(.*)sympy' "sympy" wr
-`!p
-from sympy import *
-x, y, z, t = symbols('x y z t')
-k, m, n = symbols('k m n', integer=True)
-f, g, h = symbols('f g h', cls=Function)
-init_printing()
-snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
-`
-endsnippet
-
-priority 1000
-snippet math "mathematicablock" w
-math $1 math$0
-endsnippet
-
-priority 10000
-snippet 'math(.*)math' "math" wr
-`!p
-import subprocess
-code = match.group(1)
-code = 'ToString[' + code + ', TeXForm]'
-snip.rv = subprocess.check_output(['wolframscript', '-code', code])
-`
-endsnippet
+# snippet sympy "sympyblock " w
+# sympy $1 sympy$0
+# endsnippet
+#
+# priority 10000
+# snippet 'sympy(.*)sympy' "sympy" wr
+# `!p
+# from sympy import *
+# x, y, z, t = symbols('x y z t')
+# k, m, n = symbols('k m n', integer=True)
+# f, g, h = symbols('f g h', cls=Function)
+# init_printing()
+# snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
+# `
+# endsnippet
+#
+# priority 1000
+# snippet math "mathematicablock" w
+# math $1 math$0
+# endsnippet
+#
+# priority 10000
+# snippet 'math(.*)math' "math" wr
+# `!p
+# import subprocess
+# code = match.group(1)
+# code = 'ToString[' + code + ', TeXForm]'
+# snip.rv = subprocess.check_output(['wolframscript', '-code', code])
+# `
+# endsnippet
 
 snippet == "equals" iA
 &= $1 \\\\
@@ -212,10 +217,6 @@ endsnippet
 
 snippet dint "integral" w
 \int_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
-endsnippet
-
-snippet 'z "zeta" wA
-\zeta
 endsnippet
 
 # snippet sum "sum" w
@@ -369,10 +370,6 @@ $0
 endsnippet
 
 context "math()"
-snippet mcal "mathcal" iA
-\mathcal{$1}$0
-endsnippet
-
 snippet lll "l" iA
 \ell
 endsnippet
@@ -388,19 +385,14 @@ snippet xx "cross" iA
 endsnippet
 
 priority 100
-# snippet * "cdot" iA
-# \cdot
-# endsnippet
+snippet * "cdot" iA
+\cdot
+endsnippet
 
 # priority 200
 # snippet '\cdot *' "cdot" iA
 # *
 # endsnippet
-
-context "math()"
-snippet norm "norm" iA
-\|$1\|$0
-endsnippet
 
 priority 100
 context "math()"
@@ -454,10 +446,6 @@ snippet << "<<" iA
 \ll
 endsnippet
 
-snippet DD "delta" iA
-\Delta
-endsnippet
-
 snippet ~~ "~" iA
 \sim
 endsnippet
@@ -468,9 +456,8 @@ snippet set "set" wA
 endsnippet
 
 snippet || "mid" iA
- \mid
+\mid
 endsnippet
-
 
 context "math()"
 snippet cc "subset" Ai
@@ -533,11 +520,6 @@ _\text{$1} $0
 endsnippet
 
 context "math()"
-snippet tt "text" iA
-\text{$1}$0
-endsnippet
-
-context "math()"
 snippet case "cases" wA
 \begin{cases}
 	$1
@@ -583,10 +565,6 @@ snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
-snippet letw "let omega" iA
-Let $\Omega \subset \C$ be open.
-endsnippet
-
 snippet minlp "Minimization LP" iA
 \begin{align*}
 	\text{minimize: }& $1\\\\
@@ -601,7 +579,8 @@ snippet maxlp "Maximization LP" iA
 .\end{align*}$0
 endsnippet
 
-snippet norm "norm" ia
+context "math()"
+snippet norm "norm" iA
 \left\lVert$1\right\rVert$0
 endsnippet
 
@@ -617,16 +596,9 @@ snippet "([a-zA-Z])vec" "vec" riA
 \vec{`!p snip.rv=match.group(1)`}
 endsnippet
 
+context "math()"
 snippet "bin" "bin" iA
 \{0,1\}^{$1}$0
-endsnippet
-
-snippet "tbf" "textbold" riA
-\textbf{$1}$0
-endsnippet
-
-snippet "mbf" "mathbold" riA
-\mathbf{$1}$0
 endsnippet
 
 priority 100
@@ -635,23 +607,10 @@ snippet "([a-zA-Z])mbf" "mbf" riA
 \mathbf{`!p snip.rv=match.group(1)`}
 endsnippet
 
-snippet "mcl" "mathcal" riA
-\mathcal{$1}$0
-endsnippet
-
 priority 100
 context "math()"
 snippet "([a-zA-Z])mcl" "mcl" riA
 \mathcal{`!p snip.rv=match.group(1)`}
-endsnippet
-
-
-snippet "color" "color" riA
-\textcolor{red}{$1}$0
-endsnippet
-
-snippet "eee" "epsilon" riA
-\epsilon
 endsnippet
 
 snippet "opee" "epsilon" riA
