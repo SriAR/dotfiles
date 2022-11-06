@@ -1,2 +1,0 @@
-WINEPREFIX="/hdd/Games/.wine"
-
