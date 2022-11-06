@@ -3,9 +3,9 @@ DIR="/sys/class/backlight/intel_backlight"
 MAX="$(cat $DIR/max_brightness)"
 CUR="$(cat $DIR/brightness)"
 
-if [[ $time_remaining == '0' ]]; then
-    bash /home/cs/dotfiles/hud/displayer "hp" "789,1019" &
-fi
+# if [[ $time_remaining == '0' ]]; then
+#     bash /home/cs/dotfiles/hud/displayer "hp" "789,1019" &
+# fi
 
 
 case "$1" in
@@ -25,35 +25,35 @@ esac
 
 echo "$CUR" | sudo tee "$DIR/brightness"
 
-PER="$(echo "$CUR*100/$MAX" | bc)"
-FRAME="$(echo "$PER*3 + 1" | bc)"
-#CUR_FILE="/home/cs/Pictures/HUD/hp/hp_bar_$PER.png"
-name="hp"
-sleepfile="/home/cs/.hud/$name-sleepfile"
-image="/home/cs/.hud/$name.png"
-
-giffit() {
-    CUR_FILE="/home/cs/Pictures/HUD/work/hp_$FRAME.png"
-    ln -sf "$CUR_FILE" "$2" && sleep 0.06
-    FRAME="$(echo "$FRAME + 1" | bc)"
-    CUR_FILE="/home/cs/Pictures/HUD/work/hp_$FRAME.png"
-    ln -sf "$CUR_FILE" "$2" && sleep 0.06
-    FRAME="$(echo "$FRAME + 1" | bc)"
-    CUR_FILE="/home/cs/Pictures/HUD/work/hp_$FRAME.png"
-    ln -sf "$CUR_FILE" "$2" && sleep 0.06
-}
-
-#cp "$CUR_FILE" "$image"
-for ((i=0; i<=5; i++)); do
-    ln -sf "/home/cs/Pictures/HUD/work/hp_$FRAME.png" "$image" && sleep 0.06
-    FRAME="$(echo "$FRAME + 1" | bc)"
-done
-
-time_remaining="$(cat $sleepfile)"
-
-if [[ $time_remaining == '0' ]]; then
-    bash /home/cs/dotfiles/hud/displayer "hp" "789,1019" &
-fi
-
-echo "2.4" > $sleepfile
+# PER="$(echo "$CUR*100/$MAX" | bc)"
+# FRAME="$(echo "$PER*3 + 1" | bc)"
+# #CUR_FILE="/home/cs/Pictures/HUD/hp/hp_bar_$PER.png"
+# name="hp"
+# sleepfile="/home/cs/.hud/$name-sleepfile"
+# image="/home/cs/.hud/$name.png"
+#
+# giffit() {
+#     CUR_FILE="/home/cs/Pictures/HUD/work/hp_$FRAME.png"
+#     ln -sf "$CUR_FILE" "$2" && sleep 0.06
+#     FRAME="$(echo "$FRAME + 1" | bc)"
+#     CUR_FILE="/home/cs/Pictures/HUD/work/hp_$FRAME.png"
+#     ln -sf "$CUR_FILE" "$2" && sleep 0.06
+#     FRAME="$(echo "$FRAME + 1" | bc)"
+#     CUR_FILE="/home/cs/Pictures/HUD/work/hp_$FRAME.png"
+#     ln -sf "$CUR_FILE" "$2" && sleep 0.06
+# }
+#
+# #cp "$CUR_FILE" "$image"
+# for ((i=0; i<=5; i++)); do
+#     ln -sf "/home/cs/Pictures/HUD/work/hp_$FRAME.png" "$image" && sleep 0.06
+#     FRAME="$(echo "$FRAME + 1" | bc)"
+# done
+#
+# time_remaining="$(cat $sleepfile)"
+#
+# if [[ $time_remaining == '0' ]]; then
+#     bash /home/cs/dotfiles/hud/displayer "hp" "789,1019" &
+# fi
+#
+# echo "2.4" > $sleepfile
 
