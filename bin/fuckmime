@@ -4,7 +4,7 @@ file="$@"
 [ "$file" == "" ] && exit
 
 mimetype="$(xdg-mime query filetype "$file")"
-terminal="urxvt"
+terminal="alacritty"
 
 case $mimetype in
 
@@ -18,11 +18,11 @@ case $mimetype in
 
     text/x-tex)
         # $terminal -e vim --servername latex "$file"
-        urxvt -e nvim "$file"
+        alacritty -e nvim "$file"
     ;;
 
     text/*)
-        emacs "$file"
+        alacritty -e nvim "$file"
     ;;
 
     image/*)
@@ -30,7 +30,7 @@ case $mimetype in
     ;;
 
     inode/directory)
-        urxvt -cd "$file"
+        alacritty --working-directory "$file"
     ;;
 
     *)
