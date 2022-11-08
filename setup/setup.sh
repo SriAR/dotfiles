@@ -46,17 +46,18 @@ dotinstall() {
 
 declare -A mappings=(   ["vim/vimrc"]=".vimrc"
                         ["zathura/zathurarc"]=".config/zathura/zathurarc"
-                        ["dunst/dunstrc"]=".config/dunst/dunstrc"
+                        ["dunst"]=".config/dunst"
                         ["zsh/zshrc"]=".zshrc"
-                        ["picom/picom.conf"]=".config/picom/picom.conf"
+                        ["picom"]=".config/picom"
                         ["mpd/mpd.conf"]=".config/mpd/mpd.conf"
-                        ["todo/todo.cfg"]=".config/todo/todo.cfg"
-                        ["i3/config"]=".config/i3/config"
-                        ["rofi/config.rasi"]=".config/rofi/config.rasi"
-                        ["x11/Xinitrc"]=".xinitrc"
-                        ["x11/Xdefaults"]=".Xdefaults"
-                        ["x11/Xmodmap"]=".Xmodmap"
+                        ["i3"]=".config/i3"
+                        ["rofi"]=".config/rofi"
+                        ["nvim"]=".config/nvim"
+                        ["alacritty"]=".config/alacritty"
                     )
+                        # ["x11/Xinitrc"]=".xinitrc"
+                        # ["x11/Xdefaults"]=".Xdefaults"
+                        # ["x11/Xmodmap"]=".Xmodmap"
 
 for file in "${!mappings[@]}"; do
     newfile=${mappings[$file]}
