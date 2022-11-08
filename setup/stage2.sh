@@ -3,7 +3,7 @@ ln -sf /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
 hwclock --systohc
 
 echo "Locale-gen and so on" && sleep 0.5
-sed "s/^#en_US.UTF-8/en_US.UTF-8/g" /etc/locale.gen > /etc/locale.gen
+echo 'en_US.UTF-8' > /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
