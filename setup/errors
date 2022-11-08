@@ -1,0 +1,4 @@
+locale-gen is ded
+bootctl install needed
+package installation needs changing
+systemdboot needs arch entry
