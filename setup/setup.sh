@@ -54,6 +54,7 @@ declare -A mappings=(   ["vim/vimrc"]=".vimrc"
                         ["rofi"]=".config/rofi"
                         ["nvim"]=".config/nvim"
                         ["alacritty"]=".config/alacritty"
+                        ["polybar"]=".config/polybar"
                     )
                         # ["x11/Xinitrc"]=".xinitrc"
                         # ["x11/Xdefaults"]=".Xdefaults"
