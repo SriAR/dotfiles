@@ -4,6 +4,15 @@ doc="`find /tmp/ -maxdepth 1 -type f -iname '*.pdf'`"
 [ "$doc" = "" ] && exit
 bib="`find /tmp/ -maxdepth 1 -type f -iname '*.bib'`"
 [ ! -f "$bib" ] && exit
+mv "$bib" "/tmp/toadd.bib"
+bib="/tmp/toadd.bib"
+
+pushd "/home/cs/.cache/pubs"
+bibtex -terse "citegen"
+popd
+citekey="`cat '/home/cs/.cache/pubs/citegen.bbl' | grep 'bibitem' | sed 's/.*\[\(.*\)\].*/\1/g' | sed 's/{.*}//g' | rofi -dmenu -theme pdfs -i -p "CITEKEY"`"
+[ "$citekey" = "" ] && exit
+citekey+="`rofi -dmenu -theme pdfs -i -p "CITEKEY"`"
 
 declare -a tags
 newtag="`pubs tag | sed 's/,\ \?/\n/g' | rofi -dmenu -theme pdfs -i -p "TAGS"`"
@@ -17,7 +26,7 @@ printf -v tagList '%s,' "${tags[@]}"
 tagList="${tagList%,}"
 [ "$tagList" == "" ] && exit
 
-pubs add -M -d "$doc" "$bib" -t "$tagList" >> /home/cs/pubs/pubs.list
+pubs add --move --docfile "$doc" --tags "$tagList" --citekey "$citekey" "$bib" >> /home/cs/pubs/pubs.list
 pubs export > ~/texmf/bibtex/bib/GlobalRef.bib
 rm "$bib"
 
