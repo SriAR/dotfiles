@@ -8,7 +8,8 @@
    '("display" "displaymath" "equation" "eqnarray" "gather" "multline" "align" "alignat" "xalignat" "dmath"))
  '(safe-local-variable-values
    '((org-roam-db-location . "~/dynAlgLab/org-roam.db")
-     (org-roam-directory . "~/dynAlgLab/"))))
+     (org-roam-directory . "~/dynAlgLab/")))
+ '(warning-suppress-types '((doom-after-init-hook) (defvaralias))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

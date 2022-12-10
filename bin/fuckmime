@@ -22,6 +22,7 @@ case $mimetype in
     ;;
 
     text/*)
+        [[ "${file##*.}" == "org" ]] && emacs "$file" & exit
         alacritty -e nvim "$file"
     ;;
 
@@ -34,6 +35,6 @@ case $mimetype in
     ;;
 
     *)
-        mimeo "$file"
+        xdg-open "$file"
     ;;
 esac
