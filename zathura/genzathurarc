@@ -12,8 +12,6 @@ set synctex-editor-command "nvim +%{line} %{input}"
 set window-title-basename true
 map x toggle_statusbar
 
-set recolor "true"
-
 set completion-bg "$background"
 set completion-fg "$foreground"
 set completion-group-bg "$background"
