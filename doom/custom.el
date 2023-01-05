@@ -42,13 +42,7 @@
     <a href=\"/meta\"><div class=\"navitem\">meta</div></a>
     <a href=\"/files/Sricharan_AR_CV.pdf\"><div class=\"navitem\">cv</div></a>
 </div> <hr>
-<div class=\"sidebar\">
-    <img src=\"/files/narcissism.jpg\" alt=\"me.jpg\" />
-    <span class=\"sbitem\"><a href=\"mailto:arsricharan@cmi.ac.in\">Email</a></span>
-    <span class=\"sbitem\"><a href=\"https://github.com/SriAR\">Github</a></span>
-    <span class=\"sbitem\"><a href=\"https://twitter.com/ratheritslimit\">Twitter</a></span>
-    <span class=\"sbitem\"><a href=\"https://scholar.google.com/citations?hl=en&user=wNnXe84AAAAJ\">Google Scholar</a></span>
-</div>"
+"
          )
 
         ("other"
