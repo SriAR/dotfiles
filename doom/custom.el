@@ -9,9 +9,14 @@
  '(safe-local-variable-values
    '((org-roam-db-location . "~/dynAlgLab/org-roam.db")
      (org-roam-directory . "~/dynAlgLab/")))
- '(warning-suppress-types '((doom-after-init-hook) (defvaralias))))
+ '(warning-suppress-types '((doom-after-init-hook) (defvaralias)))
  '(org-html-head-include-default-style nil)
  '(org-publish-use-timestamps-flag nil)
+ '(org-html-metadata-timestamp-format "%Y-%m-%d")
+ ; '(org-display-custom-times t)
+ ; '(org-time-stamp-custom-formats (quote ("<%d>" . "<%d %m %Y--- [%H:%M]>")))
+ ; '(org-time-stamp-formats (quote ("<%d>" . "<%d %m %Y--- [%H:%M]>")))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -19,16 +24,29 @@
  ;; If there is more than one, they won't work right.
  )
 
+(org-link-set-parameters "doc"
+                         :export #'org-doc-export
+                         )
+
+(defun org-doc-export (link description format _)
+  "Export a doc page link from Org files."
+  (let ((path (format "%s" link))
+        (desc (or description link)))
+    (pcase format
+      (`html (format "<a href=\"/files/%s\">%s</a>" path desc))
+      (t path))))
+
 (setq org-publish-project-alist
       '(("orgfiles"
-         :base-directory "~/newsite"
+         :base-directory "~/arsricharan.in"
          :base-extension "org"
-         :publishing-directory "~/public"
+         :publishing-directory "~/arsricharan.in/public"
          :publishing-function org-html-publish-to-html
          :exclude "home/*"
          :recursive t
          :html-doctype "html5"
-         :html-postamble "<hr style=\"border-top: 1px;\"><p>%C</p>"
+         ; :html-postamble "<hr style=\"border-top: 1px;\"><p>%C</p>"
+         :html-postamble nil
          :html-head-include-default-style nil
          :with-toc nil
          :with-title nil
@@ -46,9 +64,10 @@
          )
 
         ("other"
-         :base-directory "~/newsite"
-         :base-extension "ico\\|css\\|ttf\\|woff2\\|woff\\|jpg\\|png\\|pdf"
-         :publishing-directory "~/public"
+         :base-directory "~/arsricharan.in"
+         :base-extension "ico\\|css\\|ttf\\|woff2\\|woff\\|jpg\\|png\\|pdf\\|toml"
+         :publishing-directory "~/arsricharan.in/public"
+         :exclude "~/arsricharan.in/public"
          :recursive t
          :publishing-function org-publish-attachment)
 
