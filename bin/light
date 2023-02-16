@@ -2,13 +2,14 @@
 DIR="/sys/class/backlight/intel_backlight"
 MAX="$(cat $DIR/max_brightness)"
 CUR="$(cat $DIR/brightness)"
+STP=150
 
 case "$1" in
     +)
-        CUR=$(( $CUR + 150 ))
+        CUR=$(( $CUR + $STP ))
         ;;
     -)
-        CUR=$(( $CUR - 150 ))
+        CUR=$(( $CUR - $STP ))
         ;;
     *)
         CUR="$1"
