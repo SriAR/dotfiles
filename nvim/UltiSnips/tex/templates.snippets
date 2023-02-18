@@ -1,17 +1,11 @@
 snippet texplate "Basic TeX template" b
-\documentclass[11pt,letterpaper]{article}
-\usepackage{arsricharan}
-
-\let\displaystyle\textstyle
-\usepackage[margin=1in]{geometry}
+\documentclass[11pt,a4paper]{article}
+\usepackage{sri}
 
 \begin{document}
-
 \title{$1}
-
 \date{}
 \author[]{\today{}}
-
 \maketitle
 
 $0
@@ -23,8 +17,9 @@ snippet algtemp "Basic Algorithm Template" b
 \begin{algorithm}[t]
 \SetAlgoLined
 \caption{$1}
-\KwInput{$2}
-\KwOutput{$3}
+\label{$2}
+\KwInput{$3}
+\KwOutput{$4}
 $0
 \end{algorithm}
 endsnippet
