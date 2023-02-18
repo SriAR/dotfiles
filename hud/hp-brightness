@@ -2,6 +2,7 @@
 DIR="/sys/class/backlight/intel_backlight"
 MAX="$(cat $DIR/max_brightness)"
 CUR="$(cat $DIR/brightness)"
+STP=5000
 
 # if [[ $time_remaining == '0' ]]; then
 #     bash /home/cs/dotfiles/hud/displayer "hp" "789,1019" &
@@ -10,10 +11,10 @@ CUR="$(cat $DIR/brightness)"
 
 case "$1" in
     +)
-        CUR=$(( $CUR + 150 ))
+        CUR=$(( $CUR + $STP ))
         ;;
     -)
-        CUR=$(( $CUR - 150 ))
+        CUR=$(( $CUR - $STP ))
         ;;
     *)
         CUR="$1"
