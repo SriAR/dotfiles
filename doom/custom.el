@@ -67,7 +67,7 @@
          :base-directory "~/arsricharan.in"
          :base-extension "ico\\|css\\|ttf\\|woff2\\|woff\\|jpg\\|png\\|pdf\\|toml"
          :publishing-directory "~/arsricharan.in/public"
-         :exclude "~/arsricharan.in/public"
+         :exclude "~/arsricharan.in/public/*"
          :recursive t
          :publishing-function org-publish-attachment)
 
