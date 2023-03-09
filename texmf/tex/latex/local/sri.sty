@@ -1,0 +1,91 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sri}
+
+%  Formatting {{{
+\RequirePackage[utf8]{inputenc} % Define input encoding
+\RequirePackage[T1]{fontenc} % Easier searching in pdf
+\RequirePackage{libertine,libertinust1math}
+% \RequirePackage{lmodern}
+\RequirePackage[scr=rsfs]{mathalpha} % TODO: Look at other fonts from here
+\RequirePackage{natbib} %TODO: better bib management holy shit this is hell
+% }}}
+
+% Images and so on {{{
+\RequirePackage{graphicx}
+% }}}
+
+% Page Layout {{{
+\RequirePackage{authblk} %TODO: Macro for authblk
+\RequirePackage{tablefootnote} % Provides \tablefootnote
+\RequirePackage{caption} %TODO: Look at caption options
+\captionsetup{font=small}
+% }}}
+
+% Microtype {{{
+% TODO: Read microtype package
+\RequirePackage{microtype}
+\microtypesetup{
+    activate={true,nocompatibility}, % Character protrusions and font expansions
+    disable=false, % Enable!
+    tracking=true, % Does something to smallcaps
+    kerning=true, % Kems
+    spacing=true,
+    factor=1100, % Add 10% to protusions. Default=1000
+    stretch=10, % Font expansion*1000. Default=20
+    shrink=10 % Font unexpansion*1000. Default=20
+}
+\microtypecontext{spacing=nonfrench} % Package complains if this isn't here
+%}}}
+
+% Helpers {{{
+\RequirePackage{etoolbox} %for \ifstrempty{}
+% }}}
+
+% Nice math {{{
+\RequirePackage{amsmath, amssymb, amsthm, amsfonts} %Amsogood
+\RequirePackage{mathtools} % Fixes problems in amsmath
+\RequirePackage{thmtools} % TODO: Checkout for some cool stuff like bordered thms
+\RequirePackage{thm-restate} % Is it not already part of thmtools?
+\RequirePackage{nicefrac}
+\RequirePackage{enumerate}
+% }}}
+
+% Colours! {{{
+\RequirePackage[dvipsnames, table, hyperref, hideerrors]{xcolor} % It's a colourful day!
+\definecolor{LightBlue}{rgb}{0.8, 0.8, 0.8}
+\definecolor{DarkGreen}{rgb}{0.1,0.5,0.1}
+\definecolor{one}{RGB}{51,34,136}
+\definecolor{two}{RGB}{17,119,51}
+\definecolor{three}{RGB}{136,34,85}
+% }}}
+
+% Symbols {{{
+\RequirePackage{pifont} % For dingbats
+\newcommand{\cmark}{ \textcolor{ForestGreen}{\ding{51}} } % Tick
+\newcommand{\xmark}{ \textcolor{red}{\ding{55}} } % X marks the spot
+% }}}
+
+% Hyperref {{{
+\PassOptionsToPackage{pagebackref}{hyperref} % Add page numbers to references in bibliography
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red, % Default=red
+    citecolor=blue, % Default=green
+    filecolor=cyan, % Default=cyan
+    urlcolor=DarkGreen, % Default=magenta
+}
+% Add text to backref
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{
+    \ifcase #1 (Not cited.)
+    \or        (Cited on page~#2)
+    \else      (Cited on pages~#2)
+    \fi
+}
+\urlstyle{same} % Don't use monospaced for urls
+% }}}
+
+% Cleverref {{{
+\RequirePackage[capitalize, noabbrev]{cleveref}
+% }}}

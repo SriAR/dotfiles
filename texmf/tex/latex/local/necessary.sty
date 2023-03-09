@@ -1,0 +1,93 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{necessary}
+
+\usepackage{amssymb,amsthm,amsmath,mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{pifont}
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\cmark}{\textcolor{ForestGreen}{\ding{51}}}%
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}%
+\definecolor{LightBlue}{rgb}{0.8, 0.8, 0.8}
+\definecolor{DarkGreen}{rgb}{0.1,0.5,0.1}
+\usepackage{natbib}
+%\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex}
+%\addbibresource{References.bib}
+\usepackage{enumerate}
+%\usepackage[activate={true,nocompatibility},final,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+%\microtypecontext{spacing=nonfrench}
+\usepackage{caption}
+
+\usepackage{tikz}
+\usetikzlibrary{fit,calc,shapes,decorations.text,arrows,decorations.markings,decorations.pathmorphing,shapes.geometric,positioning,decorations.pathreplacing}
+\tikzset{snake it/.style={decorate, decoration=snake}}
+
+\usepackage{mathrsfs,amsfonts,dsfont}
+\usepackage{array,multirow,bigdelim}
+
+\usepackage[linesnumbered,lined,boxed,ruled,vlined]{algorithm2e}
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetKwInOut{Parameters}{Parameters}
+\SetKwComment{Comment}{$\triangleright$\ }{}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+
+\newenvironment{myquote}[1]%
+  {\list{}{\leftmargin=#1\rightmargin=#1}\item[]}%
+  {\endlist}
+
+\usepackage[labelfont={normalfont,bf},textfont=it]{caption}
+\usepackage{subcaption}
+
+%---------------------------------
+\usepackage[inline]{enumitem}
+%\newtheorem{prop}[theorem]{Proposition}
+
+\usepackage[backref=page]{hyperref}
+
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+    \ifcase #1 (Not cited.)%
+    \or        (Cited on page~#2)%
+    \else      (Cited on pages~#2)%
+    \fi}
+\usepackage[capitalise,noabbrev]{cleveref}
+\Crefname{property}{Property}{Properties}
+\Crefname{example}{Example}{Examples}
+\Crefname{table}{Table}{Tables}
+\Crefname{claim}{Claim}{Claims}
+\Crefname{game}{Game}{Games}
+\Crefname{appendix}{Appendix}{Appendices}
+\renewcommand{\ttdefault}{cmtt}
+\newtheorem{claim}{Claim}
+\newtheorem{game}{Game}
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}{Lemma}%[theorem]
+%\newtheorem{claim}{Claim}%[theorem]
+\newtheorem{corollary}{Corollary}
+\newtheorem{prop}{Proposition}%[theorem]%[section]
+\theoremstyle{definition}
+%\newtheorem{observation}{Observation}
+\newtheorem{property}{Property}
+\newtheorem{definition}{Definition}%[section]
+\newtheorem{assumption}{Assumption}
+\newtheorem{examplex}{Example}
+\newenvironment{example}{\pushQED{\qed}\examplex}{\popQED\endexamplex}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\usepackage{tcolorbox}
+\usepackage{nicematrix}
+\usepackage{tablefootnote}
+
+\NiceMatrixOptions{
+code-for-first-row = \color{black} ,
+code-for-last-row = \color{blue} ,
+code-for-first-col = \color{red} ,
+code-for-last-col = \color{blue}
+}
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}

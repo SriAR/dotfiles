@@ -1,0 +1,247 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{arsricharan}
+
+\usepackage{amssymb,amsthm,amsmath,mathtools}
+\usepackage{thmtools,thm-restate}
+\usepackage{natbib}%[numbers]
+\usepackage{pifont}
+\usepackage[dvipsnames,usenames,svgnames,xcdraw,table]{xcolor}
+\newcommand{\cmark}{\textcolor{ForestGreen}{\ding{51}}}%
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}%
+\definecolor{LightBlue}{rgb}{0.8, 0.8, 0.8}
+\definecolor{DarkGreen}{rgb}{0.1,0.5,0.1}
+\usepackage[backref=page]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=red,%color of internal links
+	urlcolor=DarkGreen,%color of external links
+	citecolor=blue%color of links to bibliography
+}
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+    \ifcase #1 (Not cited.)%
+    \or        (Cited on page~#2)%
+    \else      (Cited on pages~#2)%
+    \fi}
+\usepackage[capitalise,noabbrev]{cleveref}
+\Crefname{property}{Property}{Properties}
+\Crefname{example}{Example}{Examples}
+\Crefname{table}{Table}{Tables}
+
+\usepackage{nicefrac}
+\usepackage{enumerate}
+\usepackage{etoolbox}%for \ifstrempty{}
+% \usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[tt=false]{libertine}
+%\usepackage[activate={true,nocompatibility},final,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+%\microtypecontext{spacing=nonfrench}
+
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage[small]{caption}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\urlstyle{same}
+
+\usepackage{mathrsfs,amsfonts,dsfont,authblk}
+\usepackage{array,multirow,graphicx,bigdelim}
+
+
+\usepackage[linesnumbered,lined,boxed,ruled,vlined]{algorithm2e}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\SetKwInOut{Parameters}{Parameters}
+\SetKwComment{Comment}{$\triangleright$\ }{}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+\newcommand{\algcomment}[1]{\Comment*[r]{\footnotesize{#1}}}
+
+\usepackage{tikz}
+\usetikzlibrary{fit,calc,shapes,decorations.text,arrows,arrows.meta,decorations.markings,decorations.pathmorphing,shapes.geometric,positioning,decorations.pathreplacing}
+\tikzset{snake it/.style={decorate, decoration=snake}}
+
+%define a marking command
+\newcommand*{\tikzmk}[1]{\tikz[remember picture,overlay,] \node (#1) {};\ignorespaces}
+%define a boxing command, argument = colour of box
+\newcommand{\boxit}[1]{\tikz[remember picture,overlay]{\node[yshift=3pt,xshift=4pt,fill=#1,opacity=.25,fit={(A)($(B)+(1.0\linewidth,.8\baselineskip)$)}] {};}\ignorespaces}
+%define some colours according to algorithm parts (or any other method you like)
+%\colorlet{pink}{red!40}
+%\colorlet{blue}{cyan!60}
+\colorlet{mygray}{gray!40}
+
+% The following snippet is from https://tex.stackexchange.com/questions/4891/how-do-i-control-the-spacing-above-a-new-paragraph
+% also https://tex.stackexchange.com/questions/153646/algorithm2e-disabling-line-numbers-for-specific-lines
+\makeatletter
+%\renewcommand{\paragraph}{%
+%  \@startsection{paragraph}{4}%
+%  {\z@}{1.0ex \@plus 1ex \@minus .2ex}{-1em}%
+%  {\normalfont\normalsize\bfseries}%
+%}
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+\makeatother
+
+\newenvironment{myquote}[1]%
+  {\list{}{\leftmargin=#1\rightmargin=#1}\item[]}%
+  {\endlist}
+
+\usepackage[labelfont={normalfont,bf},textfont=it]{caption}
+\usepackage{subcaption}
+
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}{Lemma}%[theorem]
+%\newtheorem{claim}{Claim}%[theorem]
+\newtheorem{corollary}{Corollary}
+\newtheorem{prop}{Proposition}%[theorem]%[section]
+\theoremstyle{definition}
+%\newtheorem{observation}{Observation}
+\newtheorem{property}{Property}
+\newtheorem{definition}{Definition}%[section]
+\newtheorem{assumption}{Assumption}
+\newtheorem{examplex}{Example}
+\newenvironment{example}{\pushQED{\qed}\examplex}{\popQED\endexamplex}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+
+%---------------------------------
+\usepackage{flushend}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\Crefname{claim}{Claim}{Claims}
+\renewcommand{\ttdefault}{cmtt}
+\newtheorem{claim}{Claim}
+%\newtheorem{prop}[theorem]{Proposition}
+
+
+\allowdisplaybreaks
+\renewcommand{\>}{{\succ}}
+\newcommand{\<}{{\prec}}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{min}}\;}
+\newcommand{\Alg}{\textup{\textsc{Alg}}}
+\newcommand{\AlgEQonePO}{\textup{\textsc{Alg-eq\oldstylenums{1}+po}}}
+\newcommand{\AlgEFonePO}{\textup{\textsc{Alg-ef\oldstylenums{1}+po}}}
+\newcommand{\AlgDichotomous}{\textup{\textsc{Alg-Dichotomous}}}
+%\newcommand{\AlgEQx}{\textup{\textsc{Alg-\EQx}}}
+\newcommand{\APX}{\textrm{\textup{APX}}}
+\newcommand{\APXhard}{\textrm{\textup{APX-hard}}}
+%\newcommand{\BuildHierarchy}{\textrm{\textsc{BuildHierarchy}}}
+\newcommand{\bin}{\texttt{\textup{bin}}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\DEQ}[1]{\ifstrempty{#1}{\textrm{\textup{DEQ}}}
+{\textrm{\textup{DEQ{#1}}}}}
+\newcommand{\DEQX}{\textrm{\textup{DEQX}}}
+\newcommand{\DEQXzero}{\textrm{\textup{$\DEQX^{0}$}}}
+\newcommand{\e}{\mathbf{e}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\EF}[1]{\ifstrempty{#1}{\textrm{\textup{EF}}}{\textrm{\textup{EF{#1}}}}}
+\newcommand{\EFoneone}{${\textrm{\textup{EF}}}^1_1$}
+\newcommand{\EFM}{\textrm{\textup{EFM}}}
+\newcommand{\EFX}{\textrm{\textup{EFX}}}
+\newcommand{\EFXzero}{\textrm{\textup{$\EFX^{0}$}}}
+\newcommand{\eps}{{\varepsilon}}
+%\newcommand{\EQ}{\textrm{\textup{EQ}}}
+%\newcommand{\EQone}{\textrm{\textup{EQ1}}}
+\newcommand{\EQ}[1]{\ifstrempty{#1}{\textrm{\textup{EQ}}}
+{\textrm{\textup{EQ{#1}}}}}
+%\newcommand{\EQ}[1]{\textrm{\textup{EQ{$#1$}}}}
+\newcommand{\EQX}{\textrm{\textup{EQX}}}
+\newcommand{\EQXzero}{\textrm{\textup{$\EQX^{0}$}}}
+\newcommand{\Exp}{\textup{Exp}}
+\newcommand{\fPO}{\textrm{\textup{fPO}}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\GEF}[1]{\ifstrempty{#1}{\textrm{\textup{GEF}}}{\textrm{\textup{GEF{#1}}}}}
+\newcommand{\id}{\texttt{\textup{id}}}
+\newcommand{\ind}{\mathds{1}}
+\newcommand{\indeg}{\texttt{\textup{indeg}}}
+\newcommand{\IndSet}{\textsc{Independent Set}}
+\newcommand{\MaxIndSet}{\textup{\textsc{Maximum Independent Set}}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\interleaved}{\texttt{\textup{il}}}
+\newcommand{\level}{{\mathrm{level}}}
+\newcommand{\Leximax}{\textrm{\textup{Leximax}}}
+\newcommand{\Leximin}{\textrm{\textup{Leximin}}}
+%\newcommand{\Leximinpp}{\textrm{\textup{Leximin++}}}
+\newcommand{\M}{{\mathcal{M}}}
+\newcommand{\MaxMinAlloc}{\textrm{\textsc{Max-Min Fair Allocation}}}
+\newcommand{\MaxCut}{\textup{\textsc{MaxCut}}}
+\newcommand{\MBB}{\textrm{\textup{MBB}}}
+\newcommand{\MMS}{\textrm{\textup{MMS}}}
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand{\NP}{\textrm{\textup{NP}}}
+\newcommand{\NPc}{\textrm{\textup{NP-c}}}
+\newcommand{\NPC}{\textrm{\textup{NP-complete}}}
+\newcommand{\NPh}{\textrm{\textup{NP-h}}}
+\newcommand{\NPH}{\textrm{\textup{NP-hard}}}
+\newcommand{\NPhard}{\textup{NP-hard}}
+\newcommand{\NW}{\textrm{\textup{NSW}}}
+\newcommand{\NSW}{\textrm{\textup{NSW}}}
+\renewcommand{\O}{{\mathcal{O}}}
+\newcommand{\OPT}{\textrm{\textup{OPT}}}
+\newcommand{\outdeg}{\texttt{\textup{outdeg}}}
+\newcommand{\p}{\mathbf p}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Poly}{\textup{Poly}}
+\newcommand{\Polytime}{\textup{Poly-time}}
+\newcommand{\PseudoPolytime}{\textup{Pseudopoly-time}}
+\newcommand{\Partition}{\textrm{\textsc{Partition}}}
+\newcommand{\poly}{\textrm{\textup{poly}}}
+\newcommand{\PO}{\textrm{\textup{PO}}}
+\newcommand{\pos}{\texttt{\textup{pos}}}
+\newcommand{\PPAD}{\textup{\textsc{PPAD}}}
+%\newcommand{\Prop}[1]{\textrm{\textup{Prop{#1}}}}
+\newcommand{\Prop}[1]{\ifstrempty{#1}{\textrm{\textup{Prop}}}
+{\textrm{\textup{Prop{#1}}}}}
+\newcommand{\q}{\mathbf q}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\r}{\mathbf r}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\SR}[1]{{\color{red}{SR: }{#1} \color{red}}}
+\newcommand{\SantaClaus}{\textrm{\textsc{Santa Claus}}}
+\newcommand{\supp}{\textup{\textrm{supp}}}
+\newcommand{\ThreePartition}{\textrm{\textsc{3-Partition}}}
+\renewcommand{\u}{\mathbf u}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\VertexCover}{\textrm{\textsc{Vertex Cover}}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\x}{{\mathrm{x}}}
+\newcommand{\X}{\mathrm{X}}
+\newcommand{\y}{{\mathrm{y}}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand*{\tp}{^{\mkern-1.5mu\mathsf{T}}}
+\newcommand*{\pinv}{^{\dagger}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}%
+  {\z@}{1.25ex \@plus 1ex \@minus .2ex}{-1em}%
+  {\normalfont\normalsize\bfseries}%
+}
+\makeatother
+
+\newcommand{\SetSplitting}{\textup{\textsc{Set Splitting}}}
+\newcommand{\F}{\mathcal{F}}
+
+\usepackage{tcolorbox}
+\usepackage{nicematrix}
+\usepackage{tablefootnote}
+
+\NiceMatrixOptions{
+code-for-first-row = \color{black} ,
+code-for-last-row = \color{blue} ,
+code-for-first-col = \color{black} ,
+code-for-last-col = \color{blue}
+}
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
