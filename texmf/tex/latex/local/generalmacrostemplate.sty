@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{custommacros}
+\ProvidesPackage{generalmacros}
 
 % Default math stuff {{{
 \newcommand{\argmin}{\operatorname*{argmin}}
@@ -12,12 +12,11 @@
 \newcommand{\vol}{\operatorname{vol}}
 \newcommand{\sgn}{\operatorname{sgn}}
 \newcommand{\supp}{\operatorname{supp}}
-\newcommand{\tp}{^{\mkern-1.5mu\mathsf{T}}}
+\newcommand{\tp}{^ {\mkern-1.5mu\mathsf{T}} }
 \newcommand{\pinv}{^{\dagger}}
 % }}}
 
 % Default graph stuff {{{
-\newcommand{\deg}{\operatorname{deg}}
 \newcommand{\indeg}{\operatorname{indeg}}
 \newcommand{\outdeg}{\operatorname{outdeg}}
 % }}}
@@ -41,4 +40,8 @@
 \newcommand{\e}{\varepsilon}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
+% }}}
+
+% File imports {{{
+\newcommand{\addtex}[1]{\input{tex/#1}}
 % }}}

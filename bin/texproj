@@ -1,0 +1,38 @@
+#!/bin/bash
+
+mkdir fig
+mkdir tex
+echo 'main.pdf' > .gitignore
+touch 'main.tex'
+touch 'projectmacros.tex'
+cp ~/texmf/tex/latex/local/importstemplate.sty imports.sty
+cp ~/texmf/tex/latex/local/generalmacrostemplate.sty generalmacros.sty
+
+cat << EOF > Ref.bib
+@inproceedings{fakeBib,
+ author = {Author Fake},
+ title = {Fake Title},
+ year = {1985},
+ doi = {10.0000/0000000.0000001},
+ booktitle = {Fake Book},
+}
+EOF
+
+pushd tex
+
+cat << EOF > fullcontents.tex
+\addtex{introduction}
+\addtex{preliminaries}
+EOF
+
+cat << EOF > introduction.tex
+\section{Introduction}
+\label{sec:intro}
+EOF
+
+cat << EOF > preliminaries.tex
+\section{Preliminaries}
+\label{sec:prelim}
+EOF
+
+popd

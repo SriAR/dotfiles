@@ -1,14 +1,19 @@
 snippet texplate "Basic TeX template" b
 \documentclass[11pt,a4paper]{article}
-\usepackage{sri}
+\usepackage{imports}
+\input{projectmacros}
 
 \begin{document}
-\title{$1}
+\title{$0}
 \date{}
 \author[]{\today{}}
 \maketitle
 
-$0
+\addtex{fullcontents}
+
+\bibliographystyle{alpha}
+\def\bibfont{\small}
+\bibliography{Ref}
 
 \end{document}
 endsnippet
