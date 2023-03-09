@@ -2,6 +2,7 @@
 \ProvidesPackage{sri}
 
 %  Formatting {{{
+\RequirePackage[margin=1in]{geometry}
 \RequirePackage[utf8]{inputenc} % Define input encoding
 \RequirePackage[T1]{fontenc} % Easier searching in pdf
 \RequirePackage{libertine,libertinust1math}
@@ -19,6 +20,7 @@
 \RequirePackage{tablefootnote} % Provides \tablefootnote
 \RequirePackage{caption} %TODO: Look at caption options
 \captionsetup{font=small}
+\RequirePackage{subcaption} %TODO: added in without looking
 % }}}
 
 % Microtype {{{
@@ -50,6 +52,46 @@
 \RequirePackage{enumerate}
 % }}}
 
+% TODO: understand newtheorems {{{
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}{Lemma}%[theorem]
+\newtheorem{claim}{Claim}%[theorem]
+\newtheorem{corollary}{Corollary}%[theorem]
+\newtheorem{prop}{Proposition}%[theorem]%[section]
+
+\theoremstyle{definition}
+\newtheorem{observation}{Observation}
+\newtheorem{property}{Property}
+\newtheorem{definition}{Definition}%[section]
+\newtheorem{assumption}{Assumption}
+\newtheorem{examplex}{Example}
+\newenvironment{example}{\pushQED{\qed}\examplex}{\popQED\endexamplex}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+% }}}
+
+% TODO: fix Tables and stuff {{{
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{multirow}
+\RequirePackage{bigdelim}
+% }}}
+
+% TODO: algorithm2e {{{
+\RequirePackage[linesnumbered,lined,boxed,ruled,vlined]{algorithm2e}
+\SetKwInput{KwInput}{Input}
+\SetKwInput{KwOutput}{Output}
+\SetKwInOut{Parameters}{Parameters}
+\SetKwComment{Comment}{$\triangleright$\ }{}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+\newcommand{\algcomment}[1]{\Comment*[r]{ \footnotesize{#1} }}
+% }}}
+
 % Colours! {{{
 \RequirePackage[dvipsnames, table, hyperref, hideerrors]{xcolor} % It's a colourful day!
 \definecolor{LightBlue}{rgb}{0.8, 0.8, 0.8}
@@ -57,6 +99,31 @@
 \definecolor{one}{RGB}{51,34,136}
 \definecolor{two}{RGB}{17,119,51}
 \definecolor{three}{RGB}{136,34,85}
+
+%TODO: read tcolorbox manual
+% Stolen nice box from ashwani
+\RequirePackage[skins]{tcolorbox}
+\newtcolorbox{boxwithtitle}[2][]{%
+	enhanced,
+    colback=white,
+    colframe=black,
+    coltitle=black,
+	sharp corners,
+    boxrule=0.4pt,
+    width=0.8\textwidth,
+	fonttitle=\itshape,
+	attach boxed title to top left={
+        yshift=-0.3\baselineskip-0.4pt,
+        xshift=2mm },
+	boxed title style={
+        tile,
+        size=minimal,
+        left=0.5mm,
+        right=0.5mm,
+		colback=white,
+        before upper=\strut },
+	title=#2, #1
+}
 % }}}
 
 % Symbols {{{
@@ -88,4 +155,8 @@
 
 % Cleverref {{{
 \RequirePackage[capitalize, noabbrev]{cleveref}
+
+% \Crefname{property}{Property}{Properties}
+% \Crefname{example}{Example}{Examples}
+% \Crefname{table}{Table}{Tables}
 % }}}

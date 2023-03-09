@@ -1,34 +1,3 @@
-\Crefname{property}{Property}{Properties}
-\Crefname{example}{Example}{Examples}
-\Crefname{table}{Table}{Tables}
-
-\usepackage[margin=1in]{geometry}
-
-\usepackage{booktabs}
-\usepackage{array,multirow,bigdelim}
-
-\usepackage{tcolorbox}
-\usepackage{nicematrix}
-
-\NiceMatrixOptions{
-code-for-first-row = \color{black} ,
-code-for-last-row = \color{blue} ,
-code-for-first-col = \color{black} ,
-code-for-last-col = \color{blue}
-}
-
-\usepackage[linesnumbered,lined,boxed,ruled,vlined]{algorithm2e}
-\SetKwInput{KwInput}{Input}
-\SetKwInput{KwOutput}{Output}
-\SetKwInOut{Parameters}{Parameters}
-\SetKwComment{Comment}{$\triangleright$\ }{}
-\SetAlFnt{\small}
-\SetAlCapFnt{\small}
-\SetAlCapNameFnt{\small}
-\SetAlCapHSkip{0pt}
-\IncMargin{-\parindent}
-\newcommand{\algcomment}[1]{\Comment*[r]{\footnotesize{#1}}}
-
 \usepackage{tikz}
 \usetikzlibrary{fit,calc,shapes,decorations.text,arrows,arrows.meta,decorations.markings,decorations.pathmorphing,shapes.geometric,positioning,decorations.pathreplacing}
 \tikzset{snake it/.style={decorate, decoration=snake}}
@@ -73,125 +42,39 @@ code-for-last-col = \color{blue}
   {\endlist}
 
 \usepackage[labelfont={normalfont,bf},textfont=it]{caption}
-\usepackage{subcaption}
-
-\newtheorem{theorem}{Theorem}%[section]
-\newtheorem{lemma}{Lemma}%[theorem]
-%\newtheorem{claim}{Claim}%[theorem]
-\newtheorem{corollary}{Corollary}
-\newtheorem{prop}{Proposition}%[theorem]%[section]
-\theoremstyle{definition}
-%\newtheorem{observation}{Observation}
-\newtheorem{property}{Property}
-\newtheorem{definition}{Definition}%[section]
-\newtheorem{assumption}{Assumption}
-\newtheorem{examplex}{Example}
-\newenvironment{example}{\pushQED{\qed}\examplex}{\popQED\endexamplex}
-\theoremstyle{remark}
-\newtheorem{remark}{Remark}
 
 %---------------------------------
 \usepackage[inline]{enumitem}
-\Crefname{claim}{Claim}{Claims}
-\newtheorem{claim}{Claim}
-%\newtheorem{prop}[theorem]{Proposition}
 
 \allowdisplaybreaks
 
-\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
-\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{min}}\;}
-\newcommand{\Alg}{\textup{\textsc{Alg}}}
-\newcommand{\AlgEQonePO}{\textup{\textsc{Alg-eq\oldstylenums{1}+po}}}
-\newcommand{\AlgEFonePO}{\textup{\textsc{Alg-ef\oldstylenums{1}+po}}}
-\newcommand{\AlgDichotomous}{\textup{\textsc{Alg-Dichotomous}}}
-%\newcommand{\AlgEQx}{\textup{\textsc{Alg-\EQx}}}
-\newcommand{\APX}{\textrm{\textup{APX}}}
-\newcommand{\APXhard}{\textrm{\textup{APX-hard}}}
-%\newcommand{\BuildHierarchy}{\textrm{\textsc{BuildHierarchy}}}
-\newcommand{\bin}{\texttt{\textup{bin}}}
-\newcommand{\C}{\mathcal{C}}
-\newcommand{\D}{\mathcal{D}}
-\newcommand{\DEQ}[1]{\ifstrempty{#1}{\textrm{\textup{DEQ}}}
-{\textrm{\textup{DEQ{#1}}}}}
-\newcommand{\DEQX}{\textrm{\textup{DEQX}}}
-\newcommand{\DEQXzero}{\textrm{\textup{$\DEQX^{0}$}}}
-\newcommand{\e}{\mathbf{e}}
-\newcommand{\E}{\mathcal{E}}
-\newcommand{\EF}[1]{\ifstrempty{#1}{\textrm{\textup{EF}}}{\textrm{\textup{EF{#1}}}}}
-\newcommand{\EFoneone}{${\textrm{\textup{EF}}}^1_1$}
-\newcommand{\EFM}{\textrm{\textup{EFM}}}
-\newcommand{\EFX}{\textrm{\textup{EFX}}}
-\newcommand{\EFXzero}{\textrm{\textup{$\EFX^{0}$}}}
-\newcommand{\eps}{{\varepsilon}}
-%\newcommand{\EQ}{\textrm{\textup{EQ}}}
-%\newcommand{\EQone}{\textrm{\textup{EQ1}}}
-\newcommand{\EQ}[1]{\ifstrempty{#1}{\textrm{\textup{EQ}}}
-{\textrm{\textup{EQ{#1}}}}}
-%\newcommand{\EQ}[1]{\textrm{\textup{EQ{$#1$}}}}
-\newcommand{\EQX}{\textrm{\textup{EQX}}}
-\newcommand{\EQXzero}{\textrm{\textup{$\EQX^{0}$}}}
 \newcommand{\Exp}{\textup{Exp}}
-\newcommand{\fPO}{\textrm{\textup{fPO}}}
-\newcommand{\G}{\mathcal{G}}
-\newcommand{\GEF}[1]{\ifstrempty{#1}{\textrm{\textup{GEF}}}{\textrm{\textup{GEF{#1}}}}}
 \newcommand{\id}{\texttt{\textup{id}}}
 \newcommand{\ind}{\mathds{1}}
-\newcommand{\indeg}{\texttt{\textup{indeg}}}
-\newcommand{\IndSet}{\textsc{Independent Set}}
-\newcommand{\MaxIndSet}{\textup{\textsc{Maximum Independent Set}}}
 \newcommand{\I}{\mathcal{I}}
-\newcommand{\interleaved}{\texttt{\textup{il}}}
 \newcommand{\level}{{\mathrm{level}}}
-\newcommand{\Leximax}{\textrm{\textup{Leximax}}}
-\newcommand{\Leximin}{\textrm{\textup{Leximin}}}
-%\newcommand{\Leximinpp}{\textrm{\textup{Leximin++}}}
 \newcommand{\M}{{\mathcal{M}}}
-\newcommand{\MaxMinAlloc}{\textrm{\textsc{Max-Min Fair Allocation}}}
 \newcommand{\MaxCut}{\textup{\textsc{MaxCut}}}
 \newcommand{\MBB}{\textrm{\textup{MBB}}}
 \newcommand{\MMS}{\textrm{\textup{MMS}}}
 \newcommand{\N}{{\mathbb{N}}}
-\newcommand\norm[1]{\left\lVert#1\right\rVert}
 \newcommand{\NP}{\textrm{\textup{NP}}}
 \newcommand{\NPc}{\textrm{\textup{NP-c}}}
 \newcommand{\NPC}{\textrm{\textup{NP-complete}}}
 \newcommand{\NPh}{\textrm{\textup{NP-h}}}
 \newcommand{\NPH}{\textrm{\textup{NP-hard}}}
 \newcommand{\NPhard}{\textup{NP-hard}}
-\newcommand{\NW}{\textrm{\textup{NSW}}}
-\newcommand{\NSW}{\textrm{\textup{NSW}}}
 \renewcommand{\O}{{\mathcal{O}}}
 \newcommand{\OPT}{\textrm{\textup{OPT}}}
-\newcommand{\outdeg}{\texttt{\textup{outdeg}}}
-\newcommand{\p}{\mathbf p}
-\renewcommand{\P}{\mathcal{P}}
-\newcommand{\Poly}{\textup{Poly}}
-\newcommand{\Polytime}{\textup{Poly-time}}
-\newcommand{\PseudoPolytime}{\textup{Pseudopoly-time}}
-\newcommand{\Partition}{\textrm{\textsc{Partition}}}
-\newcommand{\poly}{\textrm{\textup{poly}}}
-\newcommand{\PO}{\textrm{\textup{PO}}}
-\newcommand{\pos}{\texttt{\textup{pos}}}
-\newcommand{\PPAD}{\textup{\textsc{PPAD}}}
 \newcommand{\Prop}[1]{\ifstrempty{#1}{\textrm{\textup{Prop}}}
 {\textrm{\textup{Prop{#1}}}}}
-\newcommand{\q}{\mathbf q}
-\newcommand{\Q}{\mathbb{Q}}
-\renewcommand{\r}{\mathbf r}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\SantaClaus}{\textrm{\textsc{Santa Claus}}}
-\newcommand{\supp}{\textup{\textrm{supp}}}
-\newcommand{\ThreePartition}{\textrm{\textsc{3-Partition}}}
-\renewcommand{\u}{\mathbf u}
-\newcommand{\V}{\mathcal{V}}
-\newcommand{\VertexCover}{\textrm{\textsc{Vertex Cover}}}
-\newcommand{\W}{\mathcal{W}}
-\newcommand{\x}{{\mathrm{x}}}
-\newcommand{\X}{\mathrm{X}}
-\newcommand{\y}{{\mathrm{y}}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand*{\tp}{^{\mkern-1.5mu\mathsf{T}}}
-\newcommand*{\pinv}{^{\dagger}}
-\newcommand{\SetSplitting}{\textup{\textsc{Set Splitting}}}
-\newcommand{\F}{\mathcal{F}}
+
+\usepackage{nicematrix}
+
+\NiceMatrixOptions{
+code-for-first-row = \color{black} ,
+code-for-last-row = \color{blue} ,
+code-for-first-col = \color{black} ,
+code-for-last-col = \color{blue}
+}
 
