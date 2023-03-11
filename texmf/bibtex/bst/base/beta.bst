@@ -51,7 +51,7 @@ STRINGS { s t }
 FUNCTION {output.nonnull}
 { 's :=
   output.state mid.sentence =
-    { ", " * write$ }
+    { " " * write$ }
     { output.state after.block =
         { add.period$ write$
           newline$
@@ -392,8 +392,8 @@ FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-        { "pages" pages n.dashify tie.or.space.connect }
-        { "page" pages tie.or.space.connect }
+        { "{p.}" pages n.dashify tie.or.space.connect }
+        { "{p.}" pages tie.or.space.connect }
       if$
     }
   if$
@@ -566,9 +566,9 @@ FUNCTION {article}
   format.title "title" output.check
   new.block
   crossref missing$
-    { journal emphasize "journal" output.check
+    { journal emphasize "journal" output.check "," *
+      format.date "year" output.check "," *
       format.vol.num.pages output
-      format.date "year" output.check
       arxiv missing$
       { }
       {
@@ -702,12 +702,12 @@ FUNCTION {inproceedings}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
+      format.date "year" output.check "," *
       format.pages output
       address empty$
         { organization publisher new.sentence.checkb
           organization output
           publisher output
-          format.date "year" output.check
           arxiv missing$
           { }
           {
