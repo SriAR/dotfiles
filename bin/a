@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo 'Syncing workingpapers'
+python3.11 /home/cs/dotfiles/zinc/writeupsync.py
+
+echo 'Syncing pubs'
+pushd /home/cs/pubs
+git pull
+popd
+
+echo 'Syncing Study'
+/home/cs/dotfiles/bin/zinc
+
