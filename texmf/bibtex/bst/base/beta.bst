@@ -10,6 +10,7 @@
 
 ENTRY
   { address
+    arxiv
     author
     booktitle
     chapter
@@ -233,18 +234,27 @@ FUNCTION {format.editors}
   if$
 }
 
+FUNCTION {format.arxiv}
+{
+    arxiv empty$
+    { "" }
+    {
+        "\arxiv{" arxiv "}" * *
+    }
+    if$
+}
+
 FUNCTION {format.title}
 { title empty$
     { "" }
     {
 
+        title "t" change.case$
         doi empty$
+        { }
         {
-            title "t" change.case$
-        }
-        {
-            title "t" change.case$
-            "\href{https://doi.org/" doi "}{" title "}" * * * * swap$ pop$
+            pop$
+            "\href{https://doi.org/" doi "}{" title "}" * * * *
         }
         if$
     }
@@ -559,6 +569,13 @@ FUNCTION {article}
     { journal emphasize "journal" output.check
       format.vol.num.pages output
       format.date "year" output.check
+      arxiv missing$
+      { }
+      {
+          new.block
+          format.arxiv output
+      }
+      if$
     }
     { format.article.crossref output.nonnull
       format.pages output
@@ -691,6 +708,13 @@ FUNCTION {inproceedings}
           organization output
           publisher output
           format.date "year" output.check
+          arxiv missing$
+          { }
+          {
+              new.block
+              format.arxiv output
+          }
+          if$
         }
         { address output.nonnull
           format.date "year" output.check
