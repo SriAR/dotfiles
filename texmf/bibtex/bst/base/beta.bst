@@ -237,8 +237,16 @@ FUNCTION {format.title}
 { title empty$
     { "" }
     {
-        title "t" change.case$
-        "\href{https://doi.org/" doi "}{" title "}" * * * * swap$ pop$
+
+        doi empty$
+        {
+            title "t" change.case$
+        }
+        {
+            title "t" change.case$
+            "\href{https://doi.org/" doi "}{" title "}" * * * * swap$ pop$
+        }
+        if$
     }
   if$
 }
