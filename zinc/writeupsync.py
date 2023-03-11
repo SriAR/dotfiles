@@ -1,3 +1,9 @@
+import asyncio
+def background(f):
+    def wrapped(*args, **kwargs):
+        return asyncio.get_event_loop().run_in_executor(None, f, *args, **kwargs)
+    return wrapped
+
 import time as t
 def TimeTakenDecorator(func):
     def wrapper(*args,**kwargs):
@@ -38,6 +44,7 @@ class Project:
     #  @TimeTakenDecorator
     #  This is extremely slow
     #  Takes up to 1.5 seconds for each paper
+    @background
     def pull(self):
         self.repo.remotes.origin.pull()
 
@@ -104,6 +111,7 @@ class Projects:
                 continue
             project = self.rawtoml[key]
             self.archived.append(Project(self.rootfolder, project))
+
 
     def update(self, scope='ongoing'):
         for project in self.ongoing:
