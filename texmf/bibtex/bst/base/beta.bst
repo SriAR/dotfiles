@@ -31,6 +31,7 @@ ENTRY
     series
     title
     type
+    url
     volume
     year
   }
@@ -251,7 +252,15 @@ FUNCTION {format.title}
 
         title "t" change.case$
         doi empty$
-        { }
+        {
+          url empty$
+          { }
+          {
+              pop$
+            "\href{" url "}{" title "}" * * * *
+          }
+          if$
+        }
         {
             pop$
             "\href{https://doi.org/" doi "}{" title "}" * * * *
