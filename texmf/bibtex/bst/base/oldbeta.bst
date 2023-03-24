@@ -10,15 +10,13 @@
 
 ENTRY
   { address
+    arxiv
     author
     booktitle
     chapter
     doi
     edition
     editor
-    eprinttype
-    eprinturl
-    eprint
     howpublished
     institution
     journal
@@ -54,7 +52,7 @@ STRINGS { s t }
 FUNCTION {output.nonnull}
 { 's :=
   output.state mid.sentence =
-    { ", " * write$ }
+    { " " * write$ }
     { output.state after.block =
         { add.period$ write$
           newline$
@@ -237,19 +235,12 @@ FUNCTION {format.editors}
   if$
 }
 
-FUNCTION {format.eprint}
+FUNCTION {format.arxiv}
 {
-    eprinturl empty$
+    arxiv empty$
     { "" }
     {
-        eprinttype empty$
-        {
-          "\href{eprint}{" eprinturl "}" * *
-        }
-        {
-          "\href{" eprinttype "}{" eprinturl "}" * * * *
-        }
-        if$
+        "\arxiv{" arxiv "}" * *
     }
     if$
 }
@@ -584,14 +575,14 @@ FUNCTION {article}
   format.title "title" output.check
   new.block
   crossref missing$
-    { journal emphasize "journal" output.check
+    { journal emphasize "journal" output.check "," *
+      format.date "year" output.check "," *
       format.vol.num.pages output
-      format.date "year" output.check
-      eprinturl missing$
+      arxiv missing$
       { }
       {
           new.block
-          format.eprint output
+          format.arxiv output
       }
       if$
     }
@@ -720,17 +711,17 @@ FUNCTION {inproceedings}
     { format.in.ed.booktitle "booktitle" output.check
       format.bvolume output
       format.number.series output
+      format.date "year" output.check "," *
       format.pages output
       address empty$
         { organization publisher new.sentence.checkb
           organization output
           publisher output
-          format.date "year" output.check
-          eprinturl missing$
+          arxiv missing$
           { }
           {
               new.block
-              format.eprint output
+              format.arxiv output
           }
           if$
         }
