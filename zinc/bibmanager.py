@@ -1,64 +1,68 @@
 import bibtexparser
-from bibtexparser.bparser import BibTexParser
-from bibtexparser.customization import homogenize_latex_encoding
-
 from pathlib import Path
 import json
 
 def pp(dic):
     return json.dumps(dic,indent=4)
 
-class BibEntry:
-
-    def __init__(self, bibfile: Path):
-        self.bibfile = bibfile
-        self.asdict = self.load_entries()
-        self.type = self.asdict['ENTRYTYPE']
-        self.fixbib()
-
-    def load_entries(self):
+def read_bib_file(bibfile: Path, customparser=False):
+    if customparser:
+        from bibtexparser.bparser import BibTexParser
+        from bibtexparser.customization import homogenize_latex_encoding
         parser = BibTexParser()
         parser.customization = homogenize_latex_encoding
-        with self.bibfile.open() as fp:
-            entry = bibtexparser.load(fp, parser=parser).entries[0]
-        return entry
+        with bibfile.open() as fp:
+            entries = bibtexparser.load(fp, parser=parser).entries
+    else:
+        with bibfile.open() as fp:
+            entries = bibtexparser.load(fp).entries
+    return entries
 
-    def fixbib(self):
-        if self.type == 'inproceedings':
-            self.fixconference()
-        elif self.type == 'article':
-            self.fixjournal()
+class BibEntry:
 
-    def fixconference(self):
-        title = self.fixtitle(self.asdict['title'])
-        booktitle = self.fixconfname(self.asdict['booktitle'])
+    def __init__(self, inputbib: dict):
+        self.inputbib = inputbib
+        self.type = inputbib['ENTRYTYPE']
+        self.id = inputbib['ID']
+        self.authors = self.fixauthors(inputbib['author'])
+        self.title = self.fixtitle(inputbib['title'])
+        self.year = inputbib['year']
 
-        newdict = {
-                'title': title,
-                'booktitle': booktitle,
-                }
-
-        for entry in ['ID','ENTRYTYPE','author','year','pages','url','doi']:
-            if entry in self.asdict.keys():
-                newdict[entry] = self.asdict[entry]
-        self.asdict = newdict
-
-        #  self.asdict = {
-        #          'ID': self.asdict['ID'],
-        #          'ENTRYTYPE': self.asdict['ENTRYTYPE'],
-        #          'author': self.asdict['author'],
-        #          'title': title,
-        #          'booktitle': booktitle,
-        #          'year': self.asdict['year'],
-        #          'pages': self.asdict['pages'],
-        #          'url': self.asdict['url'],
-        #          'doi': self.asdict['doi'],
-        #          }
+    def fixauthors(self, authors):
+        authorlist = authors.split('and')
+        authorlist = list(map(lambda x: x.strip(), authorlist))
+        return ' and '.join(authorlist)
 
     def fixtitle(self, title):
         return title.replace('\n', ' ')
 
-    def fixconfname(self, confname):
+    def makebib(self):
+        return {
+                'ENTRYTYPE': self.type,
+                'ID': self.id,
+                'author': self.authors,
+                'title': self.title,
+                'year': self.year
+                }
+
+    def __repr__(self):
+        return pp(self.makebib())
+
+class Conference(BibEntry):
+
+    def __init__(self, inputbib: dict):
+        super(Conference, self).__init__(inputbib)
+        self.conference_init()
+
+    def conference_init(self):
+        self.conference = self.fixconference(self.inputbib['booktitle'])
+        for key in ['pages', 'url', 'doi']:
+            try:
+                setattr(self, key, self.inputbib[key])
+            except:
+                pass
+
+    def fixconference(self, confname):
         confname = ''.join(filter(lambda x: str.isalnum(x), confname)).lower()
         confdict = {
                 'symposiumondiscretealgorithms':
@@ -67,6 +71,10 @@ class BibEntry:
                 'Symposium on Theory of Computing (STOC)',
                 'foundationsofcomputerscience':
                 'Foundations of Computer Science (FOCS)',
+                'automatalanguagesandprogramming':
+                'International Colloqium on Automata, Languages, and Programming (ICALP)',
+                'europeansymposiumonalgorithms':
+                'European Symposium on Algorithms (ESA)',
                 }
 
         for key in confdict.keys():
@@ -75,13 +83,23 @@ class BibEntry:
         else:
             return confname
 
-    def fixjournal(self):
-        pass
+    def makebib(self):
+        bibtoreturn = super(Conference, self).makebib()
+        bibtoreturn['booktitle'] = self.conference
+        for key in ['pages', 'url', 'doi']:
+            try:
+                bibtoreturn[key] = getattr(self, key)
+            except:
+                pass
+        return bibtoreturn
 
-    def __repr__(self):
-        return pp(self.asdict)
+def addcorrectbib(entry):
+    if entry['ENTRYTYPE'] == 'inproceedings':
+        return Conference(entry)
+    else:
+        return BibEntry(entry)
 
-class Bibs:
+class BibDir:
 
     def __init__(self, bibdirstr: str):
         self.bibdir = Path(bibdirstr)
@@ -94,7 +112,8 @@ class Bibs:
     def extract_bibs(self):
         biblist = []
         for bibfile in self.bibdir.iterdir():
-            biblist.append(BibEntry(bibfile))
+            entry = read_bib_file(bibfile)[0]
+            biblist.append(addcorrectbib(entry))
         return biblist
 
     def __repr__(self):
@@ -104,16 +123,16 @@ class GetBib:
 
     def __init__(self, query: str):
         import requests
-        #  response = requests.get('https://dblp.org/search/publ/api?q='+query+'&format=json').json()
-        #  allhits = response['result']['hits']['hit']
-        #  wantedone = allhits[0]['info']['key']
-        #  print(pp(wantedone))
+        response = requests.get('https://dblp.org/search/publ/api?q='+query+'&format=json').json()
+        allhits = response['result']['hits']['hit']
+        wantedone = allhits[0]['info']['key']
+        print(pp(wantedone))
         #  wantedone='conf/soda/ChiplunkarHKV23'
-        #  bibresponse = requests.get('https://dblp.org/rec/'+wantedone+'.bib')
-        #  with open('/tmp/asdada', 'w') as fp:
-        #      fp.write(bibresponse.text)
-        #  print(bibresponse.text)
-        parsed = BibEntry(Path('/tmp/asdada'))
+        bibresponse = requests.get('https://dblp.org/rec/'+wantedone+'.bib')
+        with open('/tmp/asdada', 'w') as fp:
+            fp.write(bibresponse.text)
+        print(bibresponse.text)
+        parsed = addcorrectbib(bibtexparser.loads(bibresponse.text).entries[0])
         print(parsed)
 
 
@@ -121,5 +140,5 @@ x = GetBib('Online Min Max Paging')
 
 #  bibdir = '/tmp/bib'
 #
-#  fullbib = Bibs(bibdir)
+#  fullbib = BibDir(bibdir)
 #  print(fullbib)
