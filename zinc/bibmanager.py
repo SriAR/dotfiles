@@ -1,4 +1,7 @@
 import bibtexparser
+from bibtexparser.bparser import BibTexParser
+from bibtexparser.customization import homogenize_latex_encoding
+
 from pathlib import Path
 import json
 
@@ -14,8 +17,10 @@ class BibEntry:
         self.fixbib()
 
     def load_entries(self):
+        parser = BibTexParser()
+        parser.customization = homogenize_latex_encoding
         with self.bibfile.open() as fp:
-            entry = bibtexparser.load(fp).entries[0]
+            entry = bibtexparser.load(fp, parser=parser).entries[0]
         return entry
 
     def fixbib(self):
@@ -95,8 +100,26 @@ class Bibs:
     def __repr__(self):
         return '\n'.join([repr(x) for x in self.bibs])
 
+class GetBib:
 
-bibdir = '/tmp/bib'
+    def __init__(self, query: str):
+        import requests
+        #  response = requests.get('https://dblp.org/search/publ/api?q='+query+'&format=json').json()
+        #  allhits = response['result']['hits']['hit']
+        #  wantedone = allhits[0]['info']['key']
+        #  print(pp(wantedone))
+        #  wantedone='conf/soda/ChiplunkarHKV23'
+        #  bibresponse = requests.get('https://dblp.org/rec/'+wantedone+'.bib')
+        #  with open('/tmp/asdada', 'w') as fp:
+        #      fp.write(bibresponse.text)
+        #  print(bibresponse.text)
+        parsed = BibEntry(Path('/tmp/asdada'))
+        print(parsed)
 
-fullbib = Bibs(bibdir)
-print(fullbib)
+
+x = GetBib('Online Min Max Paging')
+
+#  bibdir = '/tmp/bib'
+#
+#  fullbib = Bibs(bibdir)
+#  print(fullbib)
