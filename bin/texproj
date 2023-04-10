@@ -18,11 +18,9 @@ cat << EOF > Ref.bib
 }
 EOF
 
-pushd tex
-
 cat << EOF > fullcontents.tex
-\addtex{introduction}
-\addtex{preliminaries}
+\input{introduction}
+\input{preliminaries}
 EOF
 
 cat << EOF > introduction.tex
@@ -34,5 +32,3 @@ cat << EOF > preliminaries.tex
 \section{Preliminaries}
 \label{sec:prelim}
 EOF
-
-popd
