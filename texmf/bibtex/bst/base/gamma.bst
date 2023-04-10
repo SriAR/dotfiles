@@ -259,20 +259,20 @@ FUNCTION {format.title}
     { "" }
     {
 
-        title "t" change.case$
+        "\enquote{" title "t" change.case$ * "}" *
         doi empty$
         {
           url empty$
           { }
           {
-              pop$
-            "\href{" url "}{" title "}" * * * *
+            pop$
+            "\href{" url "}{" "\enquote{" title "t" change.case$ * "}" * "}" * * * *
           }
           if$
         }
         {
             pop$
-            "\href{https://doi.org/" doi "}{" title "}" * * * *
+            "\href{https://doi.org/" doi "}{" "\enquote{" title "t" change.case$ * "}" * "}" * * * *
         }
         if$
     }
