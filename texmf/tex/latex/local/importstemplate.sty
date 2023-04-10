@@ -1,29 +1,30 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{imports}
 
-%  Formatting {{{
+%  Formatting
 \RequirePackage[margin=1in]{geometry}
 \RequirePackage[utf8]{inputenc} % Define input encoding
 \RequirePackage[T1]{fontenc} % Easier searching in pdf
-\RequirePackage{libertine,libertinust1math}
+\RequirePackage{libertine}
 % \RequirePackage{lmodern}
 \RequirePackage[scr=rsfs]{mathalpha} % TODO: Look at other fonts from here
-\RequirePackage{natbib} %TODO: better bib management holy shit this is hell
-% }}}
+\RequirePackage[numbers]{natbib} %TODO: better bib management holy shit this is hell
 
-% Images and so on {{{
+
+% Images and so on
 \RequirePackage{graphicx}
-% }}}
 
-% Page Layout {{{
+
+% Page Layout
 \RequirePackage{authblk} %TODO: Macro for authblk
 \RequirePackage{tablefootnote} % Provides \tablefootnote
 \RequirePackage{caption} %TODO: Look at caption options
 \captionsetup{font=small}
 \RequirePackage{subcaption} %TODO: added in without looking
-% }}}
+\RequirePackage{csquotes}
 
-% Microtype {{{
+
+% Microtype
 % TODO: Read microtype package
 \RequirePackage{microtype}
 \microtypesetup{
@@ -37,22 +38,23 @@
     shrink=10 % Font unexpansion*1000. Default=20
 }
 \microtypecontext{spacing=nonfrench} % Package complains if this isn't here
-%}}}
+%
 
-% Helpers {{{
+% Helpers
 \RequirePackage{etoolbox} %for \ifstrempty{}
-% }}}
 
-% Nice math {{{
+
+% Nice math
 \RequirePackage{amsmath, amssymb, amsthm, amsfonts} %Amsogood
 \RequirePackage{mathtools} % Fixes problems in amsmath
 \RequirePackage{thmtools} % TODO: Checkout for some cool stuff like bordered thms
 \RequirePackage{thm-restate} % Is it not already part of thmtools?
 \RequirePackage{nicefrac}
-\RequirePackage{enumerate}
-% }}}
+\RequirePackage{enumitem}
+% \RequirePackage{enumerate}
 
-% TODO: understand newtheorems {{{
+
+% TODO: understand newtheorems
 \newtheorem{theorem}{Theorem}%[section]
 \newtheorem{lemma}{Lemma}%[theorem]
 \newtheorem{claim}{Claim}%[theorem]
@@ -69,16 +71,16 @@
 
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
-% }}}
 
-% TODO: fix Tables and stuff {{{
+
+% TODO: fix Tables and stuff
 \RequirePackage{booktabs}
 \RequirePackage{array}
 \RequirePackage{multirow}
 \RequirePackage{bigdelim}
-% }}}
 
-% TODO: algorithm2e {{{
+
+% TODO: algorithm2e
 \RequirePackage[linesnumbered,lined,boxed,ruled,vlined]{algorithm2e}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
@@ -90,9 +92,9 @@
 \SetAlCapHSkip{0pt}
 \IncMargin{-\parindent}
 \newcommand{\algcomment}[1]{\Comment*[r]{ \footnotesize{#1} }}
-% }}}
 
-% Colours! {{{
+
+% Colours!
 \RequirePackage[dvipsnames, table, hyperref, hideerrors]{xcolor} % It's a colourful day!
 \definecolor{LightBlue}{rgb}{0.8, 0.8, 0.8}
 \definecolor{DarkGreen}{rgb}{0.1,0.5,0.1}
@@ -129,15 +131,16 @@
 \newcommand{\etwo}[1]{\mathcolor{two}{#1}}
 \newcommand{\ethree}[1]{\mathcolor{three}{#1}}
 
-% }}}
 
-% Symbols {{{
+
+% Symbols
 \RequirePackage{pifont} % For dingbats
 \newcommand{\cmark}{ \textcolor{ForestGreen}{\ding{51}} } % Tick
 \newcommand{\xmark}{ \textcolor{red}{\ding{55}} } % X marks the spot
-% }}}
+\newcommand{\pencil}{ \textcolor{purple}{\ding{46}} } % pencil
 
-% Hyperref {{{
+
+% Hyperref
 \PassOptionsToPackage{pagebackref}{hyperref} % Add page numbers to references in bibliography
 \RequirePackage{hyperref}
 \hypersetup{
@@ -145,7 +148,7 @@
     linkcolor=red, % Default=red
     citecolor=blue, % Default=green
     filecolor=cyan, % Default=cyan
-    urlcolor=DarkGreen, % Default=magenta
+    urlcolor=blue, % Default=magenta
 }
 % Add text to backref
 \renewcommand*{\backref}[1]{}
@@ -156,17 +159,17 @@
     \fi
 }
 \urlstyle{same} % Don't use monospaced for urls
-% }}}
 
-% Cleverref {{{
+
+% Cleverref
 \RequirePackage[capitalize, noabbrev]{cleveref}
 
 % \Crefname{property}{Property}{Properties}
 % \Crefname{example}{Example}{Examples}
 % \Crefname{table}{Table}{Tables}
-% }}}
 
-% For beta.bst {{{
+
+% For beta.bst
 \definecolor{arXivcolor}{HTML}{0D3B66}
 \newcommand{\arxiv}[1]{ \href{https://arxiv.org/abs/#1}{\color{arXivcolor}{arXiv}} }
-% }}}
+
