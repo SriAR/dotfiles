@@ -24,21 +24,11 @@
 % }}}
 
 % Function to replace delimiters {{{
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
-\newcommand{\inprod}[2]{\left\langle#1, #2\right\rangle}
-\newcommand{\brac}[1]{\left(#1\right)}
+\DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{#1}
+\DeclarePairedDelimiterX{\inprod}[2]{\langle}{\rangle}{#1, #2}
+\DeclarePairedDelimiterX{\paren}[1]{(}{)}{#1}
+\DeclarePairedDelimiterX{\curly}[1]{\{}{\}}{#1}
 \newcommand{\infnorm}[1]{\norm{#1}_{\infty}}
-% }}}
-
-% Common accented words {{{
-\def\naive{na\"{\i}ve}
-\def\Naive{Na\"{\i}ve}
-\def\naively{na\"{\i}vely}
-\def\Naively{Na\"{\i}vely}
-\def\Erdos{Erd\H{o}s}
-\def\Frechet{Fr\'echet}
-\def\Lovasz{Lov\'asz}
-\def\Laszlo{L\'aszl\'o}
 % }}}
 
 % Single letter {{{
@@ -47,6 +37,6 @@
 \newcommand{\Q}{\mathbb{Q}}
 % }}}
 
-% File imports {{{
-\newcommand{\addtex}[1]{\input{tex/#1}}
+% Misc {{{
+\newcommand{\one}{\mathbbb{1}}
 % }}}
