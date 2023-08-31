@@ -1,0 +1,210 @@
+\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{xcolor}
+\usepackage{varwidth}
+\usepackage{array}
+\usepackage[top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[pdftex,bookmarks=true,bookmarksdepth=4]{hyperref}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+\usepackage{tikz}
+\usepackage{stackengine}
+\usepackage{appendix}
+\usepackage{mathrsfs}
+\usepackage{eso-pic}
+\usepackage{titlesec, blindtext, color}
+\usepackage[T1]{fontenc}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage[nottoc]{tocbibind}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usetikzlibrary{positioning,backgrounds,decorations.markings}
+\usepackage{marginnote}
+\usepackage{extarrows}
+\usepackage{quiver}
+\usepackage{setspace}
+\usepackage{schemata}
+\usepackage{mathtools}
+\usepackage{changepage}
+\usepackage{bbm}
+
+\newcommand{\tocseparator}{%
+	\addtocontents{toc}
+	{\protect\addvspace{10pt}%
+		\hrule
+		\protect\addvspace{5pt}%
+	}
+}
+\setcounter{tocdepth}{2}%%%%%%%%%%%%%%% TOC Depth
+\preto\backmatter{\tocseparator}
+\RequirePackage{fix-cm}
+{
+\definecolor{bluegreen}{rgb}{-.2,.4,0.6}
+\makeatletter
+\special{papersize=\the\paperwidth,\the\paperheight}
+% \def\@seccntformat#1{\csname the#1\endcsname\quad}% Default
+\def\@seccntformat#1{\csname the#1\endcsname\hspace*{0.25em}$|$\hspace*{0.25em}}
+\makeatother
+\definecolor{gray55}{gray}{0.55}
+\newcommand{\hsp}{\hspace{2.5pt}}
+\titleformat{\chapter}[hang]{\LARGE\bfseries}{\thechapter\hsp\textcolor{gray55}{|}\hsp}{0pt}{\LARGE\bfseries}
+\titleformat*{\section}{\large\bfseries\scshape}
+\titleformat*{\subsection}{\bfseries\scshape}
+\titleformat*{\subsubsection}{\bfseries\scshape}
+\titlespacing*{\section}{0pt}{15pt}{15pt}
+\titlespacing*{\subsection}{0pt}{12.5pt}{12.5pt}
+\geometry{
+top=20mm,
+total={155mm,240mm}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bluegreen,
+    citecolor=bluegreen,
+    filecolor=magenta,
+    urlcolor=black,
+    bookmarks=true,}
+\tikzset{>=stealth}
+\newcommand\BackgroundPic{
+	\put(0,0){
+		\parbox[b][\paperheight]{\paperwidth}{%
+			\vfill
+			\centering
+			\includegraphics[width=\paperwidth,height=\paperheight]{BackGroundPDF.pdf}
+			\vfill}}}
+\newcommand\fauxsc[1]{\fauxschelper#1 \relax\relax}
+\def\fauxschelper#1 #2\relax{%
+	\fauxschelphelp#1\relax\relax%
+	\if\relax#2\relax\else\ \fauxschelper#2\relax\fi%
+}
+\def\Hscale{.85}\def\Vscale{.72}\def\Cscale{1.10}
+\def\fauxschelphelp#1#2\relax{%
+	\ifnum`#1>``\ifnum`#1<`\{\scalebox{\Hscale}[\Vscale]{\uppercase{#1}}\else%
+	\scalebox{\Cscale}[1]{#1}\fi\else\scalebox{\Cscale}[1]{#1}\fi%
+	\ifx\relax#2\relax\else\fauxschelphelp#2\relax\fi}
+\def\theLetterSpace{0.5pt}
+\def\theWordSpace{2\LocalLetterSpace}
+\newlength\LocalLetterSpace
+\newcommand\spaceout[2][\theLetterSpace]{%
+	\setlength\LocalLetterSpace{#1}\expandafter\spaceouthelpA#2 \relax\relax}
+\def\spaceouthelpA#1 #2\relax{%
+	\spaceouthelpB#1\relax\relax%
+	\ifx\relax#2\else\ \kern\theWordSpace\spaceouthelpA#2\relax\fi
+}
+\def\spaceouthelpB#1#2\relax{%
+	#1%
+	\ifx\relax#2\else
+	\kern\LocalLetterSpace\spaceouthelpB#2\relax%
+	\fi
+}
+\renewcommand{\contentsname}{\hfill\large\textsc{Contents}}
+\newtheorem{theorem}{{\textsc{Theorem}}}[section]
+\newtheorem{lemma}[theorem]{\textsc{Lemma}}
+\newtheorem{proposition}[theorem]{\textsc{Proposition}}
+\newtheorem{corollary}[theorem]{\textsc{Corollary}}
+\newtheorem*{postulate}{\textsc{Postulate}}
+\theoremstyle{definition}
+\newtheorem{definition}{\textsc{Definition}}[section]
+\newtheorem{remark}{{\textsc{Remark}}}[section]
+\renewcommand\proof{\begin{center}
+		{\bfseries{\textsc{Proof}}}
+\end{center}}
+\DeclareMathOperator*{\arginf}{arg\,inf}
+\DeclareMathOperator*{\argsup}{arg\,sup}
+\DeclareMathOperator*{\coker}{coker}
+\DeclareMathOperator*{\coim}{coim}
+\DeclareMathOperator*{\germ}{germ}
+\DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator*{\Sh}{Sh}
+\DeclareMathOperator*{\PSh}{PSh}
+\DeclareMathOperator*{\Hom}{Hom}
+\DeclareMathOperator*{\Lan}{Lan}
+\DeclareMathOperator*{\Ran}{Ran}
+\DeclareMathOperator*{\IHom}{{\mathcal{H}}\emph{om}}
+\DeclareMathOperator*{\Ob}{Ob}
+\DeclareMathOperator*{\Sets}{\mathbf{Sets}}
+\DeclareMathOperator*{\Nat}{Nat}
+\DeclareMathOperator*{\Id}{\textstyle\mathbbm{1}}
+\DeclareMathOperator*{\op}{{op}}
+\newcommand{\NN}{\mathbb{N}}          % natural naumbers
+\newcommand{\ZZ}{\mathbb{Z}} %{\mathbbmss{Z}}     % Menge der ganzen Zahlen
+\newcommand{\RR}{\mathbb{R}}           % real  numbers
+\newcommand{\CC}{\mathbb{C}}     
+\newcommand{\II}{\mathbb{I}}       
+\newcommand{\Gcal}{\mathcal{G}}  % gauge group
+\newcommand{\Hcal}{\mathcal {H}}
+\newcommand{\Lcal}{\mathcal {L}}
+\newcommand{\Bcal}{\mathcal {B}}
+\newcommand{\Kcal}{\mathcal{K}}  
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Ecal}{\mathcal{E}} 
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Tcal}{\mathcal{T}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Wcal}{\mathcal{W}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Zcal}{\mathcal{Z}}
+\newcommand{\AF}{\mathcal{AF}}
+\newcommand{\Ci}{\mathcal{C}^\infty} 
+\newcommand\ronpart[3]
+{\phantomsection\addcontentsline{toc}{chapter}{{#2}}\thispagestyle{empty}
+	{\setlength{\parindent}{0pt}
+		\rule{0pt}{0.05\textheight}
+		
+		{\LARGE \bfseries\scshape \spaceout[2pt]{Part \:\:#1}\par}
+		
+		\vspace{1em}
+		{\huge \bfseries\scshape\spaceout[1pt]{#2}\par}
+		
+		\vspace{2.5cm}
+		
+		\begin{minipage}[t]{.55\textwidth}
+			#3
+		\end{minipage}
+		
+}}
+\newcommand\ronparta[2]
+{\phantomsection\addcontentsline{toc}{chapter}{{#2}}\thispagestyle{empty}
+	{\setlength{\parindent}{0pt}
+		\rule{0pt}{0.05\textheight}
+		
+		\vspace{1em}
+		{\huge \bfseries\scshape\spaceout[1pt]{#1}\par}
+		
+		\vspace{2.5cm}
+		
+		\begin{minipage}[t]{.55\textwidth}
+			#2
+		\end{minipage}
+		
+}}
+\makeatletter
+\newcommand\dirlim{\mathop{\mathpalette\varlim@{\rightarrowfill@\scriptstyle}}\nmlimits@}
+\newcommand\invlim{\mathop{\mathpalette\varlim@{\leftarrowfill@\scriptstyle}}\nmlimits@}
+\DeclareRobustCommand{\tvdots}{%
+	\vbox{\baselineskip4\p@\lineskiplimit\z@\kern0\p@\hbox{.}\hbox{.}\hbox{.}}}
+\makeatother
+\DeclareFontFamily{U}{mathx}{}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widehat}{0}{mathx}{"70}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi

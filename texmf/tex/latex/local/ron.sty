@@ -1,0 +1,739 @@
+\usepackage{bm}
+\usepackage{dsfont}
+\usepackage{xcolor}
+\usepackage{varwidth}
+\usepackage{array}
+\usepackage[top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[pdftex,bookmarks=true,bookmarksdepth=4]{hyperref}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+\usepackage{tikz}
+\usepackage{stackengine}
+\usepackage{appendix}
+\usepackage{mathrsfs}
+\usepackage{eso-pic}
+\usepackage{titlesec, blindtext, color}
+\usepackage[T1]{fontenc}
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage[nottoc]{tocbibind}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usetikzlibrary{positioning,backgrounds,decorations.markings}
+\usepackage{marginnote}
+\usepackage{extarrows}
+\usepackage{quiver}
+\usepackage{setspace}
+\usepackage{schemata}
+\usepackage{mathtools}
+\usepackage{changepage}
+\usepackage{bbm}
+
+%\usepackage{libertine}
+\usepackage[framemethod=tikz]{mdframed}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=bluegreen,
+	urlcolor=black,
+	citecolor=bluegreen,
+	filecolor=bluegreen,
+	bookmarks=true,}
+\tikzset{>=stealth}
+
+\newcommand\fauxsc[1]{\fauxschelper#1 \relax\relax}
+\def\fauxschelper#1 #2\relax{%
+	\fauxschelphelp#1\relax\relax%
+	\if\relax#2\relax\else\ \fauxschelper#2\relax\fi%
+}
+\def\Hscale{.85}\def\Vscale{.75}\def\Cscale{1.10}
+\def\fauxschelphelp#1#2\relax{%
+	\ifnum`#1>``\ifnum`#1<`\{\scalebox{\Hscale}[\Vscale]{\uppercase{#1}}\else%
+	\scalebox{\Cscale}[1]{#1}\fi\else\scalebox{\Cscale}[1]{#1}\fi%
+	\ifx\relax#2\relax\else\fauxschelphelp#2\relax\fi}
+\def\theLetterSpace{0.5pt}
+\def\theWordSpace{1\LocalLetterSpace}
+\newlength\LocalLetterSpace
+\newcommand\spaceout[2][\theLetterSpace]{%
+	\setlength\LocalLetterSpace{#1}\expandafter\spaceouthelpA#2 \relax\relax}
+\def\spaceouthelpA#1 #2\relax{%
+	\spaceouthelpB#1\relax\relax%
+	\ifx\relax#2\else\ \kern\theWordSpace\spaceouthelpA#2\relax\fi
+}
+\def\spaceouthelpB#1#2\relax{%
+	#1%
+	\ifx\relax#2\else
+	\kern\LocalLetterSpace\spaceouthelpB#2\relax%
+	\fi
+}
+%\newcommand\BackgroundPic{
+%	\put(0,0){
+%		\parbox[b][\paperheight]{\paperwidth}{%
+%			\vfill
+%			\centering
+%			\includegraphics[width=\paperwidth,height=\paperheight]{BackGroundPDF.pdf}
+%			\vfill}}}
+\usepackage[some]{background}
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{0}%
+	\newpage}
+\definecolor{lightgrey}{rgb}{.9,.9,.9}
+\definecolor{darkgrey}{rgb}{.05,.05,.05}
+\definecolor{DarkGray}{RGB}{0,0,0}
+\makeatletter
+\newcommand\HUGE{\@setfontsize\Huge{28}{0}}
+\makeatother  
+\RequirePackage{fix-cm}
+{
+\definecolor{bluegreen}{rgb}{-.2,.4,0.6}
+\definecolor{lightbluegreen}{rgb}{166,225,255}
+\definecolor{lightblue}{HTML}{5dbcd2}
+\makeatletter
+\special{papersize=\the\paperwidth,\the\paperheight}
+% \def\@seccntformat#1{\csname the#1\endcsname\quad}% Default
+\def\@seccntformat#1{\csname the#1\endcsname\hspace*{0.5em}$|$\hspace*{0.5em}}
+\makeatother
+\definecolor{gray55}{gray}{0.55}
+\newcommand{\hsp}{\hspace{2.5pt}}
+
+\newcommand{\titlebarlargew}{
+	\tikz[baseline,trim left=-.75cm,trim right=2.1cm] {
+		\node [anchor=base west,
+		minimum height=6ex, minimum width= 20ex,
+		fill=gray,
+		text=white] {{\hspace{.5cm}\LARGE\bfseries\scshape \spaceout[1pt]{Contents} \hspace{2cm}}};}}
+
+\newcommand{\titlebarlarge}{
+	\tikz[baseline,trim left=2.8cm,trim right=2.6cm] {
+		\node [anchor=base east,
+		minimum height=6ex,
+		fill=gray,
+		text=white] {};}}
+
+\newcommand{\titlebar}{
+	\tikz[baseline,trim left=3cm,trim right=2.6cm] {
+	\node [anchor=base east,
+	minimum height=4.25ex,
+	fill=gray,
+	text=white] {\hspace{.5cm}\thesection};}}
+
+\newcommand{\titlebarsmall}{
+	\tikz[baseline,trim left=3cm,trim right=2.7cm] {
+		\node [anchor=base east,
+		minimum height=3.5ex, 
+		fill=gray, text=white] {\hspace{.25cm}\thesubsection};}}
+	
+\newcommand\titlebarlargepart[1]{
+	\tikz[baseline,trim left=-.75cm,trim right=2.1cm] {
+		\node [anchor=base west,
+		minimum height=6ex, minimum width= 20ex,
+		fill=gray,
+		text=white] {{\hspace{.5cm}\LARGE\bfseries\scshape \spaceout[1pt]{#1} \hspace{2cm}}};}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%   Chapter Format   %%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\chaptername}{\hfill}
+
+%\titleformat{\chapter}[display]
+%{\vspace{-2.5em}\normalfont\LARGE\bfseries\scshape\raggedright}
+%{\vspace{0em}\hspace{0cm}\llap{%
+%		\resizebox{!}{.7cm}{\colorbox{white}{\hspace{.6cm}\color{black}{ {\thechapter}}\hspace{.1cm}\hsp{|}\hsp}}}%
+%	\MakeUppercase{\chaptertitlename}\hfill }
+%{0pt}{\vspace{-1.6em}\flushleft\hspace{0cm}\LARGE}
+
+
+\setcounter{secnumdepth}{4}
+
+%\titleformat{\chapter}[display]
+%{\vspace{-0.5em}\normalfont\LARGE\bfseries\scshape\raggedright}
+%{\hspace{.5cm}
+%		{\tikz[baseline,trim left=1.5cm,trim right=0cm] {
+%					\node [anchor= east,
+%					minimum height=5ex, minimum width=8ex,
+%					fill=black,
+%					text=white] {\hspace{1em}\thechapter};}}%
+%\MakeUppercase{\chaptertitlename}\hfill }
+%{0pt}{\vspace{-1.9em}\flushleft\hspace{0cm}\LARGE}
+\titleformat{\chapter}[hang] {\vspace{-3em}\LARGE\scshape\bfseries}{\hspace{-.5cm} \thechapter\hsp\hsp\hsp{|}\hsp\hsp\hsp}{0pt}{\LARGE\bfseries}
+\titleformat*{\section}{\large\bfseries\scshape}
+\titleformat*{\subsection}{\large\bfseries\scshape}
+\titleformat*{\subsubsection}{\normalsize\bfseries\scshape}
+\titlespacing*{\chapter}{0pt}{25pt}{100pt}
+%\titleformat{\subsection}{\fontsize{13.75}{0}\bfseries}{\thesubsection \hsp\textcolor{black}{|}\hsp}{0pt}{\bfseries\scshape}
+%\titleformat{\section}{\fontsize{13.75}{0}\bfseries}{\thesection \hsp\textcolor{black}{|}\hsp}{0pt}{\bfseries\scshape}
+\titlespacing*{\section}{0pt}{15pt}{15pt}
+\titlespacing*{\subsection}{0pt}{12.5pt}{12.5pt}
+\titlespacing*{\subsubsection}{0pt}{10pt}{10pt}
+\geometry{
+top=20mm,
+total={155mm,230mm}}
+\newtheorem{theorem}{{\textsc{Theorem}}}[section]
+\newtheorem{lemma}[theorem]{\textsc{Lemma}}
+\newtheorem{proposition}[theorem]{\textsc{Proposition}}
+\newtheorem{corollary}[theorem]{\textsc{Corollary}}
+%\newtcbtheorem{postulate}{Postulate}{
+%	description delimiters parenthesis,
+%	separator sign ={.},
+%	coltitle=black,
+%	colback=white,
+%	fontupper=\itshape,
+%	fonttitle=\upshape\bfseries,
+%	attach title to upper={\ },
+%	empty,
+%	left*=0pt,
+%	right*=0pt,
+%	boxsep=0pt,
+%	top=1em,
+%	bottom=1em,
+%	borderline west={2mm}{-5mm}{blue} 
+%}{section}
+\newtheorem*{postulate}{\textsc{Postulate}}
+\theoremstyle{definition}
+\newtheorem{definition}{\textsc{Definition}}[section]
+\renewcommand\proof{{{\noindent\bfseries\textsc{Proof. }}}}
+\renewcommand\bibname{\vspace{1em}\large \hspace{0em}\textsc{}}
+\newcommand{\suchthat}{\mathrel{\mathop\supset}\kern-4.0pt-\kern-1.0pt-~}
+%%%%%%%%%%%%%%%%%%    TOC    %%%%%%%%%%%%%%%%%%
+\usepackage{tocloft}
+\cftsetindents{chapter}{0em}{1.9em}
+\cftsetindents{section}{2em}{3em}
+\cftsetindents{subsection}{5em}{3.5em}
+\cftsetindents{subsubsection}{8.5em}{4em}
+\renewcommand\cfttoctitlefont{
+\LARGE \scshape\bfseries
+}
+%	\Large \bfseries\scshape Table of \vspace{-1em}}
+\renewcommand{\contentsname}{\vspace{-3em}
+\begin{center}
+{\large Table of Contents}
+\vspace{-1.5em}
+\end{center}}
+
+\renewcommand\cftpartfont{\large\bfseries\scshape}
+\renewcommand\cftchapfont{\normalsize\scshape}
+\renewcommand\cftsecfont{\normalsize}
+\setcounter{tocdepth}{3}
+\newcommand{\tocseparator}{%
+	\addtocontents{toc}
+	{\protect\addvspace{10pt}%
+		\hrule
+		\protect\addvspace{5pt}%
+	}%
+}
+\preto\backmatter{\tocseparator}
+%%%%%%%%%%%%%%%%%%    TOC    %%%%%%%%%%%%%%%%%%
+
+\newcommand\bulgelinesmall{\begin{center}	
+		\begin{tikzpicture}[x=0.5\textwidth]
+		\draw[outer color=black,inner color=gray!60!black] circle[x radius=0.5,y radius=0.014];
+		\end{tikzpicture}
+\end{center}}
+
+\newcommand\bulgeline{\begin{center}	
+		\begin{tikzpicture}[x=0.5\textwidth]
+		\draw[outer color=black,inner color=gray!60!black] circle[x radius=0.85,y radius=0.014];
+		\end{tikzpicture}
+\end{center}}
+
+\newcommand\bulgelinemedium{\begin{center}	
+		\begin{tikzpicture}[x=0.5\textwidth]
+		\draw[outer color=black,inner color=gray!60!black] circle[x radius=0.7,y radius=0.014];
+		\end{tikzpicture}
+\end{center}}
+
+%%%%%%%%%%%%%%%%%    Credits & Institute 1 %%%%%%%%%%%%%%%
+\newcommand\creditsa[2]{
+	\begin{center}
+	\end{center}
+\begin{minipage}[t]{.45\textwidth}
+	\begin{flushright}
+		\vspace{-3.7em}
+		{\normalsize\textsc{Supervised by\\ #1}}
+	\end{flushright}
+\end{minipage}%
+\hspace{.04\textwidth}%
+\begin{tikzpicture}[x=0.37\textwidth]
+\draw[outer color=black,inner color=gray!60!black] circle[x radius=0.00125,y radius=1];
+\end{tikzpicture}% Vertical line
+\hspace{.03\textwidth}%
+\begin{minipage}[t]{.45\textwidth}
+	\begin{flushleft}
+		\includegraphics[width=.65\textwidth]{#2}
+	\end{flushleft}
+	\begin{center}
+	\end{center}
+\end{minipage}}
+%%%%%%%%%%%%%%%%%    Credits & Institute 1  %%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%    Quote %%%%%%%%%%%%%%%
+\renewcommand\quote[2]{
+	\vspace{0em}
+	\begin{minipage}[t]{.235\textwidth}
+		\begin{flushright}
+			
+		\end{flushright}
+	\end{minipage}%
+%	\hspace{.04\textwidth}%
+%	\:
+%	\hspace{.03\textwidth}%
+	\begin{minipage}[t]{.5\textwidth}
+		\begin{flushleft}
+			\vspace{5pt}
+			{\small #1 }
+		\end{flushleft}
+
+	\end{minipage}
+\begin{small}
+		\begin{center}
+	\end{center}
+\begin{center}
+#2
+\end{center}
+\end{small}
+	\vspace{1.5em}}
+%%%%%%%%%%%%%%%%%    Quote  %%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%    Credits & Institute 2  %%%%%%%%%%%%%%%
+\newcommand\creditsb[2]{
+\begin{center}
+\end{center}
+\vspace{-2em}
+\begin{minipage}[t]{.45\textwidth}
+	\begin{flushright}
+		{\large \textsc{ Supervisors}}\\
+		\vspace{2.5em}
+		\textsc{#1}\\
+	\end{flushright}
+\end{minipage}%
+\hspace{.1\textwidth}%
+\begin{minipage}[t]{.45\textwidth}
+	\begin{flushleft}
+		{\large \textsc{Institution}}\\
+		\vspace{1em}
+		\hspace{-1em}\includegraphics[width=.75\textwidth]{#2}
+	\end{flushleft}
+	\begin{center}
+	\end{center}
+\end{minipage}
+\clearpage}
+%%%%%%%%%%%%%%%%%   Credits & Institute 2 %%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%   Introduction   %%%%%%%%%%%%%%%%%%%
+\newenvironment{ronintro}
+{\clearpage\phantomsection\addcontentsline{toc}{chapter}{{Introduction}}
+	\begin{center}
+		
+	\end{center}
+	\begin{center}
+		{\Large\bfseries\textsc{Introduction}}
+	\end{center}
+\begin{center}
+
+\end{center}
+	\begin{center}
+		\begin{minipage}[t]{.9\textwidth}
+			
+		}
+		{\end{minipage}
+	\end{center}\clearpage}
+%%%%%%%%%%%%%%%%%%%   Introduction    %%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%   Abstract   %%%%%%%%%%%%%%%%%%%
+\newenvironment{ronabstract}
+{\clearpage\phantomsection\addcontentsline{toc}{chapter}{{Abstract}}
+	\begin{center}
+
+	\end{center}
+\begin{center}
+{\Large\bfseries\textsc{Abstract}}
+\end{center}
+\begin{center}
+	\begin{minipage}[t]{.85\textwidth}
+		
+	}
+	{\end{minipage}
+\end{center}}
+%%%%%%%%%%%%%%%%%%%   Abstract    %%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%    Dedication  %%%%%%%%%%%%%%%%%%%
+\newenvironment{dedication}
+{\clearpage           % we want a new page
+	\thispagestyle{empty}% no header and footer
+	\vspace*{\stretch{1}}% some space at the top 
+	\centering \normalsize\scshape             % the text is in smallcaps
+	% flush to the right margin
+}
+{\par % end the paragraph
+	\vspace{\stretch{3}} % space at bottom is three times that at the top
+	\clearpage           % finish off the page
+}
+%%%%%%%%%%%%%%%%%%%   Dedication   %%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%    Acknowledge    %%%%%%%%%%%%%%%%%%
+
+\newenvironment{ronacknowledgementschap}
+{
+	{\phantomsection 
+		\section*{Acknowledgements}}
+	\addcontentsline{toc}{chapter}{{Acknowledgements}}
+	\begin{center}
+		\begin{minipage}[t]{.95\textwidth}
+		}
+		{\end{minipage}
+\end{center}}
+
+
+
+\newenvironment{ronacknowledgements}
+{
+{\phantomsection 
+\subsection*{Acknowledgements}}
+\addcontentsline{toc}{section}{{Acknowledgements}}
+	\begin{center}
+		\begin{minipage}[t]{.95\textwidth}
+		}
+		{\end{minipage}
+\end{center}}
+
+%%%%%%%%%%%%%%%%%   Acknowledge %%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%    Postulates    %%%%%%%%%%%%%%%%%%%
+\newenvironment{ronpostulates}
+{\clearpage\phantomsection\addcontentsline{toc}{chapter}{{List of Postulates}}
+	\begin{center}
+		
+	\end{center}
+	\begin{center}
+		{\Large\bfseries\textsc{List of Postulates}}
+	\end{center}
+	\begin{center}
+		\begin{minipage}[t]{.85\textwidth}
+		
+		}
+		{\end{minipage}
+	\end{center}\clearpage}
+%%%%%%%%%%%%%%%%%%    Postulates    %%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%    TOC    %%%%%%%%%%%%%%%%%%%%%%
+\newcommand\rontoc{
+	\phantomsection\addcontentsline{toc}{chapter}{{Table of Contents}}
+\tableofcontents\pagenumbering{arabic}
+}
+%%%%%%%%%%%%%%%%%%%    TOC    %%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%     Part   %%%%%%%%%%%%%%%%%%%%%%
+\newcommand\ronpart[3]
+{\phantomsection\addcontentsline{toc}{chapter}{{\bfseries#2}}\thispagestyle{empty}
+	{\setlength{\parindent}{0pt}
+		\rule{0pt}{0.05\textheight}
+		
+		{\LARGE \bfseries\scshape \spaceout[2pt]{Part \:\:#1}\par}
+		
+		
+		\begin{minipage}[t]{.75\textwidth}
+			\vspace{1.5em}
+		{\huge \bfseries\scshape\spaceout[1pt]{#2}\par}
+		
+		\vspace{2.5cm}
+			#3
+		\end{minipage}
+		
+}}
+%%%%%%%%%%%%%%%%%%%     Part   %%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%     Part   %%%%%%%%%%%%%%%%%%%%%%
+\newcommand\ronparta[2]
+{\phantomsection\addcontentsline{toc}{part}{{#1}}\thispagestyle{empty}
+	{\setlength{\parindent}{0pt}
+		\rule{0pt}{0.1\textheight}
+		
+		\vspace{2.5em}
+		{\huge \bfseries\scshape\spaceout[1pt]{#1}}
+		
+		\vspace{2.5cm}
+		
+		\begin{minipage}[t]{.55\textwidth}
+			#2
+		\end{minipage}
+		
+}}
+%%%%%%%%%%%%%%%%%%%     Part   %%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\newmdenv[tikzsetting={draw=black, fill=white,},settings={\tikzset{every picture/.style={opacity=0.9}}}]{myenvironment}
+%%%%%%%%%%%%%%%%%%%  Title Style 1  %%%%%%%%%%%%%%%%%%%%%
+\newcommand\rontitlea[5]{
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\newgeometry{top=1.0cm, bottom=.25cm}
+		\begin{mdframed}[rightline=false, leftline=false, topline=false, bottomline=false]
+		\rule{0pt}{0.015\textheight}		
+
+			\begin{center}
+				\vspace{-3em}
+				{\Large \textsc{\hspace{4pt}#1  \\[0.2\baselineskip] }}		
+				
+				\vspace{1.5em}
+				{{#2}}\\[0.7\baselineskip]
+				
+				\vspace{.5em}
+				\bulgelinesmall
+				
+				{\Large \textsc{#3 \\[0.4\baselineskip] }}		
+				
+				{\scshape\today}
+				
+				\makebox[0pt][l]{\rule{0pt}{0.6\textheight}}
+				
+				\rule{0pt}{0.02\textheight}
+				
+				\begin{minipage}[t]{.45\textwidth}
+					\begin{flushright}
+						\vspace{-3.5em}
+						{\textsc{Supervised by\\ #4}}
+					\end{flushright}
+				\end{minipage}%
+				\hspace{.035\textwidth}%
+				\begin{tikzpicture}[x=0.37\textwidth]
+				\draw[outer color=black,inner color=gray!60!black] circle[x radius=0.002,y radius=.95];
+				\end{tikzpicture}% Vertical line
+				\hspace{.02\textwidth}%
+				\begin{minipage}[t]{.45\textwidth}
+					\begin{flushleft}
+						\includegraphics[width=.65\textwidth]{#5}
+					\end{flushleft}
+					\begin{center}
+					\end{center}
+				\end{minipage}
+			\end{center}
+			
+		\end{mdframed}
+		
+	\end{titlepage}
+	\pagecolor{white}
+}
+%%%%%%%%%%%%%%%%%%%  Title Style 1   %%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%  Title Style 1a  %%%%%%%%%%%%%%%%%%%%%
+\newcommand\rontitleaa[5]{
+	\begin{titlepage}
+		\thispagestyle{empty}
+			\newgeometry{top=1.5cm, bottom=.5cm}
+			\begin{mdframed}[rightline=false, leftline=false, topline=false, bottomline=false]
+				\rule{0pt}{0.015\textheight}
+			\begin{center}
+				\vspace{-3em}
+				{\large \textsc{\hspace{4pt}#1  \\[0.2\baselineskip] }}		
+				
+				\vspace{1.5em}
+				{{#2}}\\[0.7\baselineskip]
+				
+				\vspace{0em}
+				\bulgelinesmall
+				
+				{\large \textsc{#3 \\[0.2\baselineskip] }}		
+				
+				%{\scshape\today}
+				\vspace{2.5em}
+			\begin{center}
+				\begin{minipage}[t]{1\textwidth}
+					\begin{abstract}
+					#4
+					\end{abstract}
+				\end{minipage}
+			\end{center}
+
+				\makebox[0pt][l]{\rule{0pt}{0.2\textheight}}
+
+				\rule{0pt}{0.02\textheight}
+			\end{center}
+		\end{mdframed}
+		
+	\end{titlepage}
+\pagecolor{white}
+}
+%%%%%%%%%%%%%%%%%%%  Title Style 1a   %%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%   Title Style 2   %%%%%%%%%%%%%%%%%%%%%
+\newcommand\rontitleb[5]{\begin{titlepage}
+		\newgeometry{left=1in,right=1in,top=0cm,bottom=0cm}
+		%		\SetBgScale{1}
+		%		\SetBgContents{
+		%			\includegraphics[scale=1.5]{#5}}
+		%		\SetBgColor{black}
+		%		\SetBgAngle{0}
+		%		\SetBgOpacity{#6} %Opacity of the logo
+		%		\BgThispage
+		\begin{center}{}
+			\rule{0pt}{0.1\textheight}		
+			
+			{\Large \textsc{#1 Thesis \\[0.2\baselineskip] }}		
+			
+			\rule{0pt}{0.05\textheight}		
+			{\Huge\bfseries\textsc{\spaceout[1pt]{#2}}}\\[0.9\baselineskip]
+			{\Huge\bfseries\textsc{\spaceout[3pt]{}}} \\[1.2\baselineskip]
+			
+			{\Large \textsc{#3 \\[0.4\baselineskip] }}		
+			
+			{\normalsize \textsc{#4}}
+			
+			\makebox[0pt][l]{\rule{0pt}{0.45\textheight}}
+			
+			%{\Large \textsc{#3}}
+			
+			\vspace{1em}
+			\begin{tikzpicture}[x=0.5\textwidth]
+			\draw[outer color=black,inner color=gray!60!black] circle[x radius=0.5,y radius=0.02];
+			\end{tikzpicture}% Vertical line
+			
+			\vspace{1em}
+			{\Large \textsc{Supervised by\\[0.2\baselineskip] #5}}
+		\end{center}
+	\end{titlepage}
+	\clearpage
+}
+%%%%%%%%%%%%%%%%%%%   Title Style 2   %%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%  Title Style 3  %%%%%%%%%%%%%%%%%%%%%
+\newcommand\rontitlec[5]{
+	\begin{titlepage}
+		\thispagestyle{empty}
+		
+		%\newgeometry{left=1.5in,right=1.5in,top=0.5in,bottom=0cm}
+		\begin{center}{}
+			\rule{0pt}{0.065\textheight}		
+			
+			{\Large \textsc{#1 Thesis \\[0.2\baselineskip] }}		
+			\bulgelinemedium
+			{\huge\bfseries\textsc{\spaceout[1pt]{#2}}}\\[0.9\baselineskip]
+			\bulgelinemedium
+			\makebox[0pt][l]{\rule{0pt}{0.35\textheight}}
+			{\Large \textsc{#3 \\[0.9\baselineskip] }}
+			
+			{\normalsize \textsc{#4}}
+			
+			\rule{0pt}{0.02\textheight}		
+			{\large \textsc{\\[0.2\baselineskip] }}
+			
+			{\normalsize \textsc{Supervised by\\#5}}
+		\end{center}
+	\end{titlepage}
+	\pagecolor{white}}
+%%%%%%%%%%%%%%%%%%%  Title Style 3  %%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand\rontitles[3]{
+	\begin{titlepage}
+		\pagestyle{empty}
+		\newgeometry{top=1.5cm, bottom=.5cm}
+		\begin{mdframed}[rightline=false, leftline=false, topline=false, bottomline=false]
+			\rule{0pt}{0.02\textheight}		
+			
+			\begin{center}
+				\vspace{-3em}
+				{{#1}}\\[0.7\baselineskip]
+				\bulgelinesmall
+				
+				{\large \scshape{#2}}
+				\makebox[0pt][l]{\rule{0pt}{0.05\textheight}}
+			\end{center}
+			
+			\begin{abstract}
+#3
+			\end{abstract}
+
+		\end{mdframed}
+		\clearpage
+	\end{titlepage}
+	\pagecolor{white}
+}
+
+\theoremstyle{definition}
+\newtheorem{remark}{{\textsc{Remark}}}[section]
+\renewcommand\proof{\begin{center}
+		{\bfseries{\textsc{Proof}}}
+\end{center}}
+\DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator*{\arginf}{arg\,inf}
+\DeclareMathOperator*{\argsup}{arg\,sup}
+\DeclareMathOperator*{\coker}{coker}
+\DeclareMathOperator*{\coim}{coim}
+\DeclareMathOperator*{\germ}{germ}
+\DeclareMathOperator*{\Sh}{Sh}
+\DeclareMathOperator*{\PSh}{PSh}
+\DeclareMathOperator*{\Lan}{Lan}
+\DeclareMathOperator*{\Ran}{Ran}
+\DeclareMathOperator*{\Hom}{Hom}
+\DeclareMathOperator*{\IHom}{{\mathcal{H}}\emph{om}}
+\DeclareMathOperator*{\Ob}{Ob}
+\DeclareMathOperator*{\Sets}{\mathbf{Sets}}
+\DeclareMathOperator*{\Nat}{Nat}
+\DeclareMathOperator*{\Id}{\textstyle\mathbbm{1}}
+\DeclareMathOperator*{\op}{{op}}
+\newcommand{\NN}{\mathbb{N}}          % natural naumbers
+\newcommand{\ZZ}{\mathbb{Z}} %{\mathbbmss{Z}}     % Menge der ganzen Zahlen
+\newcommand{\RR}{\mathbb{R}}           % real  numbers
+\newcommand{\CC}{\mathbb{C}}     
+\newcommand{\II}{\mathbb{I}}       
+\newcommand{\Gcal}{\mathcal{G}}  % gauge group
+\newcommand{\Hcal}{\mathcal {H}}
+\newcommand{\Lcal}{\mathcal {L}}
+\newcommand{\Bcal}{\mathcal {B}}
+\newcommand{\Kcal}{\mathcal{K}}  
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Ecal}{\mathcal{E}} 
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Tcal}{\mathcal{T}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Wcal}{\mathcal{W}}
+\newcommand{\Xcal}{\mathcal{X}}
+\newcommand{\Zcal}{\mathcal{Z}}
+\newcommand{\AF}{\mathcal{AF}}
+\newcommand{\Ci}{\mathcal{C}^\infty} 
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+
+
+\makeatletter
+\DeclareRobustCommand{\tvdots}{\vbox{\baselineskip4\p@\lineskiplimit\z@\kern0\p@\hbox{.}\hbox{.}\hbox{.}}}
+\newcommand\dirlim{\mathop{\mathpalette\varlim@{\rightarrowfill@\scriptstyle}}\nmlimits@}
+\newcommand\invlim{\mathop{\mathpalette\varlim@{\leftarrowfill@\scriptstyle}}\nmlimits@}
+\makeatother
+\DeclareFontFamily{U}{mathx}{}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widehat}{0}{mathx}{"70}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\DeclareMathOperator*{\UA}{\emph{A}}
+\DeclareMathOperator*{\UB}{\emph{B}}
