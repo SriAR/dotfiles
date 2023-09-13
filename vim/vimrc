@@ -19,8 +19,8 @@ Plug 'dylanaraps/wal.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-orgmode/orgmode'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'JuliaEditorSupport/julia-vim'
 call plug#end()
 
 let g:config_root = fnamemodify(resolve(expand('<sfile>:p')), ':h')
