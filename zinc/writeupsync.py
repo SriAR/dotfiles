@@ -35,7 +35,7 @@ class Project:
 
         self.repo = Repo(self.folder)
         if self.repo.is_dirty():
-            print('Commit changes!')
+            print(f'Commit changes in {self.folder}!')
             return
 
         self.pull()
