@@ -84,6 +84,7 @@ plugins=(
 	colored-man-pages
 	dircycle
 	extract
+    poetry
 	z
 	zsh-syntax-highlighting
 	zsh-autosuggestions
