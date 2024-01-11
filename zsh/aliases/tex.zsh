@@ -1,0 +1,1 @@
+alias lmc='latexmlc --preload="[nobibtex,ids,localrawstyles,nobreakuntex,magnify=2,zoomout=2,tokenlimit=99999999,iflimit=1499999,absorblimit=1299999,pushbacklimit=599999]latexml.sty" --format=html5 --pmml --cmml --mathtex --timeout=2700 --nodefaultresources --css="https://cdn.jsdelivr.net/gh/dginev/ar5iv-css@0.7.6/css/ar5iv.min.css"'
