@@ -58,7 +58,7 @@ FUNCTION {output.nonnull}
     { output.state after.block =
         { add.period$ write$
           newline$
-          "\newblock " write$
+          "\newblock\newline " write$
         }
         { output.state before.all =
             'write$
@@ -259,20 +259,23 @@ FUNCTION {format.title}
     { "" }
     {
 
-        "\enquote{" title "t" change.case$ * "}" *
+        % "\enquote{" title "t" change.case$ * "}" *
+        "{" title "t" change.case$ * "}" *
         doi empty$
         {
           url empty$
           { }
           {
             pop$
-            "\href{" url "}{" "\enquote{" title "t" change.case$ * "}" * "}" * * * *
+            "\href{" url "}{" "{" title "t" change.case$ * "}" * "}" * * * *
+            % "\href{" url "}{" "\enquote{" title "t" change.case$ * "}" * "}" * * * *
           }
           if$
         }
         {
             pop$
-            "\href{https://doi.org/" doi "}{" "\enquote{" title "t" change.case$ * "}" * "}" * * * *
+            % "\href{https://doi.org/" doi "}{" "\enquote{" title "t" change.case$ * "}" * "}" * * * *
+            "\href{https://doi.org/" doi "}{" "{" title "t" change.case$ * "}" * "}" * * * *
         }
         if$
     }
@@ -734,8 +737,8 @@ FUNCTION {inproceedings}
           format.date "year" output.check
       }
       {
-          format.date "year" output.check "," *
-          format.pages output
+          format.date "year" output.check
+          % format.pages output
       }
       if$
       address empty$

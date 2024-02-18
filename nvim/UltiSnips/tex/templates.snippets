@@ -1,6 +1,7 @@
 snippet texplate "Basic TeX template" b
 \documentclass[11pt,a4paper]{article}
 \usepackage{imports}
+\usepackage{generalmacros}
 \input{projectmacros}
 
 \begin{document}
@@ -9,9 +10,9 @@ snippet texplate "Basic TeX template" b
 \author[]{\today{}}
 \maketitle
 
-\addtex{fullcontents}
+\input{fullcontents}
 
-\bibliographystyle{alpha}
+\bibliographystyle{gamma}
 \def\bibfont{\small}
 \bibliography{Ref}
 
@@ -20,13 +21,39 @@ endsnippet
 
 snippet algtemp "Basic Algorithm Template" b
 \begin{algorithm}[t]
-\SetAlgoLined
+\DontPrintSemicolon
 \caption{$1}
 \label{$2}
 \KwInput{$3}
 \KwOutput{$4}
 $0
 \end{algorithm}
+endsnippet
+
+snippet doublealg "Two Algorithms Side-by-Side" b
+\begin{minipage}[t]{0.48\textwidth}
+\null
+\begin{algorithm}[t]
+\DontPrintSemicolon
+\caption{$1}
+\label{$2}
+\KwInput{$3}
+\KwOutput{$4}
+$5
+\end{algorithm}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\null
+\begin{algorithm}[t]
+\DontPrintSemicolon
+\caption{$6}
+\label{$7}
+\KwInput{$3}
+\KwOutput{$4}
+$0
+\end{algorithm}
+\end{minipage}
 endsnippet
 
 snippet table "Table environment" b

@@ -1,0 +1,55 @@
+global !p
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment():
+    return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+    return x != '0' and y != '0'
+endglobal
+
+context "env('enumerate')"
+snippet ii "\item" bA
+\item
+endsnippet
+
+context "env('itemize')"
+snippet ii "\item" bA
+\item
+endsnippet
+
+context "env('align')"
+snippet why "Explain equation in align*" iA
+\tag*{($1)} \\\\
+$0
+endsnippet
+
+context "env('align')"
+snippet by "Explain equation in align*" iA
+\tag*{(by \cref{$1})} \\\\
+$0
+endsnippet
+
+context "env('align')"
+snippet since "Explain equation in align*" iA
+\tag*{(since $1)} \\\\
+$0
+endsnippet
+
+context "env('align')"
+snippet ge "Explain equation in align*" iA
+&\ge $0
+endsnippet
+
+context "env('align')"
+snippet le "Explain equation in align*" iA
+&\le $0
+endsnippet
+
+context "env('align')"
+snippet eq "Explain equation in align*" iA
+&= $0
+endsnippet
+

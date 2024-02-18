@@ -1,12 +1,16 @@
 #!/bin/bash
 
 mkdir fig
-mkdir tex
 echo 'main.pdf' > .gitignore
 touch 'main.tex'
+touch 'abstract.tex'
+touch 'relatedwork.tex'
+touch 'techoverview.tex'
 touch 'projectmacros.tex'
+touch 'acknowledgements.tex'
 cp ~/texmf/tex/latex/local/importstemplate.sty imports.sty
 cp ~/texmf/tex/latex/local/generalmacrostemplate.sty generalmacros.sty
+cp ~/texmf/bibtex/bst/base/gamma.bst gamma.bst
 
 cat << EOF > Ref.bib
 @inproceedings{fakeBib,
@@ -20,6 +24,8 @@ EOF
 
 cat << EOF > fullcontents.tex
 \input{introduction}
+\input{relatedwork}
+\input{techoverview}
 \input{preliminaries}
 EOF
 
@@ -32,3 +38,5 @@ cat << EOF > preliminaries.tex
 \section{Preliminaries}
 \label{sec:prelim}
 EOF
+
+$EDITOR 'main.tex'
