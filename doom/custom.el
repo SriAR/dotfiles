@@ -40,7 +40,7 @@
       '(("orgfiles"
          :base-directory "~/arsricharan.in"
          :base-extension "org"
-         :publishing-directory "~/arsricharan.in/public"
+         :publishing-directory "~/arsricharan.in/docs"
          :publishing-function org-html-publish-to-html
          :exclude "home/*"
          :recursive t
@@ -65,9 +65,8 @@
 
         ("other"
          :base-directory "~/arsricharan.in"
-         :base-extension "ico\\|css\\|ttf\\|woff2\\|woff\\|jpg\\|png\\|pdf\\|toml"
-         :publishing-directory "~/arsricharan.in/public"
-         :exclude "~/arsricharan.in/public/*"
+         :base-extension "ico\\|css\\|ttf\\|woff2\\|woff\\|jpg\\|png\\|pdf\\|toml\\|js\\|html\\|svg\\|xml"
+         :publishing-directory "~/arsricharan.in/docs"
          :recursive t
          :publishing-function org-publish-attachment)
 

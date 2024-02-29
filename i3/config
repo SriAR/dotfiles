@@ -6,7 +6,7 @@ font pango:monospace 8
 # exec --no-startup-id sleep 2 && xrandr --output eDP-1 --mode 1920x1080 && xrandr --output eDP-1 --right-of DP-1-1
 # exec --no-startup-id python -m http.server 4242 -d /home/cs/Online/Startpage --bind 127.0.0.1
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
-exec --no-startup-id python -m http.server 3323 -d /home/cs/arsricharan.in/public --bind 127.0.0.1
+exec --no-startup-id python -m http.server 3323 -d /home/cs/arsricharan.in/docs --bind 127.0.0.1
 exec --no-startup-id picom --experimental-backends
 exec --no-startup-id pavucontrol
 exec --no-startup-id wal -R

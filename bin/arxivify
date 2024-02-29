@@ -1,0 +1,22 @@
+#!/bin/bash
+
+arxiv_folder="arxiv/v"
+version_number=1
+
+while [ -d "$arxiv_folder$version_number" ]; do
+    ((version_number++))
+done
+
+dest="$arxiv_folder$version_number"
+echo "Creating $dest"
+mkdir -p "$dest"
+
+latexpand --empty-comments main.tex > ar.xiv
+sed -i '/^\s*%/d' ar.xiv
+cat -s ar.xiv | sponge ar.xiv
+
+mv ar.xiv "$dest/$1.tex"
+cp "main.bbl" "$dest/$1.bbl"
+cp *.sty *.jpg *.bib "$dest/"
+cd "$dest"
+zip "v$version_number.zip" *
