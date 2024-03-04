@@ -19,6 +19,7 @@ bindsym Mod4+c exec google-chrome-stable --new-tab https://web.skype.com
 bindsym Mod4+p exec pavucontrol
 # bindsym Mod4+t exec urxvt -name floating
 bindsym Mod1+a exec bash /home/cs/dotfiles/bin/paperadd
+bindsym Mod1+y exec pushd /home/cs/Projects/biblio-baggins/ && poetry run bb --paper-add
 
 # bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book /hdd/Cheenta | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
 bindsym Mod1+o exec /home/cs/dotfiles/bin/po
@@ -50,6 +51,7 @@ bindsym Mod4+s exec shutdown now
 bindsym Mod4+l exec i3lock -n -i ~/Pictures/lockscreen.png & sleep 2 && xset dpms force off
 bindsym Mod1+d exec rofi -show run
 bindsym --release Print exec --no-startup-id maim -u -s /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png
+# bindsym --release Print exec --no-startup-id maim --nokeyboard -d 3 -u /home/cs/Pictures/screenshot.png && xclip -selection clipboard -target image/png -in /home/cs/Pictures/screenshot.png
 bindsym Mod1+Tab workspace back_and_forth
 # bindsym Mod1+Return exec i3-sensible-terminal
 bindsym Mod1+Return exec alacritty

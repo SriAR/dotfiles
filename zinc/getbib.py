@@ -4,6 +4,7 @@ import os
 import subprocess
 import re
 import json
+import pyperclip
 
 def notify(message):
     if message == 'no result from dblp':
@@ -20,7 +21,8 @@ def notify(message):
 
 
 def search_dblp(query):
-    url = f'https://dblp.org/search/publ/api?q={"+".join(query.split())}&format=json'
+    #  url = f'https://dblp.org/search/publ/api?q={"+".join(query.split())}&format=json'
+    url = f'https://dblp.uni-trier.de/search/publ/api?q={"+".join(query.split())}&format=json'
     response = requests.get(url)
     data = response.json()
 
@@ -36,27 +38,31 @@ def search_dblp(query):
     options = []
     for hit in hits:
         option = build_option(hit)
-        options.append(option)
+        if option.startswith('journals/corr'):
+            options.append(option)
+        else:
+            options.insert(0, option)
 
     selected_option = select_option(options)
 
     if not selected_option:
         return
 
-    filename = subprocess.check_output(['rofi', '-dmenu', '-p', 'Enter filename:']).decode().strip()
+    #  filename = subprocess.check_output(['rofi', '-dmenu', '-p', 'Enter filename:']).decode().strip()
 
-    if not filename:
-        return
+    #  if not filename:
+        #  return
 
     key = extract_key(selected_option)
     bibtex = get_bibtex(key)
-    save_bibtex(filename, bibtex)
+    save_bibtex('/tmp/a.bib', bibtex)
 
-    doi = extract_doi(selected_option)
-    if doi != "N/A" and turn_on_vpn():
-        download_pdf_from_scihub(doi,filename)
-    else:
-        notify("couldnt download pdf")
+    for option in options:
+        if option.startswith('journals/corr'):
+            option = option.split(' ')[0]
+            option = option.split('abs-')[1]
+            arxiv_id = option.replace('-','.')
+            download_arxiv_pdf(arxiv_id, '/tmp/a.pdf')
 
 def build_option(hit):
     key = hit['info']['key']
@@ -137,15 +143,24 @@ def download_pdf_from_scihub(doi,filename):
 
 
 def download_arxiv_pdf(arxiv_id, filename):
+
+    if not filename.endswith('.pdf'):
+        filename += '.pdf'
+
     url = f'https://arxiv.org/pdf/{arxiv_id}.pdf'
     response = requests.get(url)
     if response.status_code == 200:
-        with open(f'{filename}.pdf', 'wb') as f:
+        with open(f'{filename}', 'wb') as f:
             f.write(response.content)
-        print(f'Downloaded {filename}.pdf')
+        print(f'Downloaded {filename}')
+        subprocess.Popen(['zathura', '--fork', f'{filename}'])
     else:
         print(f'PDF for {arxiv_id} is not available.')
 
 if __name__ == '__main__':
     #  query = subprocess.check_output(['rofi', '-dmenu', '-theme', 'pdfs', '-i', '-p', 'Enter your query:', '-sort']).decode().strip()
-    #  search_dblp(query)
+    #  print(query)
+    #  exit
+    query = pyperclip.paste()
+    print(query)
+    search_dblp(query)
