@@ -9,7 +9,7 @@
 % \RequirePackage{lmodern}
 \RequirePackage[scr=rsfs]{mathalpha} % TODO: Look at other fonts from here
 \RequirePackage[numbers]{natbib} %TODO: better bib management holy shit this is hell
-
+\RequirePackage{multirow}
 
 % Images and so on
 \RequirePackage{graphicx}
@@ -51,7 +51,7 @@
 \RequirePackage{thm-restate} % Is it not already part of thmtools?
 \RequirePackage{nicefrac}
 \RequirePackage{enumitem}
-\setlist[itemize]{label={$\boldsymbol{\to}$}}
+% \setlist[itemize]{label={$\boldsymbol{\to}$}}
 % \RequirePackage{enumerate}
 
 
@@ -66,12 +66,14 @@
 \newtheorem{observation}{Observation}
 \newtheorem{property}{Property}
 \newtheorem{definition}{Definition}%[section]
+\newtheorem{fact}{Fact}%[section]
 \newtheorem{assumption}{Assumption}
 \newtheorem{examplex}{Example}
 \newenvironment{example}{\pushQED{\qed}\examplex}{\popQED\endexamplex}
 
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
+
 
 % TODO: fix Tables and stuff
 \RequirePackage{booktabs}
@@ -81,7 +83,7 @@
 
 
 % TODO: algorithm2e
-\RequirePackage[linesnumbered,lined,boxed,ruled,vlined]{algorithm2e}
+\RequirePackage[linesnumbered,lined,boxed,ruled,vlined,noend]{algorithm2e}
 \SetKwInput{KwInput}{Input}
 \SetKwInput{KwOutput}{Output}
 \SetKwInOut{Parameters}{Parameters}
@@ -131,11 +133,14 @@
 \newcommand{\etwo}[1]{\mathcolor{two}{#1}}
 \newcommand{\ethree}[1]{\mathcolor{three}{#1}}
 
+\newcommand{\tone}[1]{\textcolor{one}{#1}}
+\newcommand{\ttwo}[1]{\textcolor{two}{#1}}
+\newcommand{\tthree}[1]{\textcolor{three}{#1}}
 
 
 % Symbols
 \RequirePackage{pifont} % For dingbats
-\newcommand{\cmark}{ \textcolor{ForestGreen}{\ding{51}} } % Tick
+\newcommand{\cmark}{ \textcolor{ForestGreen}{\Pisymbol{pzd}{51}} } % Tick
 \newcommand{\xmark}{ \textcolor{red}{\ding{55}} } % X marks the spot
 \newcommand{\pencil}{ \textcolor{purple}{\ding{46}} } % pencil
 
@@ -148,14 +153,14 @@
     linkcolor=red, % Default=red
     citecolor=blue, % Default=green
     filecolor=cyan, % Default=cyan
-    urlcolor=blue, % Default=magenta
+    urlcolor=ForestGreen, % Default=magenta
 }
 % Add text to backref
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]{
     \ifcase #1 (Not cited.)
-    \or        (Cited on page~#2)
-    \else      (Cited on pages~#2)
+    \or        (#2)
+    \else      (#2)
     \fi
 }
 \urlstyle{same} % Don't use monospaced for urls
@@ -173,3 +178,36 @@
 \definecolor{arXivcolor}{HTML}{0D3B66}
 \newcommand{\arxiv}[1]{ \href{https://arxiv.org/abs/#1}{\color{arXivcolor}{arXiv}} }
 
+% \usepackage{todonotes}
+
+\newcommand{\mh}[1]{\todo[linecolor=green,backgroundcolor=green!25,bordercolor=green]{{\bf Monika:} #1}}
+
+\newcommand{\sri}[1]{\todo[linecolor=orange,backgroundcolor=orange!25,bordercolor=orange]{{\bf Sri:} #1}}
+
+\RequirePackage{wrapfig}
+
+% IncMargin for bibliography. Remove if coauthors complain
+
+\makeatletter
+\renewcommand\refname{References (with cited pages)}
+\renewcommand\@biblabel[1]{\textcolor{LightBlue}{\textbf{\small #1}}}
+\renewenvironment{thebibliography}[1]
+     {\section*{\refname}%
+      \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin0pt
+            \itemindent0em
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother
