@@ -9,17 +9,10 @@ touch 'techoverview.tex'
 touch 'projectmacros.tex'
 touch 'acknowledgements.tex'
 cp ~/texmf/tex/latex/local/importstemplate.sty imports.sty
-cp ~/texmf/tex/latex/local/generalmacrostemplate.sty generalmacros.sty
+cp ~/texmf/tex/latex/local/generalmacrostemplate.tex generalmacros.tex
 cp ~/texmf/bibtex/bst/base/gamma.bst gamma.bst
 
 cat << EOF > Ref.bib
-@inproceedings{fakeBib,
- author = {Author Fake},
- title = {Fake Title},
- year = {1985},
- doi = {10.0000/0000000.0000001},
- booktitle = {Fake Book},
-}
 EOF
 
 cat << EOF > fullcontents.tex
