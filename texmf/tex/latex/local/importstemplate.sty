@@ -97,7 +97,7 @@
 
 
 % Colours!
-\RequirePackage[dvipsnames, table, hyperref, hideerrors]{xcolor} % It's a colourful day!
+\RequirePackage[dvipsnames, table, hideerrors]{xcolor} % It's a colourful day!
 \definecolor{LightBlue}{rgb}{0.5, 0.6, 0.9}
 \definecolor{DarkGreen}{rgb}{0.1,0.5,0.1}
 \definecolor{one}{RGB}{51,34,136}
@@ -153,7 +153,7 @@
     linkcolor=red, % Default=red
     citecolor=blue, % Default=green
     filecolor=cyan, % Default=cyan
-    urlcolor=ForestGreen, % Default=magenta
+    urlcolor=one, % Default=magenta
 }
 % Add text to backref
 \renewcommand*{\backref}[1]{}
@@ -179,7 +179,7 @@
 
 \makeatletter
 \renewcommand\refname{References (with cited pages)}
-\renewcommand\@biblabel[1]{\textcolor{LightBlue}{\textbf{\small #1}}}
+\renewcommand\@biblabel[1]{\textcolor{two}{\textbf{\small #1}}}
 \renewenvironment{thebibliography}[1]
      {\section*{\refname}%
       \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
