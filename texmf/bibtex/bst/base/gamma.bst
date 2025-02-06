@@ -1,5 +1,5 @@
-% BibTeX non-standard bibliography style `gamma'
-   % Version 0.99b (8-Dec-22 release) for BibTeX versions 0.99a or later.
+% BibTeX standard bibliography style `gamma'
+   % Version 0.99b (8-Dec-10 release) for BibTeX versions 0.99a or later.
    % Copyright (C) 1984, 1985, 1988, 2010 Howard Trickey and Oren Patashnik for alpha.bst.
    % Unlimited copying and redistribution of this file are permitted as long as
    % it is unmodified.  Modifications (and redistribution of modified versions)
@@ -325,7 +325,22 @@ FUNCTION {format.date}
 }
 
 FUNCTION {format.btitle}
-{ title emphasize
+{  title emphasize
+    doi empty$
+    {
+        url empty$
+            {}
+            {
+            pop$
+            "\href{" url "}{" "{" title emphasize * "}" * "}" * * * *
+            }
+        if$
+    }
+    {
+        pop$
+        "\href{https://doi.org/" doi "}{" "{" title emphasize * "}" * "}" * * * *
+    }
+    if$
 }
 
 FUNCTION {tie.or.space.connect}
@@ -737,8 +752,8 @@ FUNCTION {inproceedings}
           format.date "year" output.check
       }
       {
-          format.date "year" output.check
-          % format.pages output
+          format.date "year" output.check "," *
+          format.pages output
       }
       if$
       address empty$
