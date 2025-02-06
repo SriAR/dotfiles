@@ -21,6 +21,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'ibhagwan/fzf-lua'
 call plug#end()
 
 let g:config_root = fnamemodify(resolve(expand('<sfile>:p')), ':h')
