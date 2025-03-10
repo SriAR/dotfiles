@@ -1,0 +1,325 @@
+@article{BK15sampling,
+    author = {Bencz{\'{u}}r, Andr{\'{a}}s A. and Karger, David R.},
+    biburl = {https://dblp.org/rec/journals/siamcomp/BenczurK15.bib},
+    doi = {10.1137/070705970},
+    journal = {{SIAM} J. Comput.},
+    number = {2},
+    pages = {290--319},
+    title = {Randomized Approximation Schemes for Cuts and Flows in Capacitated
+Graphs},
+    url = {https://doi.org/10.1137/070705970},
+    volume = {44},
+    year = {2015}
+}
+
+@inproceedings{CCPS21cutbalance,
+    author = {Cen, Ruoxu and Cheng, Yu and Panigrahi, Debmalya and Sun, Kevin},
+    biburl = {https://dblp.org/rec/conf/icalp/CenCP021.bib},
+    booktitle = {International Colloqium on Automata, Languages, and Programming (ICALP)},
+    doi = {10.4230/LIPICS.ICALP.2021.45},
+    editor = {Bansal, Nikhil and Merelli, Emanuela and Worrell, James},
+    pages = {45:1--45:21},
+    publisher = {Schloss Dagstuhl - Leibniz-Zentrum f{\"{u}}r Informatik},
+    series = {LIPIcs},
+    title = {Sparsification of Directed Graphs via Cut Balance},
+    url = {https://doi.org/10.4230/LIPIcs.ICALP.2021.45},
+    volume = {198},
+    year = {2021}
+}
+
+@inproceedings{CGH20dynjtree,
+    author = {Chen, Li and Goranci, Gramoz and Henzinger, Monika and Peng, Richard and Saranurak, Thatchaphol},
+    biburl = {https://dblp.org/rec/conf/focs/ChenGHPS20.bib},
+    booktitle = {Foundations of Computer Science (FOCS)},
+    doi = {10.1109/FOCS46700.2020.00109},
+    editor = {Irani, Sandy},
+    pages = {1135--1146},
+    publisher = {IEEE},
+    title = {Fast Dynamic Cuts, Distances and Effective Resistances via Vertex
+Sparsifiers},
+    url = {https://doi.org/10.1109/FOCS46700.2020.00109},
+    year = {2020}
+}
+
+@inproceedings{CKL22almost,
+    author = {Chen, Li and Kyng, Rasmus and Liu, Yang P. and Peng, Richard and Gutenberg, Maximilian Probst and Sachdeva, Sushant},
+    biburl = {https://dblp.org/rec/conf/focs/ChenKLPGS22.bib},
+    booktitle = {Foundations of Computer Science (FOCS)},
+    doi = {10.1109/FOCS54457.2022.00064},
+    pages = {612--623},
+    publisher = {IEEE},
+    title = {Maximum Flow and Minimum-Cost Flow in Almost-Linear Time},
+    url = {https://doi.org/10.1109/FOCS54457.2022.00064},
+    year = {2022}
+}
+
+@inproceedings{CKL24incremental,
+    author = {Chen, Li and Kyng, Rasmus and Liu, Yang P. and Meierhans, Simon and Gutenberg, Maximilian Probst},
+    biburl = {https://dblp.org/rec/conf/stoc/0028KLMG24.bib},
+    booktitle = {Symposium on Theory of Computing (STOC)},
+    doi = {10.1145/3618260.3649745},
+    editor = {Mohar, Bojan and Shinkar, Igor and O'Donnell, Ryan},
+    pages = {1165--1173},
+    publisher = {ACM},
+    title = {Almost-Linear Time Algorithms for Incremental Graphs: Cycle Detection,
+SCCs, s-t Shortest Path, and Minimum-Cost Flow},
+    url = {https://doi.org/10.1145/3618260.3649745},
+    year = {2024}
+}
+
+@inproceedings{Dah16lbs,
+    author = {Dahlgaard, Søren},
+    biburl = {https://dblp.org/rec/conf/icalp/Dahlgaard16.bib},
+    booktitle = {International Colloqium on Automata, Languages, and Programming (ICALP)},
+    doi = {10.4230/LIPICS.ICALP.2016.48},
+    editor = {Chatzigiannakis, Ioannis and Mitzenmacher, Michael and Rabani, Yuval and Sangiorgi, Davide},
+    pages = {48:1--48:14},
+    publisher = {Schloss Dagstuhl - Leibniz-Zentrum für Informatik},
+    series = {LIPIcs},
+    title = {On the Hardness of Partially Dynamic Graph Problems and Connections
+to Diameter},
+    url = {https://doi.org/10.4230/LIPIcs.ICALP.2016.48},
+    volume = {55},
+    year = {2016}
+}
+
+@inproceedings{EMPS16balance,
+    author = {Ene, Alina and Miller, Gary L. and Pachocki, Jakub and Sidford, Aaron},
+    booktitle = {Symposium on Theory of Computing (STOC)},
+    doi = {10.1145/2897518.2897654},
+    pages = {598--611},
+    title = {Routing under balance},
+    url = {https://doi.org/10.1145/2897518.2897654},
+    year = {2016}
+}
+
+@article{FHHP19sparsification,
+    author = {Fung, Wai Shing and Hariharan, Ramesh and Harvey, Nicholas J. A. and Panigrahi, Debmalya},
+    biburl = {https://dblp.org/rec/journals/siamcomp/FungHHP19.bib},
+    doi = {10.1137/16M1091666},
+    journal = {SIAM J. Comput.},
+    number = {4},
+    pages = {1196--1223},
+    title = {A General Framework for Graph Sparsification},
+    url = {https://doi.org/10.1137/16M1091666},
+    volume = {48},
+    year = {2019}
+}
+
+@inproceedings{GH23incflow,
+    author = {Goranci, Gramoz and Henzinger, Monika},
+    biburl = {https://dblp.org/rec/conf/icalp/GoranciH23.bib},
+    booktitle = {International Colloqium on Automata, Languages, and Programming (ICALP)},
+    doi = {10.4230/LIPICS.ICALP.2023.69},
+    editor = {Etessami, Kousha and Feige, Uriel and Puppis, Gabriele},
+    pages = {69:1--69:14},
+    publisher = {Schloss Dagstuhl - Leibniz-Zentrum für Informatik},
+    series = {LIPIcs},
+    title = {Efficient Data Structures for Incremental Exact and Approximate Maximum
+Flow},
+    url = {https://doi.org/10.4230/LIPIcs.ICALP.2023.69},
+    volume = {261},
+    year = {2023}
+}
+
+@inproceedings{GK21misflowmatch,
+    author = {Gupta, Manoj and Khan, Shahbaz},
+    biburl = {https://dblp.org/rec/conf/sosa/GuptaK21.bib},
+    booktitle = {Symposium on Simplicity in Algorithms (SOSA)},
+    doi = {10.1137/1.9781611976496.10},
+    editor = {Le, Hung Viet and King, Valerie},
+    pages = {86--91},
+    publisher = {SIAM},
+    title = {Simple dynamic algorithms for Maximal Independent Set, Maximum Flow
+and Maximum Matching},
+    url = {https://doi.org/10.1137/1.9781611976496.10},
+    year = {2021}
+}
+
+@article{GR98flow,
+    author = {Goldberg, Andrew V. and Rao, Satish},
+    biburl = {https://dblp.org/rec/journals/jacm/GoldbergR98.bib},
+    doi = {10.1145/290179.290181},
+    journal = {J. ACM},
+    number = {5},
+    pages = {783--797},
+    title = {Beyond the Flow Decomposition Barrier},
+    url = {https://doi.org/10.1145/290179.290181},
+    volume = {45},
+    year = {1998}
+}
+
+@inproceedings{GRST21xhierarchy,
+    author = {Goranci, Gramoz and Räcke, Harald and Saranurak, Thatchaphol and Tan, Zihan},
+    biburl = {https://dblp.org/rec/conf/soda/GoranciRST21.bib},
+    booktitle = {Symposium on Discrete Algorithms (SODA)},
+    doi = {10.1137/1.9781611976465.132},
+    editor = {Marx, Dániel},
+    pages = {2212--2228},
+    publisher = {SIAM},
+    title = {The Expander Hierarchy and its Applications to Dynamic Graph Algorithms},
+    url = {https://doi.org/10.1137/1.9781611976465.132},
+    year = {2021}
+}
+
+@article{Hen97vertexconnectivity,
+    author = {Henzinger, Monika Rauch},
+    biburl = {https://dblp.org/rec/journals/jal/Henzinger97.bib},
+    doi = {10.1006/JAGM.1997.0855},
+    journal = {J. Algorithms},
+    number = {1},
+    pages = {194--220},
+    title = {A Static 2-Approximation Algorithm for Vertex Connectivity and Incremental
+Approximation Algorithms for Edge and Vertex Connectivity},
+    url = {https://doi.org/10.1006/jagm.1997.0855},
+    volume = {24},
+    year = {1997}
+}
+
+@inproceedings{HKNS15omv,
+    author = {Henzinger, Monika and Krinninger, Sebastian and Nanongkai, Danupon and Saranurak, Thatchaphol},
+    biburl = {https://dblp.org/rec/conf/stoc/HenzingerKNS15.bib},
+    booktitle = {Symposium on Theory of Computing (STOC)},
+    doi = {10.1145/2746539.2746609},
+    editor = {Servedio, Rocco A. and Rubinfeld, Ronitt},
+    pages = {21--30},
+    publisher = {ACM},
+    title = {Unifying and Strengthening Hardness for Dynamic Problems via the Online
+Matrix-Vector Multiplication Conjecture},
+    url = {https://doi.org/10.1145/2746539.2746609},
+    year = {2015}
+}
+
+@article{Ita86incdirected,
+    author = {Italiano, Giuseppe F.},
+    biburl = {https://dblp.org/rec/journals/tcs/Italiano86.bib},
+    doi = {10.1016/0304-3975(86)90098-8},
+    journal = {Theor. Comput. Sci.},
+    number = {3},
+    pages = {273--281},
+    title = {Amortized Efficiency of a Path Retrieval Data Structure},
+    url = {https://doi.org/10.1016/0304-3975(86)90098-8},
+    volume = {48},
+    year = {1986}
+}
+
+@article{KL15sampling,
+    author = {Karger, David R. and Levine, Matthew S.},
+    biburl = {https://dblp.org/rec/journals/siamcomp/KargerL15.bib},
+    doi = {10.1137/070705994},
+    journal = {SIAM J. Comput.},
+    number = {2},
+    pages = {320--339},
+    title = {Fast Augmenting Paths by Random Sampling from Residual Graphs},
+    url = {https://doi.org/10.1137/070705994},
+    volume = {44},
+    year = {2015}
+}
+
+@inproceedings{KLOS14almost,
+    author = {Kelner, Jonathan A. and Lee, Yin Tat and Orecchia, Lorenzo and Sidford, Aaron},
+    biburl = {https://dblp.org/rec/conf/soda/KelnerLOS14.bib},
+    booktitle = {Symposium on Discrete Algorithms (SODA)},
+    doi = {10.1137/1.9781611973402.16},
+    editor = {Chekuri, Chandra},
+    pages = {217--226},
+    publisher = {{SIAM}},
+    title = {An Almost-Linear-Time Algorithm for Approximate Max Flow in Undirected
+Graphs, and its Multicommodity Generalizations},
+    url = {https://doi.org/10.1137/1.9781611973402.16},
+    year = {2014}
+}
+
+@article{NI92sparsify,
+    author = {Nagamochi, Hiroshi and Ibaraki, Toshihide},
+    biburl = {https://dblp.org/rec/journals/algorithmica/NagamochiI92.bib},
+    doi = {10.1007/BF01758778},
+    journal = {Algorithmica},
+    number = {5\&6},
+    pages = {583--596},
+    title = {A Linear-Time Algorithm for Finding a Sparse k-Connected Spanning
+Subgraph of a k-Connected Graph},
+    url = {https://doi.org/10.1007/BF01758778},
+    volume = {7},
+    year = {1992}
+}
+
+@inproceedings{Pen16nearly,
+    author = {Peng, Richard},
+    biburl = {https://dblp.org/rec/conf/soda/Peng16.bib},
+    booktitle = {Symposium on Discrete Algorithms (SODA)},
+    doi = {10.1137/1.9781611974331.CH130},
+    editor = {Krauthgamer, Robert},
+    pages = {1862--1867},
+    publisher = {{SIAM}},
+    title = {Approximate Undirected Maximum Flows in \emph{O}(\emph{m}polylog(\emph{n}))
+Time},
+    url = {https://doi.org/10.1137/1.9781611974331.ch130},
+    year = {2016}
+}
+
+@inproceedings{She13almostflow,
+    author = {Sherman, Jonah},
+    biburl = {https://dblp.org/rec/conf/focs/Sherman13.bib},
+    booktitle = {Foundations of Computer Science (FOCS)},
+    doi = {10.1109/FOCS.2013.36},
+    pages = {263--269},
+    publisher = {{IEEE} Computer Society},
+    title = {Nearly Maximum Flows in Nearly Linear Time},
+    url = {https://doi.org/10.1109/FOCS.2013.36},
+    year = {2013}
+}
+
+@article{TvL84unionfind,
+    author = {Tarjan, Robert Endre and van Leeuwen, Jan},
+    biburl = {https://dblp.org/rec/journals/jacm/TarjanL84.bib},
+    doi = {10.1145/62.2160},
+    journal = {J. ACM},
+    number = {2},
+    pages = {245--281},
+    title = {Worst-case Analysis of Set Union Algorithms},
+    url = {https://doi.org/10.1145/62.2160},
+    volume = {31},
+    year = {1984}
+}
+
+@inproceedings{vdBCK24decremental,
+    author = {van den Brand, Jan and Chen, Li and Kyng, Rasmus and Liu, Yang P. and Meierhans, Simon and Gutenberg, Maximilian Probst and Sachdeva, Sushant},
+    biburl = {https://dblp.org/rec/conf/focs/Brand0KLMGS24.bib},
+    booktitle = {Foundations of Computer Science (FOCS)},
+    doi = {10.1109/FOCS61266.2024.00120},
+    pages = {2010--2032},
+    publisher = {IEEE},
+    title = {Almost-Linear Time Algorithms for Decremental Graphs: Min-Cost Flow
+and More via Duality},
+    url = {https://doi.org/10.1109/FOCS61266.2024.00120},
+    year = {2024}
+}
+
+@inproceedings{vdBCK24incflow,
+    author = {van den Brand, Jan and Chen, Li and Kyng, Rasmus and Liu, Yang P. and Peng, Richard and Gutenberg, Maximilian Probst and Sachdeva, Sushant and Sidford, Aaron},
+    biburl = {https://dblp.org/rec/conf/soda/BrandCKLPGSS24.bib},
+    booktitle = {Symposium on Discrete Algorithms (SODA)},
+    doi = {10.1137/1.9781611977912.106},
+    editor = {Woodruff, David P.},
+    pages = {2980--2998},
+    publisher = {{SIAM}},
+    title = {Incremental Approximate Maximum Flow on Undirected Graphs in Subpolynomial
+Update Time},
+    url = {https://doi.org/10.1137/1.9781611977912.106},
+    year = {2024}
+}
+
+@inproceedings{vdBLS23incmaxflow,
+    author = {van den Brand, Jan and Liu, Yang P. and Sidford, Aaron},
+    biburl = {https://dblp.org/rec/conf/stoc/BrandLS23.bib},
+    booktitle = {Symposium on Theory of Computing (STOC)},
+    doi = {10.1145/3564246.3585135},
+    editor = {Saha, Barna and Servedio, Rocco A.},
+    pages = {1215--1228},
+    publisher = {ACM},
+    title = {Dynamic Maxflow via Dynamic Interior Point Methods},
+    url = {https://doi.org/10.1145/3564246.3585135},
+    year = {2023}
+}
+

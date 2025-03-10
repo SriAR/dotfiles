@@ -72,4 +72,83 @@ end
 
 -- Create a Neovim command for this function
 vim.api.nvim_create_user_command("AppendBib", append_bib_entry, {})
+
+
+local function fix_bib_entries()
+    -- Define conference mappings directly in Lua
+    local conf_map = {
+        symposiumondiscretealgorithms = "Symposium on Discrete Algorithms (SODA)",
+        symposiumontheoryofcomputing = "Symposium on Theory of Computing (STOC)",
+        symposiumonthetheoryofcomputing = "Symposium on Theory of Computing (STOC)",
+        foundationsofcomputerscience = "Foundations of Computer Science (FOCS)",
+        automatalanguagesandprogramming = "International Colloquium on Automata, Languages, and Programming (ICALP)",
+        europeansymposiumonalgorithms = "European Symposium on Algorithms (ESA)",
+        approximationrandomizationandcombinatorialopt = "APPROX/RANDOM",
+        principlesofdistributedcomputing = "Principles of Distributed Computing (PODC)",
+        simplicityinalgorithms = "Symposium on Simplicity in Algorithms (SOSA)",
+        neuralinformationprocessingsystems = "Advances in Neural Information Processing Systems (NeurIPS)",
+        parameterizedandexactcomputation = "Symposium on Parameterized and Exact Computation (IPEC)",
+        symposiumontheoreticalaspectsofcomputerscience = "Symposium on Theoretical Aspects of Computer Science (STACS)",
+        symposiumondistributedcomputing = "Symposium on Distributed Computing (DISC)",
+        internationalconferenceonmachinelearning = "International Conference on Machine Learning (ICML)",
+        theoryandapplicationsofmodelsofcomputation = "Theory and Applications of Models of Computation (TAMC)",
+        theoryofcryptography = "Theory of Cryptography (TCC)",
+        economicsandcomputation = "Conference on Economics and Computation (EC)",
+        theoryandapplicationofcryptologyandinformationsecurity = "Theory and Application of Cryptology and Information Security (ASIACRYPT)",
+        conferenceonlearningtheory = "Conference on Learning Theory (COLT)",
+        meetingonanalyticalgorithmicsandcombinatorics = "Meeting on Analytic Algorithmics and Combinatorics (ANALCO)",
+        foundationsofsoftwaretechnology = "Foundations of Software Technology and Theoretical Computer Science (FSTTCS)",
+        worldwidewebconference = "World Wide Web Conference (WWW)",
+        approximationalgorithmsforcombinatorialoptimization = "Approximation Algorithms for Combinatorial Optimization (APPROX)"
+    }
+
+    -- Function to normalize booktitle: keep only alphabetic characters and convert to lowercase
+    local function normalize_booktitle(booktitle)
+        return booktitle:gsub("[^a-zA-Z]", ""):lower()
+    end
+
+    -- Get buffer lines
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+    local new_lines = {}
+    local booktitle_line = nil
+
+    for _, line in ipairs(lines) do
+        local trimmed = line:match("^%s*(.-)%s*$")  -- Trim whitespace
+
+        -- Remove unwanted fields
+        if trimmed:match("^bibsource%s*=") or trimmed:match("^timestamp%s*=") then
+            goto continue
+        end
+
+        -- Detect booktitle
+        if trimmed:match("^booktitle%s*=") then
+            booktitle_line = line
+        end
+
+        table.insert(new_lines, line)
+
+        -- Fix booktitle if necessary
+        if booktitle_line then
+            local key = booktitle_line:match('booktitle%s*=%s*{(.-)}')
+            if key then
+                local normalized = normalize_booktitle(key)
+                if conf_map[normalized] then
+                    local fixed = "booktitle = {" .. conf_map[normalized] .. "},"
+                    new_lines[#new_lines] = fixed  -- Replace last entry
+                end
+            end
+            booktitle_line = nil  -- Reset
+        end
+
+        ::continue::
+    end
+
+    -- Replace buffer content
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, new_lines)
+    print("BibTeX cleaned and booktitle fixed!")
+end
+
+-- Command to call in Neovim
+vim.api.nvim_create_user_command("FixBib", fix_bib_entries, {})
 EOF
