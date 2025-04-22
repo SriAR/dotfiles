@@ -17,6 +17,6 @@ cat -s ar.xiv | sponge ar.xiv
 
 mv ar.xiv "$dest/$1.tex"
 cp "main.bbl" "$dest/$1.bbl"
-cp *.sty *.jpg *.bib "$dest/"
+cp *.sty *.jpg *.bib *.png "$dest/"
 cd "$dest"
 zip "v$version_number.zip" *
