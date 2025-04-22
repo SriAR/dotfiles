@@ -4,6 +4,7 @@ set synctex true
 set synctex-editor-command "nvim +%{line} %{input}"
 set window-title-basename true
 map x toggle_statusbar
+map ff run firefox "$FILE"
 
 set completion-bg "#0e0f15"
 set completion-fg "#b3b7cc"
