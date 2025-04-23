@@ -11,6 +11,7 @@ set synctex true
 set synctex-editor-command "nvim +%{line} %{input}"
 set window-title-basename true
 map x toggle_statusbar
+map ff run firefox "$FILE"
 
 set completion-bg "$background"
 set completion-fg "$foreground"

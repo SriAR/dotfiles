@@ -9,6 +9,17 @@ with open('confs.yaml') as f:
 def pp(dic):
     return json.dumps(dic,indent=4)
 
+def fixconference(confname):
+    confname = ''.join(filter(lambda x: str.isalnum(x), confname)).lower()
+
+    for key in confdict.keys():
+        if key in confname:
+            return confdict[key]
+    else:
+        print(f'{confname} is not in dict')
+        return confname
+
+
 def read_bib_file(bibfile: Path, customparser=False):
     if customparser:
         from bibtexparser.bparser import BibTexParser
@@ -20,6 +31,7 @@ def read_bib_file(bibfile: Path, customparser=False):
     else:
         with bibfile.open() as fp:
             entries = bibtexparser.load(fp).entries
+            print(entries)
     return entries
 
 class BibEntry:
@@ -88,9 +100,11 @@ class Conference(BibEntry):
 
 def addcorrectbib(entry):
     if entry['ENTRYTYPE'] == 'inproceedings':
-        return Conference(entry)
-    else:
-        return BibEntry(entry)
+        old = entry['booktitle']
+        entry['booktitle'] = fixconference(old)
+        print(f"renamed {old} to {entry['booktitle']}")
+
+    return entry
 
 class BibDir:
 
@@ -104,14 +118,18 @@ class BibDir:
 
     def extract_bibs(self):
         biblist = []
-        for bibfile in self.bibdir.iterdir():
-            entry = read_bib_file(bibfile)[0]
-            biblist.append(addcorrectbib(entry))
+        for bibfile in self.bibdir.glob("*.bib"):
+            entries = read_bib_file(bibfile)
+            print(len(entries))
+            for entry in entries:
+                biblist.append(addcorrectbib(entry))
         return biblist
 
     def __repr__(self):
         return '\n'.join([repr(x) for x in self.bibs])
 
-x = '/home/cs/test/'
+x = '/home/cs/WorkingPapers/IncMaxFlow'
 k = BibDir(x)
-print(k)
+bdb = bibtexparser.bibdatabase.BibDatabase()
+bdb.entries = [bib.makebib() for bib in k.bibs]
+print(bibtexparser.dumps(bdb))
