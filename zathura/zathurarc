@@ -3,8 +3,9 @@ set selection-clipboard clipboard
 set synctex true
 set synctex-editor-command "nvim +%{line} %{input}"
 set window-title-basename true
+set database sqlite
 map x toggle_statusbar
-map ff run firefox "$FILE"
+map p exec "firefox $FILE"
 
 set completion-bg "#0e0f15"
 set completion-fg "#b3b7cc"
@@ -26,7 +27,7 @@ set notification-error-fg "#b3b7cc"
 set notification-warning-bg "#0C4591"
 set notification-warning-fg "#b3b7cc"
 set statusbar-bg "#0e0f15"
-set statusbarfg "#b3b7cc"
+set statusbar-fg "#b3b7cc"
 set index-bg "#0e0f15"
 set index-fg "#b3b7cc"
 set index-active-bg "#b3b7cc"
