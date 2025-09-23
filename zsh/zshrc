@@ -148,3 +148,9 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/cs/.opam/opam-init/init.zsh' ]] || source '/home/cs/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+PATH="/home/cs/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/cs/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/cs/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/cs/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/cs/perl5"; export PERL_MM_OPT;
