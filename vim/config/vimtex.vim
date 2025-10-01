@@ -89,3 +89,5 @@ augroup VimTex
     autocmd!
     autocmd BufWritePost *.tex call vimtex#toc#refresh()
 augroup END
+
+nnoremap <leader>e :execute 'edit ' . b:vimtex.tex<CR>
