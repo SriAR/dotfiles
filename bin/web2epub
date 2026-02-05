@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -z "$1" ]; then
+  echo "Usage: web2epub.sh <URL>"
+  exit 1
+fi
+
+URL="$1"
+TMPDIR=$(mktemp -d)
+HTML="$TMPDIR/article.html"
+EPUB="$TMPDIR/article.epub"
+
+# # Change this to your articles-only Calibre library
+# CALIBRE_LIB="$HOME/Calibre-Articles"
+
+echo "→ Extracting readable content…"
+readable "$URL" > "$HTML"
+
+echo "→ Converting to EPUB…"
+pandoc "$HTML" \
+  -o "$EPUB" \
+  --metadata source="$URL" \
+  --css <(cat <<'EOF'
+body {
+  font-family: serif;
+  line-height: 1.4;
+}
+h1, h2, h3 {
+  page-break-after: avoid;
+}
+EOF
+)
+
+# echo "→ Adding to Calibre library…"
+# calibredb add "$EPUB" --library-path "$CALIBRE_LIB"
+#
+# echo "✓ Done! Added to Calibre Articles library."
