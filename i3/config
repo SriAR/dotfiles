@@ -8,7 +8,7 @@ font pango:monospace 8
 exec --no-startup-id /home/cs/dotfiles/bin/batteryLow
 exec --no-startup-id python -m http.server 3323 -d /home/cs/site/html/ --bind 127.0.0.1
 exec --no-startup-id python -m http.server 4545 -d /home/cs/serverythings/texvizzes --bind 127.0.0.1
-exec --no-startup-id picom --experimental-backends
+exec --no-startup-id picom
 exec --no-startup-id pavucontrol
 exec --no-startup-id wal -R
 exec --no-startup-id nm-applet
@@ -24,7 +24,7 @@ bindsym Mod1+y exec pushd /home/cs/Projects/biblio-baggins/ && poetry run bb --p
 
 # bindsym Mod4+z exec find ~/Study ~/phdapp ~/Presentations ~/Book /hdd/Cheenta | rofi -theme pdfs -dmenu -i -p "OPEN" -sort | xargs /home/cs/dotfiles/bin/fuckmime
 bindsym Mod1+o exec /home/cs/dotfiles/bin/po
-bindsym Mod4+z exec find ~/Study | tail -n+2 | sed 's@/home/cs/Study/@@g' | rofi -dmenu -theme pdfs -i -p "OPEN" -sort | sed 's@^@/home/cs/Study/@g' | xargs /home/cs/dotfiles/bin/fuckmime
+bindsym Mod4+z exec find ~/Study/ | tail -n+2 | sed 's@/home/cs/Study/@@g' | rofi -dmenu -theme pdfs -i -p "OPEN" -sort | sed 's@^@/home/cs/Study/@g' | xargs /home/cs/dotfiles/bin/fuckmime
 # bindsym Mod4+y exec xclip -selection clipboard -o | xargs mpv --hwdec=auto --title="youtube"
 # bindsym Mod4+b exec /home/cs/dotfiles/bin/bluetooth on
 # bindsym Mod4+Shift+b exec /home/cs/dotfiles/bin/bluetooth off
