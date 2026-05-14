@@ -3,7 +3,7 @@ let &packpath=&runtimepath
 source ~/.vimrc
 
 lua << EOF
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter').setup {
     ensure_installed = { "haskell", "cpp", "c", "javascript", "markdown" },
     highlight = { -- Be sure to enable highlights if you haven't!
         enable = true,
